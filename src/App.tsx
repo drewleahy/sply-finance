@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import SubmitDeal from "./pages/SubmitDeal";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import LPLogin from "./pages/LPLogin";
+import LPDashboard from "./pages/LPDashboard";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,6 +27,10 @@ const App = () => {
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/submit-deal" element={<SubmitDeal />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/lp" element={<LPLogin />} />
+            <Route path="/lp/dashboard" element={<LPDashboard />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

@@ -51,6 +51,74 @@ export type Database = {
         }
         Relationships: []
       }
+      documents: {
+        Row: {
+          created_at: string
+          description: string | null
+          file_path: string
+          id: string
+          is_global: boolean | null
+          lp_group_id: string | null
+          title: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          file_path: string
+          id?: string
+          is_global?: boolean | null
+          lp_group_id?: string | null
+          title: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          file_path?: string
+          id?: string
+          is_global?: boolean | null
+          lp_group_id?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_lp_group_id_fkey"
+            columns: ["lp_group_id"]
+            isOneToOne: false
+            referencedRelation: "lp_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lp_groups: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null
@@ -58,6 +126,9 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          is_admin: boolean | null
+          is_lp: boolean | null
+          lp_group_id: string | null
           phone: string | null
           updated_at: string
           user_id: string | null
@@ -68,6 +139,9 @@ export type Database = {
           created_at?: string
           email: string
           id?: string
+          is_admin?: boolean | null
+          is_lp?: boolean | null
+          lp_group_id?: string | null
           phone?: string | null
           updated_at?: string
           user_id?: string | null
@@ -78,11 +152,22 @@ export type Database = {
           created_at?: string
           email?: string
           id?: string
+          is_admin?: boolean | null
+          is_lp?: boolean | null
+          lp_group_id?: string | null
           phone?: string | null
           updated_at?: string
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profiles_lp_group_id_fkey"
+            columns: ["lp_group_id"]
+            isOneToOne: false
+            referencedRelation: "lp_groups"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       website_content: {
         Row: {
