@@ -16,27 +16,46 @@ export const ProfileForm = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data, error } = await supabase
-          .from("profiles")
-          .select()
-          .eq("user_id", user.id)
-          .single();
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data, error } = await supabase
+            .from("profiles")
+            .select()
+            .eq("user_id", user.id)
+            .maybeSingle();
 
-        if (data && !error) {
-          setProfile({
-            companyName: data.company_name || "",
-            contactName: data.contact_name || "",
-            email: data.email || "",
-            phone: data.phone || "",
-          });
+          if (error) {
+            console.error("Error fetching profile:", error);
+            toast({
+              variant: "destructive",
+              title: "Error",
+              description: "Failed to load profile data. Please try again.",
+            });
+            return;
+          }
+
+          if (data) {
+            setProfile({
+              companyName: data.company_name || "",
+              contactName: data.contact_name || "",
+              email: data.email || "",
+              phone: data.phone || "",
+            });
+          }
         }
+      } catch (error) {
+        console.error("Error in fetchProfile:", error);
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Failed to load profile data. Please try again.",
+        });
       }
     };
 
     fetchProfile();
-  }, []);
+  }, [toast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +80,7 @@ export const ProfileForm = () => {
         description: "Your profile has been updated successfully.",
       });
     } catch (error) {
+      console.error("Error updating profile:", error);
       toast({
         variant: "destructive",
         title: "Error",
