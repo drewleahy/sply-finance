@@ -4,6 +4,9 @@ import { Portfolio } from "@/components/Portfolio";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
 import { Podcast } from "@/components/Podcast";
 import { Subscribe } from "@/components/Subscribe";
+import { DealSubmission } from "@/components/DealSubmission";
+import { Events } from "@/components/Events";
+import { LPLogin } from "@/components/LPLogin";
 
 const Index = () => {
   return (
@@ -12,8 +15,11 @@ const Index = () => {
       <InvestmentThesis />
       <Portfolio />
       <Partners />
+      <DealSubmission />
+      <Events />
       <Podcast />
       <Subscribe />
+      <LPLogin />
     </main>
   );
 };
