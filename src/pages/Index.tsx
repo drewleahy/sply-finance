@@ -23,9 +23,9 @@ const Index = () => {
         <Portfolio />
         <Partners />
         <Podcast />
-        <section className="container mx-auto px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold text-luxon-gold mb-4">Submit a Deal</h2>
-          <p className="text-luxon-offwhite mb-6">
+        <section className="container mx-auto px-4 py-12 bg-card rounded-lg my-12">
+          <h2 className="text-2xl font-bold text-card-foreground mb-4">Submit a Deal</h2>
+          <p className="text-card-foreground/90 mb-6">
             Have a deal we should look at? Use our form to submit the details
           </p>
           <Link to="/submit-deal">
