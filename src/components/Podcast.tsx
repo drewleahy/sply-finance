@@ -12,7 +12,7 @@ export const Podcast = () => {
             className="md:w-1/2"
           >
             <img
-              src="/placeholder.svg"
+              src="/lovable-uploads/60e34ccc-38dc-4beb-af89-8a5458fab824.png"
               alt="Family Monies Podcast"
               className="w-full h-auto rounded-lg shadow-xl"
             />
@@ -30,12 +30,20 @@ export const Podcast = () => {
               investments, and exclusive opportunities. Listen to our latest
               episodes featuring industry leaders and successful founders.
             </p>
-            <Button
-              className="bg-luxon-gold hover:bg-luxon-gold/90 text-luxon-navy"
-              onClick={() => window.open("https://familymonies.com", "_blank")}
-            >
-              Listen Now
-            </Button>
+            <div className="flex flex-wrap gap-4">
+              <Button
+                className="bg-luxon-gold hover:bg-luxon-gold/90 text-luxon-navy"
+                onClick={() => window.open("https://familymonies.com", "_blank")}
+              >
+                Listen Now
+              </Button>
+              <Button
+                className="bg-luxon-navy hover:bg-luxon-navy/90 text-luxon-gold border border-luxon-gold"
+                onClick={() => window.open("https://familymonies.com/speaker", "_blank")}
+              >
+                Join FM As A Speaker
+              </Button>
+            </div>
           </motion.div>
         </div>
       </div>
