@@ -119,6 +119,42 @@ export type Database = {
         }
         Relationships: []
       }
+      lp_groups_deals: {
+        Row: {
+          created_at: string
+          deal_id: string | null
+          id: string
+          lp_group_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          deal_id?: string | null
+          id?: string
+          lp_group_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          deal_id?: string | null
+          id?: string
+          lp_group_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lp_groups_deals_deal_id_fkey"
+            columns: ["deal_id"]
+            isOneToOne: false
+            referencedRelation: "deals"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lp_groups_deals_lp_group_id_fkey"
+            columns: ["lp_group_id"]
+            isOneToOne: false
+            referencedRelation: "lp_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           company_name: string | null
