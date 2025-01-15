@@ -18,7 +18,7 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-3xl md:text-5xl font-serif text-sply-gold mb-6"
         >
-          Exclusive Investment Opportunities
+          OFF MARKET INVESTMENT OPPORTUNITIES
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
