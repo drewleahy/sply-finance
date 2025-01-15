@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const thesisPoints = [
   {
-    title: "Off Market & VC Lead Deals",
+    title: "VC Lead Off Market Private Investments",
     description:
       "Series A+ Deals in Defense, Aerospace, AI Hardware, Deeptech, Robotics, & Fintech",
     icon: "🚀",
