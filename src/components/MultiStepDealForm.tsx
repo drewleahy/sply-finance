@@ -40,8 +40,8 @@ export const MultiStepDealForm = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-luxon-navy mb-2">Submit a Deal</h1>
-        <p className="text-luxon-muted">
+        <h1 className="text-3xl font-bold text-sply-navy mb-2">Submit a Deal</h1>
+        <p className="text-sply-muted">
           Share your startup with potential investors
         </p>
       </div>
@@ -59,7 +59,7 @@ export const MultiStepDealForm = () => {
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center ${
                     step.id <= currentStep
-                      ? "bg-luxon-gold text-white"
+                      ? "bg-sply-gold text-white"
                       : "bg-gray-200 text-gray-500"
                   }`}
                 >

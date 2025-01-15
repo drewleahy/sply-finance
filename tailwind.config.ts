@@ -19,7 +19,7 @@ export default {
     },
     extend: {
       colors: {
-        luxon: {
+        sply: {
           navy: "#1A1F2C",
           gold: "#C5A572",
           offwhite: "#F5F5F5",

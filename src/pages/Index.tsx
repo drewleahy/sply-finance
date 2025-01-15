@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-luxon-navy flex flex-col">
+    <div className="min-h-screen bg-sply-navy flex flex-col">
       {/* Header */}
       <header className="container mx-auto px-4 py-4 flex justify-end">
-        <Link to="/auth" className="text-luxon-gold hover:text-luxon-gold/80 font-semibold">
+        <Link to="/auth" className="text-sply-gold hover:text-sply-gold/80 font-semibold">
           LP LOGIN
         </Link>
       </header>
@@ -38,10 +38,10 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-luxon-navy border-t border-luxon-gold/20 mt-16">
+      <footer className="bg-sply-navy border-t border-sply-gold/20 mt-16">
         <div className="container mx-auto px-4 py-8 flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0">
-          <p className="text-luxon-muted">© 2024 All rights reserved</p>
-          <Link to="/auth" className="text-luxon-gold hover:text-luxon-gold/80 font-semibold">
+          <p className="text-sply-muted">© 2024 All rights reserved</p>
+          <Link to="/auth" className="text-sply-gold hover:text-sply-gold/80 font-semibold">
             LP LOGIN
           </Link>
         </div>
