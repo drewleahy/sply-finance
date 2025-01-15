@@ -24,12 +24,12 @@ export const Subscribe = () => {
   };
 
   return (
-    <section className="py-20 bg-sply-navy">
+    <section className="py-20 bg-gradient-to-b from-sply-navy to-black">
       <div className="container mx-auto px-4 max-w-xl text-center">
         <h2 className="text-3xl md:text-4xl font-serif text-sply-gold mb-6">
           Join Our Network
         </h2>
-        <p className="text-sply-offwhite mb-8">
+        <p className="text-sply-offwhite text-lg mb-8">
           Get access to exclusive investment opportunities and market insights.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
@@ -39,12 +39,12 @@ export const Subscribe = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="bg-white/10 border-sply-gold/30 text-sply-offwhite placeholder:text-sply-muted"
+            className="bg-white/5 border-2 border-sply-gold/30 text-sply-offwhite placeholder:text-sply-muted/70 focus:border-sply-gold"
           />
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-sply-gold hover:bg-sply-gold/90 text-sply-navy"
+            className="bg-sply-gold hover:bg-sply-gold/90 text-sply-navy font-semibold whitespace-nowrap"
           >
             {isLoading ? "Submitting..." : "Subscribe"}
           </Button>

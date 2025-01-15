@@ -25,20 +25,20 @@ export const Podcast = () => {
             <h2 className="text-3xl md:text-4xl font-serif text-sply-gold mb-6">
               Family Monies Podcast
             </h2>
-            <p className="text-sply-offwhite mb-8">
+            <p className="text-sply-offwhite text-lg mb-8">
               Join us as we explore the world of family offices, alternative
               investments, and exclusive opportunities. Listen to our latest
               episodes featuring industry leaders and successful founders.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
-                className="bg-sply-gold hover:bg-sply-gold/90 text-sply-navy"
+                className="bg-sply-gold hover:bg-sply-gold/90 text-sply-navy font-semibold"
                 onClick={() => window.open("https://familymonies.com", "_blank")}
               >
                 Listen Now
               </Button>
               <Button
-                className="bg-transparent hover:bg-sply-gold/10 text-sply-gold border border-sply-gold"
+                className="bg-transparent hover:bg-sply-gold/10 text-sply-gold border-2 border-sply-gold font-semibold"
                 onClick={() => window.open("https://familymonies.com/speaker", "_blank")}
               >
                 Join FM As A Speaker
