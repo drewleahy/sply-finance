@@ -22,9 +22,9 @@ const thesisPoints = [
 
 export const InvestmentThesis = () => {
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-serif text-sply-gold text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-serif text-gray-800 text-center mb-16">
           Investment Thesis
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -34,11 +34,11 @@ export const InvestmentThesis = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="bg-sply-navy p-8 rounded-lg border border-sply-gold/20"
+              className="bg-white p-8 rounded-lg shadow-sm border border-gray-100"
             >
               <div className="text-4xl mb-4">{point.icon}</div>
-              <h3 className="text-xl text-sply-gold mb-4">{point.title}</h3>
-              <p className="text-sply-muted">{point.description}</p>
+              <h3 className="text-xl text-gray-800 mb-4">{point.title}</h3>
+              <p className="text-gray-600">{point.description}</p>
             </motion.div>
           ))}
         </div>
