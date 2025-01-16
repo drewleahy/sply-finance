@@ -17,9 +17,9 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
         const token = params.get('token');
         const type = params.get('type');
 
-        console.log("Starting token verification process");
-        console.log("Token from URL:", token ? "exists" : "missing");
-        console.log("Type from URL:", type);
+        console.log("Token verification started");
+        console.log("Raw token:", token);
+        console.log("Type:", type);
 
         if (!token) {
           console.log("No token found in URL");
@@ -31,24 +31,28 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
           return;
         }
 
-        // Clear any existing session first
+        // Clear any existing sessions
+        console.log("Clearing existing session");
         await supabase.auth.signOut();
         
-        console.log("Verifying token with Supabase");
+        // Small delay to ensure session is cleared
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        console.log("Attempting to verify token");
         const { data, error } = await supabase.auth.verifyOtp({
-          token_hash: token,
+          token,
           type: 'recovery'
         });
 
+        console.log("Verify response:", { data, error });
+
         if (error) {
-          console.error("Verification error:", error.message);
+          console.error("Verification error:", error);
           
           if (error.message.includes("security purposes")) {
-            console.log("Rate limit error detected");
             toast.error("Please wait 15 seconds before trying again");
             onError("For security purposes, please wait 15 seconds before trying again. Then click the reset link from your email again.");
           } else {
-            console.log("Invalid or expired token error");
             toast.error("Invalid or expired reset link");
             onError("Your password reset link has expired or is invalid. Please request a new one.");
           }
@@ -57,10 +61,16 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
           return;
         }
 
-        if (data) {
+        if (data?.user) {
           console.log("Token verified successfully");
+          console.log("User data:", data.user);
           sessionStorage.setItem('passwordResetToken', token);
           navigate('/auth?mode=reset_password');
+        } else {
+          console.log("No user data in response");
+          toast.error("Invalid reset link");
+          onError("Invalid reset link. Please request a new one.");
+          navigate('/auth/error');
         }
 
       } catch (error) {
