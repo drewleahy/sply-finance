@@ -17,9 +17,9 @@ const portfolioLogos = [
 
 export const Portfolio = () => {
   return (
-    <section className="py-20 bg-luxon-navy">
+    <section className="py-20 bg-sply-navy">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-serif text-luxon-gold text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-serif text-sply-offwhite mb-16">
           Portfolio Companies
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
@@ -36,7 +36,10 @@ export const Portfolio = () => {
                 alt={company.name}
                 className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
               />
-              <div className="absolute inset-0 bg-luxon-gold/10 group-hover:bg-transparent transition-all duration-300" />
+              <div className="absolute inset-0 bg-sply-gold/10 group-hover:bg-transparent transition-all duration-300" />
+              <p className="absolute bottom-0 left-0 right-0 text-center text-sply-offwhite bg-sply-navy/90 py-2 text-sm">
+                {company.name}
+              </p>
             </motion.div>
           ))}
         </div>
