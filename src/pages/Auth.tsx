@@ -3,7 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AuthError } from "@/components/auth/AuthError";
+import { TokenVerification } from "@/components/auth/TokenVerification";
+import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -11,7 +13,6 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    // Check for error parameters in the URL
     const searchParams = new URLSearchParams(location.hash.substring(1));
     const error = searchParams.get("error");
     const errorCode = searchParams.get("error_code");
@@ -21,58 +22,13 @@ const Auth = () => {
       return;
     }
 
-    const handleMagicLinkRedirect = async () => {
-      const hash = window.location.hash;
-      if (hash && hash.includes('access_token')) {
-        try {
-          const { data, error } = await supabase.auth.getSession();
-          if (error) throw error;
-          
-          if (data.session) {
-            navigate("/dashboard");
-          }
-        } catch (error) {
-          console.error("Error handling magic link:", error);
-          setErrorMessage("Error logging in with magic link. Please try again.");
-        }
-      }
-    };
-
-    // Handle password reset and verification tokens
-    const handleTokenVerification = async () => {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
-      const type = params.get('type');
-
-      if (token && type === 'recovery') {
-        try {
-          // Using the correct method for password reset verification
-          const { error } = await supabase.auth.verifyOtp({
-            token_hash: token,
-            type: 'recovery'
-          });
-          if (error) throw error;
-        } catch (error) {
-          console.error("Error verifying token:", error);
-          setErrorMessage("Error verifying reset password token. Please request a new reset link.");
-        }
-      }
-    };
-
-    handleTokenVerification();
-    handleMagicLinkRedirect();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
         navigate("/dashboard");
       }
     });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, [navigate, location]);
 
   // Get the redirect URL from the URL parameters
@@ -96,11 +52,9 @@ const Auth = () => {
           </p>
         </div>
 
-        {errorMessage && (
-          <Alert variant="destructive" className="mb-4">
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        )}
+        <AuthError message={errorMessage} />
+        <TokenVerification onError={setErrorMessage} />
+        <MagicLinkHandler onError={setErrorMessage} />
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <SupabaseAuth
