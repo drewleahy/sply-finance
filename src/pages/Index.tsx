@@ -30,11 +30,18 @@ const Index = () => {
           <p className="text-gray-600 mb-6">
             Manufacturing Companies: Looking for financing solutions? Submit your deal for review today.
           </p>
-          <Link to="/submit-deal">
-            <Button className="bg-gray-800 hover:bg-gray-700 text-white">
-              Submit a Deal
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/submit-deal">
+              <Button className="bg-gray-800 hover:bg-gray-700 text-white">
+                Submit a Deal
+              </Button>
+            </Link>
+            <Link to="/lp">
+              <Button className="bg-sply-gold hover:bg-sply-gold/90 text-white">
+                Apply to Become A Limited Partner
+              </Button>
+            </Link>
+          </div>
         </section>
         <Subscribe />
       </main>
