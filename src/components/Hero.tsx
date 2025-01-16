@@ -26,7 +26,7 @@ export const Hero = () => {
           transition={{ delay: 0.5 }}
           className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
         >
-          Join a Premier Investment Group Backed by Leading Global Partners.
+          Join a Premier Investment Group Backed by Leading Global Partners
         </motion.p>
       </div>
     </section>
