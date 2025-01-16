@@ -28,7 +28,7 @@ const Index = () => {
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Submit a Deal</h2>
           <p className="text-gray-600 mb-6">
-            Looking for financing solutions? Submit your deal for review today.
+            Manufacturing Companies: Looking for financing solutions? Submit your deal for review today.
           </p>
           <Link to="/submit-deal">
             <Button className="bg-gray-800 hover:bg-gray-700 text-white">
