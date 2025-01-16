@@ -39,7 +39,7 @@ const Auth = () => {
         console.log("Password recovery event received");
         setView('update_password');
       } else if (event === 'SIGNED_IN') {
-        console.log("User signed in, clearing session storage");
+        console.log("User signed in, redirecting to dashboard");
         sessionStorage.removeItem('passwordResetToken');
         navigate('/dashboard');
       }

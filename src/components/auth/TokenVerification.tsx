@@ -16,15 +16,21 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
       const token = params.get('token');
       const type = params.get('type');
 
-      console.log("Token verification params:", { token, type });
+      console.log("Starting token verification process", { token, type });
 
-      if (!token || type !== 'recovery') {
-        console.log("No token or not a recovery request");
+      if (!token) {
+        console.log("No token found in URL");
+        return;
+      }
+
+      if (type !== 'recovery') {
+        console.log("Not a recovery request, type:", type);
         return;
       }
 
       try {
-        const { error } = await supabase.auth.verifyOtp({
+        console.log("Attempting to verify token");
+        const { data, error } = await supabase.auth.verifyOtp({
           token_hash: token,
           type: 'recovery'
         });
@@ -37,12 +43,14 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
           return;
         }
 
-        console.log("Token verified successfully");
-        sessionStorage.setItem('passwordResetToken', token);
-        navigate('/auth?mode=reset_password');
+        if (data) {
+          console.log("Token verified successfully, data:", data);
+          sessionStorage.setItem('passwordResetToken', token);
+          navigate('/auth?mode=reset_password');
+        }
 
       } catch (error) {
-        console.error("Token verification error:", error);
+        console.error("Unexpected error during verification:", error);
         toast.error("Error verifying reset link");
         onError("An error occurred while verifying your reset link. Please try again.");
         navigate('/auth/error');
