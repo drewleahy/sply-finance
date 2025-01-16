@@ -3,6 +3,7 @@ import { Partners } from "@/components/Partners";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
 import { Subscribe } from "@/components/Subscribe";
 import { InvestmentFlow } from "@/components/InvestmentFlow";
+import { TeamAlpha } from "@/components/TeamAlpha";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -19,6 +20,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <InvestmentThesis />
+        <TeamAlpha />
         <InvestmentFlow />
         <Partners />
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
