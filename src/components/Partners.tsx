@@ -4,17 +4,17 @@ const partners = [
   {
     name: "Tyler Williams",
     role: "General Partner",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    bio: "Experienced investor and entrepreneur with a focus on early-stage technology companies. Previously founded and scaled multiple successful ventures in the Pacific Northwest. Graduate of Portland State University with expertise in business development and strategic partnerships. Passionate about supporting founders in their journey from concept to scale.",
   },
   {
     name: "Omar Marquez",
     role: "General Partner",
-    bio: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+    bio: "Seasoned technology executive and investor with over 15 years of experience in software development and entrepreneurship. Former CTO of multiple successful startups and active angel investor in the Portland tech ecosystem. Strong background in enterprise software, cloud infrastructure, and emerging technologies. Committed to fostering innovation and supporting diverse founding teams.",
   },
   {
     name: "Drew Leahy",
-    role: "General Partner",
-    bio: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.",
+    role: "Managing Partner",
+    bio: "Accomplished investor and business strategist with extensive experience in venture capital and startup operations. Previously led investments and portfolio companies at prominent venture firms. Graduate of University of Oregon with deep expertise in financial modeling, market analysis, and growth strategy. Dedicated to helping founders build category-defining companies.",
   },
 ];
 
