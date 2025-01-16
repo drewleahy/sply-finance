@@ -1,8 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
-import { Portfolio } from "@/components/Portfolio";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
-import { Podcast } from "@/components/Podcast";
 import { Subscribe } from "@/components/Subscribe";
 import { InvestmentFlow } from "@/components/InvestmentFlow";
 import { Button } from "@/components/ui/button";
@@ -12,7 +10,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <header className="container mx-auto px-4 py-4 flex justify-end bg-white border-b">
+      <header className="container mx-auto px-4 py-2 flex justify-end bg-white border-b">
         <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold">
           LP LOGIN
         </Link>
@@ -22,13 +20,11 @@ const Index = () => {
         <Hero />
         <InvestmentThesis />
         <InvestmentFlow />
-        <Portfolio />
         <Partners />
-        <Podcast />
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Submit a Deal</h2>
           <p className="text-gray-600 mb-6">
-            Have a deal we should look at? Use our form to submit the details
+            Looking for financing solutions? Submit your deal for review today.
           </p>
           <Link to="/submit-deal">
             <Button className="bg-gray-800 hover:bg-gray-700 text-white">
