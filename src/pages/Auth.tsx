@@ -11,6 +11,25 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    // Handle URL fragment for magic link authentication
+    const handleMagicLinkRedirect = async () => {
+      const hash = window.location.hash;
+      if (hash && hash.includes('access_token')) {
+        try {
+          const { data, error } = await supabase.auth.getSession();
+          if (error) throw error;
+          if (data.session) {
+            navigate("/dashboard");
+          }
+        } catch (error) {
+          console.error("Error handling magic link:", error);
+          setErrorMessage("Error logging in with magic link. Please try again.");
+        }
+      }
+    };
+
+    handleMagicLinkRedirect();
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (event === "SIGNED_IN" && session) {
