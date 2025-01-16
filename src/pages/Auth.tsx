@@ -96,7 +96,7 @@ const Auth = () => {
               },
             }}
             providers={[]}
-            redirectTo={`${window.location.origin}/auth`}
+            redirectTo="https://splycapital.com/auth"
           />
         </div>
       </div>
