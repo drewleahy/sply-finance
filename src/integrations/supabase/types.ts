@@ -162,6 +162,7 @@ export type Database = {
           display_order: number
           id: string
           name: string
+          photo_url: string | null
           role: string
           updated_at: string
         }
@@ -171,6 +172,7 @@ export type Database = {
           display_order: number
           id?: string
           name: string
+          photo_url?: string | null
           role: string
           updated_at?: string
         }
@@ -180,6 +182,7 @@ export type Database = {
           display_order?: number
           id?: string
           name?: string
+          photo_url?: string | null
           role?: string
           updated_at?: string
         }

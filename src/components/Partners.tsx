@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const Partners = () => {
   const { data: partners } = useQuery({
@@ -31,10 +32,20 @@ export const Partners = () => {
               transition={{ delay: index * 0.2 }}
               className="text-center"
             >
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-sply-gold/20 to-sply-gold/10 flex items-center justify-center">
-                <span className="text-4xl text-sply-gold font-serif">
-                  {partner.name[0]}
-                </span>
+              <div className="mx-auto mb-6">
+                <Avatar className="h-32 w-32">
+                  {partner.photo_url ? (
+                    <AvatarImage
+                      src={partner.photo_url}
+                      alt={partner.name}
+                      className="object-cover"
+                    />
+                  ) : (
+                    <AvatarFallback className="bg-gradient-to-br from-sply-gold/20 to-sply-gold/10 text-4xl text-sply-gold font-serif">
+                      {partner.name[0]}
+                    </AvatarFallback>
+                  )}
+                </Avatar>
               </div>
               <h3 className="text-xl text-sply-gold mb-2">{partner.name}</h3>
               <p className="text-sply-offwhite mb-4">{partner.role}</p>
