@@ -4,17 +4,17 @@ const partners = [
   {
     name: "Tyler Williams",
     role: "General Partner",
-    bio: "Experienced investor and entrepreneur with a focus on early-stage technology companies. Previously founded and scaled multiple successful ventures in the Pacific Northwest. Graduate of Portland State University with expertise in business development and strategic partnerships. Passionate about supporting founders in their journey from concept to scale.",
+    bio: "Co-founder and Managing Partner at Ratchet Wealth Partners, focusing on early-stage technology investments. Experienced entrepreneur and investor with deep expertise in deal structuring and portfolio management. Strong track record of identifying and supporting high-growth potential companies in the Pacific Northwest technology ecosystem.",
   },
   {
     name: "Omar Marquez",
     role: "General Partner",
-    bio: "Seasoned technology executive and investor with over 15 years of experience in software development and entrepreneurship. Former CTO of multiple successful startups and active angel investor in the Portland tech ecosystem. Strong background in enterprise software, cloud infrastructure, and emerging technologies. Committed to fostering innovation and supporting diverse founding teams.",
+    bio: "Co-founder and Managing Partner at Ratchet Wealth Partners with extensive experience in technology and venture capital. Serial entrepreneur and strategic advisor specializing in SaaS, fintech, and enterprise software. Proven track record of scaling technology companies and building successful investment portfolios. Passionate about fostering innovation in the Portland startup ecosystem.",
   },
   {
     name: "Drew Leahy",
     role: "Managing Partner",
-    bio: "Accomplished investor and business strategist with extensive experience in venture capital and startup operations. Previously led investments and portfolio companies at prominent venture firms. Graduate of University of Oregon with deep expertise in financial modeling, market analysis, and growth strategy. Dedicated to helping founders build category-defining companies.",
+    bio: "Founding Partner at Hawke Ventures and accomplished venture capital investor. Previously led strategic investments at prominent firms and scaled multiple portfolio companies to successful exits. Graduate of University of Michigan with expertise in consumer technology, digital media, and emerging platforms. Deep experience in helping founders navigate rapid growth and market expansion.",
   },
 ];
 
