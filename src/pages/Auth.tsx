@@ -7,6 +7,7 @@ import { AuthError } from "@/components/auth/AuthError";
 import { TokenVerification } from "@/components/auth/TokenVerification";
 import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { toast } from "sonner";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -15,34 +16,39 @@ const Auth = () => {
   const [view, setView] = useState<"sign_in" | "update_password">("sign_in");
 
   useEffect(() => {
-    // Check for password reset mode
     const params = new URLSearchParams(location.search);
     const mode = params.get('mode');
     
     if (mode === 'reset_password') {
       const token = sessionStorage.getItem('passwordResetToken');
       if (!token) {
+        console.log("No reset token found in session");
         setErrorMessage("Invalid password reset session. Please request a new reset link.");
+        toast.error("Invalid reset session");
         navigate('/auth');
         return;
       }
+      console.log("Setting view to update_password");
       setView("update_password");
     }
 
-    // Handle auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log("Auth event:", event);
       
       if (event === 'PASSWORD_RECOVERY') {
+        console.log("Password recovery event received");
         setView('update_password');
       } else if (event === 'SIGNED_IN') {
-        // Clear any stored reset token
+        console.log("User signed in, clearing session storage");
         sessionStorage.removeItem('passwordResetToken');
         navigate('/dashboard');
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      console.log("Cleaning up auth state change subscription");
+      subscription.unsubscribe();
+    };
   }, [navigate, location]);
 
   return (
@@ -90,7 +96,7 @@ const Auth = () => {
               },
             }}
             providers={[]}
-            redirectTo={window.location.origin}
+            redirectTo={`${window.location.origin}/auth`}
           />
         </div>
       </div>
