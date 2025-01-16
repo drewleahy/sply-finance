@@ -38,8 +38,16 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
 
         if (error) {
           console.error("Token verification failed:", error);
-          toast.error("Invalid or expired password reset link");
-          onError("Invalid or expired password reset link. Please request a new one.");
+          
+          // Handle rate limit error specifically
+          if (error.message.includes("security purposes")) {
+            toast.error("Please wait a few seconds before trying again");
+            onError("For security purposes, please wait a few seconds before trying again. Then click the reset link from your email again.");
+          } else {
+            toast.error("Invalid or expired password reset link");
+            onError("Invalid or expired password reset link. Please request a new one.");
+          }
+          
           navigate('/auth/error');
           return;
         }
