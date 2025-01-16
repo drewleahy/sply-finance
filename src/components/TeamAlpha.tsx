@@ -2,7 +2,6 @@ import { Check } from "lucide-react";
 
 export const TeamAlpha = () => {
   const alphaPoints = [
-    "Exclusive access to KLEAR vehicle via early Seed Stage investment from GP",
     "Portfolio Management, Quarterly Presentations, and Allocation Recommendations for Families",
     "Private credit allocation assessment by our expert team",
     "Credit underwriting QA & procedures for family offices on a deal by deal basis",
