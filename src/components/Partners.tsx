@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Linkedin } from "lucide-react";
 
 const infrastructurePartners = [
   "Tradeteq",
@@ -21,6 +22,17 @@ const enterpriseCustomers = [
   "Vodafone",
   "Capgemini"
 ];
+
+const getLinkedInUrl = (name: string) => {
+  switch (name) {
+    case "Tyler Williams":
+      return "https://www.linkedin.com/in/tyler-williams-476283101";
+    case "Drew Leahy":
+      return "https://www.linkedin.com/in/drewleahy/";
+    default:
+      return "";
+  }
+};
 
 export const Partners = () => {
   const { data: partners } = useQuery({
@@ -72,9 +84,20 @@ export const Partners = () => {
               </div>
               <h3 className="text-2xl text-gray-900 font-medium mb-2">{partner.name}</h3>
               <p className="text-gray-600 mb-4">{partner.role}</p>
-              <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
+              <p className="text-gray-600 text-sm leading-relaxed max-w-sm mb-4">
                 {partner.bio}
               </p>
+              {getLinkedInUrl(partner.name) && (
+                <a 
+                  href={getLinkedInUrl(partner.name)} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <span className="text-sm">LinkedIn</span>
+                </a>
+              )}
             </motion.div>
           ))}
         </div>
