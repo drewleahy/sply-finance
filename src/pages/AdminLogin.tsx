@@ -16,24 +16,33 @@ const AdminLogin = () => {
       async (event, session) => {
         if (event === "SIGNED_IN" && session) {
           setIsLoading(true);
+          console.log("User signed in, checking admin status...");
           try {
             const { data: profile, error: profileError } = await supabase
               .from("profiles")
-              .select("is_admin")
+              .select("is_admin, email")
               .eq("user_id", session.user.id)
               .single();
 
-            if (profileError) throw profileError;
+            console.log("Profile data:", profile);
+            console.log("Profile error:", profileError);
+
+            if (profileError) {
+              console.error("Error fetching profile:", profileError);
+              throw profileError;
+            }
 
             if (profile?.is_admin) {
+              console.log("Admin access granted, redirecting...");
               navigate("/admin/dashboard");
             } else {
-              setErrorMessage("Access denied. Admin privileges required.");
+              console.log("Admin access denied. Profile:", profile);
+              setErrorMessage("Access denied. Admin privileges required. Please contact support if you believe this is an error.");
               await supabase.auth.signOut();
             }
           } catch (error) {
-            console.error("Error checking admin status:", error);
-            setErrorMessage("An error occurred while checking admin privileges.");
+            console.error("Error in admin check process:", error);
+            setErrorMessage("An error occurred while checking admin privileges. Please try again.");
             await supabase.auth.signOut();
           } finally {
             setIsLoading(false);
