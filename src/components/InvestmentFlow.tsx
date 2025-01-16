@@ -31,14 +31,19 @@ export const InvestmentFlow = () => {
         <h2 className="text-3xl md:text-4xl font-serif text-gray-800 text-center mb-16">
           How It Works
         </h2>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto">
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto">
+          {/* Mobile Arrow (visible only on mobile) */}
+          <div className="absolute h-full w-2 bg-green-600 md:hidden" style={{ left: '50%', transform: 'translateX(-50%)', zIndex: 0 }}>
+            <div className="absolute bottom-0 left-1/2 w-4 h-4 border-b-2 border-r-2 border-green-600 transform rotate-45 translate-x-[-50%] translate-y-[6px]"></div>
+          </div>
+          
           {boxes.map((box, index) => (
-            <div key={index} className="flex items-center">
+            <div key={index} className="flex items-center relative z-10 w-full md:w-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: box.delay }}
-                className={`${box.color} p-4 rounded-lg border shadow-sm min-w-[180px] text-center`}
+                className={`${box.color} p-4 rounded-lg border shadow-sm min-w-[180px] w-full md:w-auto text-center bg-opacity-100`}
               >
                 <p className="font-medium text-gray-800">{box.title}</p>
               </motion.div>
