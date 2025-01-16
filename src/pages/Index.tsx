@@ -4,6 +4,7 @@ import { InvestmentThesis } from "@/components/InvestmentThesis";
 import { Subscribe } from "@/components/Subscribe";
 import { InvestmentFlow } from "@/components/InvestmentFlow";
 import { TeamAlpha } from "@/components/TeamAlpha";
+import { FundDetails } from "@/components/FundDetails";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -21,6 +22,7 @@ const Index = () => {
         <Hero />
         <InvestmentThesis />
         <TeamAlpha />
+        <FundDetails />
         <InvestmentFlow />
         <Partners />
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
