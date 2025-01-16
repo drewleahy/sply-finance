@@ -12,8 +12,7 @@ export const FundDetails = () => {
   const portfolioDetails = [
     { type: "Investment Grade", return: "8%" },
     { type: "Insurance Backed", return: "9%" },
-    { type: "Credit Certified", return: "10-15%" },
-    { type: "Domicile, Currency, Industry" },
+    { type: "Credit Certified", return: "10-15%" }
   ];
 
   return (
