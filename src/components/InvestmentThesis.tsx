@@ -35,7 +35,7 @@ export const InvestmentThesis = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white p-8 rounded-lg shadow-sm border border-gray-100"
+              className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
             >
               <div className="text-4xl mb-4">{point.icon}</div>
               <h3 className="text-xl text-gray-800 mb-4">{point.title}</h3>
