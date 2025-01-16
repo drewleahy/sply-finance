@@ -33,15 +33,15 @@ export const Partners = () => {
               className="flex flex-col items-center text-center"
             >
               <div className="mb-6">
-                <Avatar className="h-32 w-32">
+                <Avatar className="h-32 w-32 rounded-full overflow-hidden">
                   {partner.photo_url ? (
                     <AvatarImage
                       src={partner.photo_url}
                       alt={partner.name}
-                      className="object-cover"
+                      className="object-cover rounded-full"
                     />
                   ) : (
-                    <AvatarFallback className="bg-gradient-to-br from-sply-gold/20 to-sply-gold/10 text-4xl text-sply-gold font-serif">
+                    <AvatarFallback className="bg-gradient-to-br from-sply-gold/20 to-sply-gold/10 text-4xl text-sply-gold font-serif rounded-full">
                       {partner.name[0]}
                     </AvatarFallback>
                   )}
