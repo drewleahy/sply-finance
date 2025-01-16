@@ -18,7 +18,7 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-3xl md:text-5xl font-serif text-gray-800 mb-6"
         >
-          OFF MARKET INVESTMENT OPPORTUNITIES
+          Fueling Trade Finance For American Manufacturing
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export const Hero = () => {
           transition={{ delay: 0.5 }}
           className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
         >
-          A multi-family office specializing in alternatives, exclusive off-market deals, and private investments.
+          Join a Premier Investment Group Backed by Leading Global Partners and Groundbreaking Fintech.
         </motion.p>
       </div>
     </section>
