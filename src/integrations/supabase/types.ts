@@ -155,6 +155,36 @@ export type Database = {
           },
         ]
       }
+      partners: {
+        Row: {
+          bio: string
+          created_at: string
+          display_order: number
+          id: string
+          name: string
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          bio: string
+          created_at?: string
+          display_order: number
+          id?: string
+          name: string
+          role: string
+          updated_at?: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          name?: string
+          role?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null

@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
-
-const partners = [
-  {
-    name: "Tyler Williams",
-    role: "General Partner",
-    bio: "Co-founder and Managing Partner at Ratchet Wealth Partners, focusing on early-stage technology investments. Experienced entrepreneur and investor with deep expertise in deal structuring and portfolio management. Strong track record of identifying and supporting high-growth potential companies in the Pacific Northwest technology ecosystem.",
-  },
-  {
-    name: "Omar Marquez",
-    role: "General Partner",
-    bio: "Co-founder and Managing Partner at Ratchet Wealth Partners with extensive experience in technology and venture capital. Serial entrepreneur and strategic advisor specializing in SaaS, fintech, and enterprise software. Proven track record of scaling technology companies and building successful investment portfolios. Passionate about fostering innovation in the Portland startup ecosystem.",
-  },
-  {
-    name: "Drew Leahy",
-    role: "Managing Partner",
-    bio: "Founding Partner at Hawke Ventures and accomplished venture capital investor. Previously led strategic investments at prominent firms and scaled multiple portfolio companies to successful exits. Graduate of University of Michigan with expertise in consumer technology, digital media, and emerging platforms. Deep experience in helping founders navigate rapid growth and market expansion.",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Partners = () => {
+  const { data: partners } = useQuery({
+    queryKey: ["partners"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("partners")
+        .select("*")
+        .order("display_order", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <section className="py-20 bg-gradient-to-b from-sply-navy to-black">
       <div className="container mx-auto px-4">
@@ -26,9 +23,9 @@ export const Partners = () => {
           General Partners
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {partners.map((partner, index) => (
+          {partners?.map((partner, index) => (
             <motion.div
-              key={partner.name}
+              key={partner.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}

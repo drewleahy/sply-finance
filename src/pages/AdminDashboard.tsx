@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LPGroupManagement } from "@/components/LPGroupManagement";
 import { DocumentManagement } from "@/components/DocumentManagement";
 import { UserManagement } from "@/components/UserManagement";
+import { PartnerManagement } from "@/components/PartnerManagement";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ const AdminDashboard = () => {
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="groups">LP Groups</TabsTrigger>
             <TabsTrigger value="documents">Documents</TabsTrigger>
+            <TabsTrigger value="partners">Partners</TabsTrigger>
           </TabsList>
 
           <TabsContent value="users">
@@ -72,6 +74,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="documents">
             <DocumentManagement />
+          </TabsContent>
+
+          <TabsContent value="partners">
+            <PartnerManagement />
           </TabsContent>
         </Tabs>
       </div>
