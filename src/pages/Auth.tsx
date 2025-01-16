@@ -13,9 +13,10 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.hash.substring(1));
+    const searchParams = new URLSearchParams(location.search);
     const error = searchParams.get("error");
     const errorCode = searchParams.get("error_code");
+    const type = searchParams.get("type");
 
     if (error === "access_denied" && errorCode === "otp_expired") {
       navigate("/auth/error");
@@ -34,6 +35,7 @@ const Auth = () => {
   // Get the redirect URL from the URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const redirectTo = urlParams.get('redirect_to') || window.location.origin;
+  const type = urlParams.get('type');
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
@@ -45,10 +47,13 @@ const Auth = () => {
             className="mx-auto w-48 mb-6"
           />
           <h2 className="text-2xl font-semibold text-gray-900">
-            Welcome to SPLY Capital
+            {type === 'recovery' ? 'Reset Your Password' : 'Welcome to SPLY Capital'}
           </h2>
           <p className="text-gray-600 mt-2">
-            Sign in to access exclusive investment opportunities
+            {type === 'recovery' 
+              ? 'Please enter your new password below'
+              : 'Sign in to access exclusive investment opportunities'
+            }
           </p>
         </div>
 
@@ -72,6 +77,7 @@ const Auth = () => {
             }}
             providers={[]}
             redirectTo={redirectTo}
+            view={type === 'recovery' ? 'update_password' : 'sign_in'}
           />
         </div>
       </div>
