@@ -11,25 +11,23 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    // Handle URL fragment for magic link authentication
     const handleMagicLinkRedirect = async () => {
-      const hash = window.location.hash;
-      if (hash && hash.includes('access_token')) {
-        try {
-          const { data, error } = await supabase.auth.getSession();
-          if (error) throw error;
-          if (data.session) {
-            navigate("/dashboard");
-          }
-        } catch (error) {
-          console.error("Error handling magic link:", error);
-          setErrorMessage("Error logging in with magic link. Please try again.");
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) throw error;
+        if (session) {
+          navigate("/dashboard");
         }
+      } catch (error) {
+        console.error("Error handling magic link:", error);
+        setErrorMessage("Error logging in with magic link. Please try again.");
       }
     };
 
+    // Handle initial session check and magic link redirects
     handleMagicLinkRedirect();
 
+    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (event === "SIGNED_IN" && session) {
@@ -53,9 +51,9 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-luxon-navy flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-2xl font-bold text-luxon-navy mb-6 text-center">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-sm p-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">
           Welcome Back
         </h1>
         {errorMessage && (
@@ -70,9 +68,19 @@ const Auth = () => {
             variables: {
               default: {
                 colors: {
-                  brand: "#C5A572",
-                  brandAccent: "#1A1F2C",
+                  brand: "#1a1a1a",
+                  brandAccent: "#404040",
                 },
+              },
+            },
+            style: {
+              button: {
+                borderRadius: '6px',
+                height: '40px',
+              },
+              input: {
+                borderRadius: '6px',
+                height: '40px',
               },
             },
           }}
