@@ -32,7 +32,13 @@ export const DealSubmissionForm = () => {
           .upload(fileName, formData.pitchDeck);
 
         if (uploadError) throw uploadError;
-        pitchDeckUrl = data.path;
+        
+        // Get the public URL for the uploaded file
+        const { data: { publicUrl } } = supabase.storage
+          .from("pitch-decks")
+          .getPublicUrl(fileName);
+          
+        pitchDeckUrl = publicUrl;
       }
 
       const { error } = await supabase.from("deals").insert({
@@ -62,6 +68,7 @@ export const DealSubmissionForm = () => {
         pitchDeck: null,
       });
     } catch (error) {
+      console.error('Error submitting deal:', error);
       toast({
         variant: "destructive",
         title: "Error",
