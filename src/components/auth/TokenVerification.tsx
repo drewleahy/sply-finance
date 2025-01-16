@@ -30,11 +30,8 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
             return;
           }
 
-          // If verification successful, redirect to auth page with recovery flag
-          const redirectURL = new URL(redirectTo || window.location.origin);
-          redirectURL.pathname = '/auth';
-          redirectURL.searchParams.set('type', 'recovery');
-          window.location.href = redirectURL.toString();
+          // After successful verification, redirect to the auth page with recovery flag
+          navigate('/auth?type=recovery', { replace: true });
         } catch (error) {
           console.error("Error in token verification:", error);
           onError("Error verifying reset password token. Please request a new reset link.");

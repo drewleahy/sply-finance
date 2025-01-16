@@ -32,10 +32,8 @@ const Auth = () => {
     return () => subscription.unsubscribe();
   }, [navigate, location]);
 
-  // Get the redirect URL from the URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const redirectTo = urlParams.get('redirect_to') || window.location.origin;
-  const type = urlParams.get('type');
+  const type = new URLSearchParams(location.search).get('type');
+  const redirectTo = window.location.origin;
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
