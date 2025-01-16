@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Toaster as SonnerToaster } from "sonner";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import AuthError from "./pages/AuthError";
 import Dashboard from "./pages/Dashboard";
 import SubmitDeal from "./pages/SubmitDeal";
 import AdminLogin from "./pages/AdminLogin";
@@ -23,6 +24,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/auth/error" element={<AuthError />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/submit-deal" element={<SubmitDeal />} />
             <Route path="/admin" element={<AdminLogin />} />

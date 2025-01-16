@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
@@ -7,9 +7,20 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    // Check for error parameters in the URL
+    const searchParams = new URLSearchParams(location.hash.substring(1));
+    const error = searchParams.get("error");
+    const errorCode = searchParams.get("error_code");
+
+    if (error === "access_denied" && errorCode === "otp_expired") {
+      navigate("/auth/error");
+      return;
+    }
+
     const handleMagicLinkRedirect = async () => {
       const hash = window.location.hash;
       if (hash && hash.includes('access_token')) {
@@ -40,7 +51,7 @@ const Auth = () => {
     return () => {
       subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, location]);
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
