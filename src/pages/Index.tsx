@@ -21,10 +21,10 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <InvestmentThesis />
-        <TeamAlpha />
+        <Partners />
         <FundDetails />
         <InvestmentFlow />
-        <Partners />
+        <TeamAlpha />
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Need PO Financing?</h2>
           <p className="text-gray-600 mb-6">
