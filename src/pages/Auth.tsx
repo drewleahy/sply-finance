@@ -1,10 +1,9 @@
-import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import type { AuthError } from "@supabase/supabase-js";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -12,19 +11,29 @@ const Auth = () => {
 
   useEffect(() => {
     const handleMagicLinkRedirect = async () => {
-      try {
-        const { data: { session }, error } = await supabase.auth.getSession();
-        if (error) throw error;
-        if (session) {
-          navigate("/dashboard");
+      const hash = window.location.hash;
+      if (hash && hash.includes('access_token')) {
+        try {
+          // Extract the access token from the URL hash
+          const hashParams = new URLSearchParams(hash.substring(1));
+          const accessToken = hashParams.get('access_token');
+          
+          if (accessToken) {
+            const { data, error } = await supabase.auth.getSession();
+            if (error) throw error;
+            
+            if (data.session) {
+              navigate("/dashboard");
+            }
+          }
+        } catch (error) {
+          console.error("Error handling magic link:", error);
+          setErrorMessage("Error logging in with magic link. Please try again.");
         }
-      } catch (error) {
-        console.error("Error handling magic link:", error);
-        setErrorMessage("Error logging in with magic link. Please try again.");
       }
     };
 
-    // Handle initial session check and magic link redirects
+    // Handle initial auth state
     handleMagicLinkRedirect();
 
     // Listen for auth state changes
@@ -36,17 +45,24 @@ const Auth = () => {
       }
     );
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
-  const getErrorMessage = (error: AuthError) => {
-    switch (error.message) {
-      case "Invalid login credentials":
-        return "Invalid email or password. Please try again.";
-      case "Email not confirmed":
-        return "Please verify your email address before signing in.";
-      default:
-        return error.message;
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: window.location.origin,
+        },
+      });
+      if (error) throw error;
+      setErrorMessage("");
+    } catch (error) {
+      console.error("Error sending magic link:", error);
+      setErrorMessage("Error sending magic link. Please try again.");
     }
   };
 
@@ -85,6 +101,7 @@ const Auth = () => {
             },
           }}
           providers={[]}
+          redirectTo={window.location.origin}
         />
       </div>
     </div>
