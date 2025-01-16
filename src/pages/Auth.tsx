@@ -46,8 +46,9 @@ const Auth = () => {
 
       if (token && type === 'recovery') {
         try {
+          // Using the correct method for password reset verification
           const { error } = await supabase.auth.verifyOtp({
-            token,
+            token_hash: token,
             type: 'recovery'
           });
           if (error) throw error;
