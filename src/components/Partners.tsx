@@ -5,22 +5,61 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
 
 const infrastructurePartners = [
-  "Tradeteq",
-  "BNY Mellon",
-  "Stripe",
-  "PwC",
-  "Simplex Inc.",
-  "Monex"
+  {
+    name: "Tradeteq",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#tradeteq"
+  },
+  {
+    name: "BNY Mellon",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#bny"
+  },
+  {
+    name: "Stripe",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#stripe"
+  },
+  {
+    name: "PwC",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#pwc"
+  },
+  {
+    name: "Simplex Inc.",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#simplex"
+  },
+  {
+    name: "Monex",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#monex"
+  }
 ];
 
 const enterpriseCustomers = [
-  "Tesla",
-  "Vestas",
-  "Boeing",
-  "General Dynamics",
-  "Lockheed Martin",
-  "Vodafone",
-  "Capgemini"
+  {
+    name: "Tesla",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#tesla"
+  },
+  {
+    name: "Vestas",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#vestas"
+  },
+  {
+    name: "Boeing",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#boeing"
+  },
+  {
+    name: "General Dynamics",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#gd"
+  },
+  {
+    name: "Lockheed Martin",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#lm"
+  },
+  {
+    name: "Vodafone",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#vodafone"
+  },
+  {
+    name: "Capgemini",
+    logo: "/lovable-uploads/4685d67b-ea21-4929-9b36-e5fce7fa0c69.png#capgemini"
+  }
 ];
 
 const getLinkedInUrl = (name: string) => {
@@ -109,13 +148,17 @@ export const Partners = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {infrastructurePartners.map((partner, index) => (
               <motion.div
-                key={partner}
+                key={partner.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center justify-center p-4 bg-gray-50 rounded-lg"
+                className="flex items-center justify-center p-4 bg-gray-50 rounded-lg h-24"
               >
-                <span className="text-gray-800 font-medium">{partner}</span>
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name}
+                  className="max-h-full max-w-full object-contain"
+                />
               </motion.div>
             ))}
           </div>
@@ -128,13 +171,17 @@ export const Partners = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8">
             {enterpriseCustomers.map((customer, index) => (
               <motion.div
-                key={customer}
+                key={customer.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center justify-center p-4 bg-gray-50 rounded-lg"
+                className="flex items-center justify-center p-4 bg-gray-50 rounded-lg h-24"
               >
-                <span className="text-gray-800 font-medium">{customer}</span>
+                <img 
+                  src={customer.logo} 
+                  alt={customer.name}
+                  className="max-h-full max-w-full object-contain"
+                />
               </motion.div>
             ))}
           </div>
