@@ -40,7 +40,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
 
         console.log("Attempting to verify token");
         const { data, error } = await supabase.auth.verifyOtp({
-          token,
+          token_hash: token,
           type: 'recovery'
         });
 
