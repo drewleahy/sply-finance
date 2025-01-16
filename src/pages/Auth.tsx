@@ -14,17 +14,11 @@ const Auth = () => {
       const hash = window.location.hash;
       if (hash && hash.includes('access_token')) {
         try {
-          // Extract the access token from the URL hash
-          const hashParams = new URLSearchParams(hash.substring(1));
-          const accessToken = hashParams.get('access_token');
+          const { data, error } = await supabase.auth.getSession();
+          if (error) throw error;
           
-          if (accessToken) {
-            const { data, error } = await supabase.auth.getSession();
-            if (error) throw error;
-            
-            if (data.session) {
-              navigate("/dashboard");
-            }
+          if (data.session) {
+            navigate("/dashboard");
           }
         } catch (error) {
           console.error("Error handling magic link:", error);
@@ -33,76 +27,62 @@ const Auth = () => {
       }
     };
 
-    // Handle initial auth state
     handleMagicLinkRedirect();
 
-    // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (event === "SIGNED_IN" && session) {
-          navigate("/dashboard");
-        }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session) {
+        navigate("/dashboard");
       }
-    );
+    });
 
     return () => {
       subscription.unsubscribe();
     };
   }, [navigate]);
 
-  const handleEmailSubmit = async (email: string) => {
-    try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: window.location.origin,
-        },
-      });
-      if (error) throw error;
-      setErrorMessage("");
-    } catch (error) {
-      console.error("Error sending magic link:", error);
-      setErrorMessage("Error sending magic link. Please try again.");
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-sm p-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-          Welcome Back
-        </h1>
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-4">
+        <div className="text-center mb-8">
+          <img
+            src="/lovable-uploads/152a966e-3c8c-4533-a044-542cbcc6d8e5.png"
+            alt="SPLY Capital"
+            className="mx-auto w-48 mb-6"
+          />
+          <h2 className="text-2xl font-semibold text-gray-900">
+            Welcome to SPLY Capital
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Sign in to access exclusive investment opportunities
+          </p>
+        </div>
+
         {errorMessage && (
           <Alert variant="destructive" className="mb-4">
             <AlertDescription>{errorMessage}</AlertDescription>
           </Alert>
         )}
-        <SupabaseAuth
-          supabaseClient={supabase}
-          appearance={{
-            theme: ThemeSupa,
-            variables: {
-              default: {
-                colors: {
-                  brand: "#1a1a1a",
-                  brandAccent: "#404040",
+
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <SupabaseAuth
+            supabaseClient={supabase}
+            appearance={{
+              theme: ThemeSupa,
+              variables: {
+                default: {
+                  colors: {
+                    brand: "#1A1F2C",
+                    brandAccent: "#C5A572",
+                  },
                 },
               },
-            },
-            style: {
-              button: {
-                borderRadius: '6px',
-                height: '40px',
-              },
-              input: {
-                borderRadius: '6px',
-                height: '40px',
-              },
-            },
-          }}
-          providers={[]}
-          redirectTo={window.location.origin}
-        />
+            }}
+            providers={[]}
+            redirectTo={window.location.origin}
+          />
+        </div>
       </div>
     </div>
   );
