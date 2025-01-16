@@ -19,7 +19,7 @@ export const Portfolio = () => {
   return (
     <section className="py-20 bg-sply-navy">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-serif text-sply-offwhite mb-16">
+        <h2 className="text-3xl md:text-4xl font-serif text-sply-gold text-center mb-16">
           Portfolio Companies
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
