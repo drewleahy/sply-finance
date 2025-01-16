@@ -30,9 +30,9 @@ export const Partners = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="text-center"
+              className="flex flex-col items-center text-center"
             >
-              <div className="mx-auto mb-6">
+              <div className="mb-6">
                 <Avatar className="h-32 w-32">
                   {partner.photo_url ? (
                     <AvatarImage
@@ -49,7 +49,7 @@ export const Partners = () => {
               </div>
               <h3 className="text-xl text-sply-gold mb-2">{partner.name}</h3>
               <p className="text-sply-offwhite mb-4">{partner.role}</p>
-              <p className="text-sply-offwhite text-sm leading-relaxed text-left">
+              <p className="text-sply-offwhite text-sm leading-relaxed">
                 {partner.bio}
               </p>
             </motion.div>
