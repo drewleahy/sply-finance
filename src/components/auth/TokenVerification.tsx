@@ -33,8 +33,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
         console.log("Verifying token with Supabase");
         const { data, error } = await supabase.auth.verifyOtp({
           token_hash: token,
-          type: 'recovery',
-          redirectTo: 'https://splycapital.com/auth'
+          type: 'recovery'
         });
 
         if (error) {
