@@ -14,34 +14,37 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
       const params = new URLSearchParams(window.location.search);
       const token = params.get('token');
       const type = params.get('type');
-      const redirectTo = params.get('redirect_to');
 
-      if (token && type === 'recovery') {
-        try {
-          const { error } = await supabase.auth.verifyOtp({
-            token_hash: token,
-            type: 'recovery'
-          });
+      if (!token || type !== 'recovery') {
+        return; // Not a password reset request
+      }
 
-          if (error) {
-            console.error("Error verifying token:", error);
-            onError("Error verifying reset password token. Please request a new reset link.");
-            navigate('/auth/error');
-            return;
-          }
+      try {
+        const { error } = await supabase.auth.verifyOtp({
+          token_hash: token,
+          type: 'recovery'
+        });
 
-          // After successful verification, redirect to the auth page with recovery flag
-          navigate('/auth?type=recovery', { replace: true });
-        } catch (error) {
-          console.error("Error in token verification:", error);
-          onError("Error verifying reset password token. Please request a new reset link.");
+        if (error) {
+          console.error("Token verification error:", error);
+          onError("Invalid or expired password reset link. Please request a new one.");
           navigate('/auth/error');
+          return;
         }
+
+        // Store the verified token in sessionStorage
+        sessionStorage.setItem('passwordResetToken', token);
+        navigate('/auth?mode=reset_password');
+
+      } catch (error) {
+        console.error("Token verification error:", error);
+        onError("An error occurred while verifying your reset link. Please try again.");
+        navigate('/auth/error');
       }
     };
 
     handleTokenVerification();
-  }, [onError, navigate]);
+  }, [navigate, onError]);
 
   return null;
 };

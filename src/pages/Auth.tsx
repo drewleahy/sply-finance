@@ -6,34 +6,44 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { AuthError } from "@/components/auth/AuthError";
 import { TokenVerification } from "@/components/auth/TokenVerification";
 import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const Auth = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
+  const [view, setView] = useState<"sign_in" | "update_password">("sign_in");
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const error = searchParams.get("error");
-    const errorCode = searchParams.get("error_code");
-    const type = searchParams.get("type");
-
-    if (error === "access_denied" && errorCode === "otp_expired") {
-      navigate("/auth/error");
-      return;
+    // Check for password reset mode
+    const params = new URLSearchParams(location.search);
+    const mode = params.get('mode');
+    
+    if (mode === 'reset_password') {
+      const token = sessionStorage.getItem('passwordResetToken');
+      if (!token) {
+        setErrorMessage("Invalid password reset session. Please request a new reset link.");
+        navigate('/auth');
+        return;
+      }
+      setView("update_password");
     }
 
+    // Handle auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session) {
-        navigate("/dashboard");
+      console.log("Auth event:", event);
+      
+      if (event === 'PASSWORD_RECOVERY') {
+        setView('update_password');
+      } else if (event === 'SIGNED_IN') {
+        // Clear any stored reset token
+        sessionStorage.removeItem('passwordResetToken');
+        navigate('/dashboard');
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate, location]);
-
-  const type = new URLSearchParams(location.search).get('type');
-  const redirectTo = window.location.origin;
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
@@ -45,23 +55,29 @@ const Auth = () => {
             className="mx-auto w-48 mb-6"
           />
           <h2 className="text-2xl font-semibold text-gray-900">
-            {type === 'recovery' ? 'Reset Your Password' : 'Welcome to SPLY Capital'}
+            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLY Capital'}
           </h2>
           <p className="text-gray-600 mt-2">
-            {type === 'recovery' 
+            {view === 'update_password' 
               ? 'Please enter your new password below'
               : 'Sign in to access exclusive investment opportunities'
             }
           </p>
         </div>
 
-        <AuthError message={errorMessage} />
+        {errorMessage && (
+          <Alert variant="destructive">
+            <AlertDescription>{errorMessage}</AlertDescription>
+          </Alert>
+        )}
+
         <TokenVerification onError={setErrorMessage} />
         <MagicLinkHandler onError={setErrorMessage} />
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <SupabaseAuth
             supabaseClient={supabase}
+            view={view}
             appearance={{
               theme: ThemeSupa,
               variables: {
@@ -74,8 +90,7 @@ const Auth = () => {
               },
             }}
             providers={[]}
-            redirectTo={redirectTo}
-            view={type === 'recovery' ? 'update_password' : 'sign_in'}
+            redirectTo={window.location.origin}
           />
         </div>
       </div>
