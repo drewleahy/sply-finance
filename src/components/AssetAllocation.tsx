@@ -13,16 +13,16 @@ const COLORS = ['#C5A572', '#1A1F2C', '#8E9196', '#F5F5F5', '#2d3748', '#4a5568'
 
 export const AssetAllocation = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 md:py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-4 text-sply-navy">
-          Ultra High Net Worth Asset Allocation
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-sply-navy">
+          High Net Worth Asset Allocation
         </h2>
-        <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
-          Alternative investments now make up the largest portion of ultra-high-net-worth portfolios
+        <p className="text-base md:text-lg text-gray-600 text-center mb-6 md:mb-8 max-w-3xl mx-auto">
+          Alternative investments now make up the largest portion of high-net-worth portfolios
         </p>
         
-        <div className="h-[400px] w-full">
+        <div className="h-[300px] md:h-[400px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -30,7 +30,7 @@ export const AssetAllocation = () => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                outerRadius={150}
+                outerRadius={({ width, height }) => Math.min(width, height) / 3}
                 fill="#8884d8"
                 dataKey="value"
                 label={({ name, value }) => `${name} ${value}%`}
@@ -45,7 +45,7 @@ export const AssetAllocation = () => {
           </ResponsiveContainer>
         </div>
         
-        <div className="text-sm text-gray-500 text-center mt-4">
+        <div className="text-xs md:text-sm text-gray-500 text-center mt-4">
           Source:{" "}
           <a 
             href="https://www.barrons.com/articles/alternative-investments-super-rich-marinas-whiskey-1f4035af" 
