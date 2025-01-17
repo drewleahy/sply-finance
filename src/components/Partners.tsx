@@ -94,7 +94,7 @@ export const Partners = () => {
           Our Team
         </h2>
         <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-          Experienced leadership driving innovation in trade finance
+          Experience our leadership driving innovation in trade finance
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
