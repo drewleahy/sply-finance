@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 
 export const FundDetails = () => {
   const mainPoints = [
-    "Exclusive access for mid cap investors (>$50M)",
+    "Exclusive access for small to mid cap investors",
     "8-14% Avg Annual Returns",
     "12m holding period",
     "5 year investment lookback history and $100M AUM",
@@ -19,7 +19,7 @@ export const FundDetails = () => {
     <section className="py-16 bg-sply-navy text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-sply-gold">
-          Fund Details
+          Funding Trade Finance
         </h2>
         
         <div className="max-w-4xl mx-auto">
