@@ -30,7 +30,7 @@ export const AssetAllocation = () => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                outerRadius={({ width, height }) => Math.min(width, height) / 3}
+                outerRadius={100}
                 fill="#8884d8"
                 dataKey="value"
                 label={({ name, value }) => `${name} ${value}%`}
@@ -40,7 +40,6 @@ export const AssetAllocation = () => {
                 ))}
               </Pie>
               <Tooltip />
-              <Legend />
             </PieChart>
           </ResponsiveContainer>
         </div>
