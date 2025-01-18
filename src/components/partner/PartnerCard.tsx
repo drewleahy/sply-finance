@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 interface PartnerCardProps {
   partner: {
@@ -26,41 +25,6 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     }
   };
 
-  // Get the public URL for the photo from Supabase storage
-  const getPhotoUrl = (photoPath: string | null) => {
-    if (!photoPath) return null;
-    
-    // If it's already a full URL, return it
-    if (photoPath.startsWith('http')) return photoPath;
-    
-    // For testing, let's log the current photo path
-    console.log('Processing photo path:', photoPath);
-    
-    // Map partner names to their actual photo filenames in the storage bucket
-    const photoMap: Record<string, string> = {
-      "Drew Leahy": "drew-leahy.jpg",
-      "Tyler Williams": "tyler-williams.jpg"
-    };
-    
-    const filename = photoMap[partner.name] || photoPath.split('/').pop();
-    
-    if (!filename) {
-      console.error('Could not determine filename for', partner.name);
-      return null;
-    }
-    
-    // Get public URL from partner-photos bucket
-    const { data } = supabase.storage
-      .from('partner-photos')
-      .getPublicUrl(filename);
-    
-    console.log('Partner name:', partner.name);
-    console.log('Using filename:', filename);
-    console.log('Generated URL:', data.publicUrl);
-    
-    return data.publicUrl;
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -72,7 +36,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
         <Avatar className="h-48 w-48">
           {partner.photo_url ? (
             <AvatarImage
-              src={getPhotoUrl(partner.photo_url)}
+              src={partner.photo_url}
               alt={partner.name}
               className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
             />
