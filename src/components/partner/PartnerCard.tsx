@@ -33,15 +33,20 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     // If it's already a full URL, return it
     if (photoPath.startsWith('http')) return photoPath;
     
-    // Remove the /lovable-uploads/ prefix if it exists
-    const cleanPath = photoPath.replace('/lovable-uploads/', '');
+    // Extract just the filename from the path
+    const filename = photoPath.split('/').pop();
+    
+    if (!filename) return null;
     
     // Get public URL from partner-photos bucket
     const { data } = supabase.storage
       .from('partner-photos')
-      .getPublicUrl(cleanPath);
+      .getPublicUrl(filename);
     
-    console.log('Photo URL:', data.publicUrl);
+    console.log('Original photo path:', photoPath);
+    console.log('Extracted filename:', filename);
+    console.log('Generated public URL:', data.publicUrl);
+    
     return data.publicUrl;
   };
 
