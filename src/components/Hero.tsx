@@ -8,7 +8,7 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          src="/lovable-uploads/34d97489-d0ed-496b-95f8-615c79eecd6a.png"
+          src="/lovable-uploads/01b3860d-f202-423c-b7e7-c373fdf08f51.png"
           alt="SPLYFINANCE"
           className="w-64 md:w-80 mx-auto mb-8"
         />
