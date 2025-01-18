@@ -107,15 +107,15 @@ export const Partners = () => {
               className="flex flex-col items-center text-center group"
             >
               <div className="mb-6 relative">
-                <Avatar className="h-48 w-48 rounded-full overflow-hidden">
+                <Avatar className="h-48 w-48">
                   {partner.photo_url ? (
                     <AvatarImage
                       src={partner.photo_url}
                       alt={partner.name}
-                      className="object-cover rounded-full transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
                     />
                   ) : (
-                    <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif rounded-full">
+                    <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
                       {partner.name[0]}
                     </AvatarFallback>
                   )}
