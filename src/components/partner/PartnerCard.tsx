@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface PartnerCardProps {
   partner: {
@@ -25,6 +26,25 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     }
   };
 
+  // Get the public URL for the photo from Supabase storage
+  const getPhotoUrl = (photoPath: string | null) => {
+    if (!photoPath) return null;
+    
+    // If it's already a full URL, return it
+    if (photoPath.startsWith('http')) return photoPath;
+    
+    // Remove the /lovable-uploads/ prefix if it exists
+    const cleanPath = photoPath.replace('/lovable-uploads/', '');
+    
+    // Get public URL from partner-photos bucket
+    const { data } = supabase.storage
+      .from('partner-photos')
+      .getPublicUrl(cleanPath);
+    
+    console.log('Photo URL:', data.publicUrl);
+    return data.publicUrl;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,7 +56,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
         <Avatar className="h-48 w-48">
           {partner.photo_url ? (
             <AvatarImage
-              src={partner.photo_url}
+              src={getPhotoUrl(partner.photo_url)}
               alt={partner.name}
               className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
             />
