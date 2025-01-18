@@ -9,7 +9,7 @@ export const InvestmentFlow = () => {
       delay: 0,
     },
     {
-      title: "SPLYCAP",
+      title: "SPLYFINANCE",
       color: "bg-blue-100 border-blue-200",
       delay: 0.2,
     },
