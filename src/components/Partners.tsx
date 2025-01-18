@@ -82,7 +82,11 @@ export const Partners = () => {
         .select("*")
         .order("display_order", { ascending: true });
       
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching partners:", error);
+        throw error;
+      }
+      console.log("Fetched partners:", data); // Debug log
       return data;
     },
   });
