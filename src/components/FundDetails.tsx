@@ -18,7 +18,7 @@ export const FundDetails = () => {
   return (
     <section className="py-16 bg-sply-navy text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-adam text-center mb-12 text-sply-gold">
+        <h2 className="text-3xl font-bold text-center mb-12 text-sply-gold">
           Funding Trade Finance
         </h2>
         
