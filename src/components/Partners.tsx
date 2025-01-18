@@ -90,7 +90,7 @@ export const Partners = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-gray-900 text-center mb-4">
+        <h2 className="text-4xl font-adam text-gray-900 text-center mb-4">
           Our Team
         </h2>
         <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
@@ -107,15 +107,15 @@ export const Partners = () => {
               className="flex flex-col items-center text-center group"
             >
               <div className="mb-6 relative">
-                <Avatar className="h-48 w-48 rounded-full overflow-hidden">
+                <Avatar className="h-48 w-48">
                   {partner.photo_url ? (
                     <AvatarImage
                       src={partner.photo_url}
                       alt={partner.name}
-                      className="object-cover rounded-full transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
-                    <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif rounded-full">
+                    <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-adam">
                       {partner.name[0]}
                     </AvatarFallback>
                   )}
@@ -142,7 +142,7 @@ export const Partners = () => {
         </div>
 
         <div className="mb-16">
-          <h3 className="text-2xl font-serif text-gray-900 text-center mb-8">
+          <h3 className="text-2xl font-adam text-gray-900 text-center mb-8">
             Infrastructure Partners & Funders
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -165,7 +165,7 @@ export const Partners = () => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-serif text-gray-900 text-center mb-8">
+          <h3 className="text-2xl font-adam text-gray-900 text-center mb-8">
             Enterprise Customers
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8">

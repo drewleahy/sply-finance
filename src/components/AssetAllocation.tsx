@@ -15,7 +15,7 @@ export const AssetAllocation = () => {
   return (
     <section className="py-8 md:py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-sply-navy">
+        <h2 className="text-2xl md:text-3xl font-adam text-center mb-4 text-sply-navy">
           High Net Worth Asset Allocation
         </h2>
         <p className="text-base md:text-lg text-gray-600 text-center mb-6 md:mb-8 max-w-3xl mx-auto">

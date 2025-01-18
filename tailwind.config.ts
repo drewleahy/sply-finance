@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        adam: ["Adam-Medium", "sans-serif"],
+      },
       colors: {
         sply: {
           navy: "#1A1F2C",
