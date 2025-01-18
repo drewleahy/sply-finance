@@ -56,12 +56,12 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-4">
         <div className="text-center mb-8">
           <img
-            src="/lovable-uploads/152a966e-3c8c-4533-a044-542cbcc6d8e5.png"
-            alt="SPLY Capital"
+            src="/lovable-uploads/78a9eca4-b8b6-4cea-b8f8-7fd5bdbed730.png"
+            alt="SPLY Finance"
             className="mx-auto w-48 mb-6"
           />
           <h2 className="text-2xl font-semibold text-gray-900">
-            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLY Capital'}
+            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLY Finance'}
           </h2>
           <p className="text-gray-600 mt-2">
             {view === 'update_password' 

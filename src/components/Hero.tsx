@@ -8,8 +8,8 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          src="/lovable-uploads/2eb75140-bd6e-401c-8012-b5bd43009bf6.png"
-          alt="SPLY Capital"
+          src="/lovable-uploads/78a9eca4-b8b6-4cea-b8f8-7fd5bdbed730.png"
+          alt="SPLY Finance"
           className="w-64 md:w-80 mx-auto mb-8"
         />
         <motion.h1

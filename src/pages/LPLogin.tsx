@@ -35,9 +35,17 @@ const LPLogin = () => {
   return (
     <div className="min-h-screen bg-luxon-navy flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-2xl font-bold text-luxon-navy mb-6 text-center">
-          LP Portal
-        </h1>
+        <div className="text-center mb-6">
+          <img
+            src="/lovable-uploads/78a9eca4-b8b6-4cea-b8f8-7fd5bdbed730.png"
+            alt="SPLY Finance"
+            className="mx-auto w-48 mb-6"
+          />
+          <h1 className="text-2xl font-bold text-luxon-navy">
+            LP Portal
+          </h1>
+        </div>
+        
         {errorMessage && (
           <Alert variant="destructive" className="mb-4">
             <AlertDescription>{errorMessage}</AlertDescription>
