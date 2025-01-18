@@ -28,9 +28,9 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
   const getPlaceholderImage = (name: string) => {
     switch (name) {
       case "Tyler Williams":
-        return "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b";
+        return "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z";
       case "Drew Leahy":
-        return "https://images.unsplash.com/photo-1498050108023-c5249f4df085";
+        return "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Drew.png?t=2025-01-18T03%3A16%3A43.393Z";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
