@@ -25,6 +25,17 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     }
   };
 
+  const getPlaceholderImage = (name: string) => {
+    switch (name) {
+      case "Tyler Williams":
+        return "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b";
+      case "Drew Leahy":
+        return "https://images.unsplash.com/photo-1498050108023-c5249f4df085";
+      default:
+        return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -34,17 +45,14 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     >
       <div className="mb-6 relative">
         <Avatar className="h-48 w-48">
-          {partner.photo_url ? (
-            <AvatarImage
-              src={partner.photo_url}
-              alt={partner.name}
-              className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
-            />
-          ) : (
-            <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
-              {partner.name[0]}
-            </AvatarFallback>
-          )}
+          <AvatarImage
+            src={partner.photo_url || getPlaceholderImage(partner.name)}
+            alt={partner.name}
+            className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
+          />
+          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
+            {partner.name[0]}
+          </AvatarFallback>
         </Avatar>
       </div>
       <h3 className="text-2xl text-gray-900 font-medium mb-2">{partner.name}</h3>
