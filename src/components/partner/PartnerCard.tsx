@@ -33,19 +33,30 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     // If it's already a full URL, return it
     if (photoPath.startsWith('http')) return photoPath;
     
-    // Extract just the filename from the path
-    const filename = photoPath.split('/').pop();
+    // For testing, let's log the current photo path
+    console.log('Processing photo path:', photoPath);
     
-    if (!filename) return null;
+    // Map partner names to their actual photo filenames in the storage bucket
+    const photoMap: Record<string, string> = {
+      "Drew Leahy": "drew-leahy.jpg",
+      "Tyler Williams": "tyler-williams.jpg"
+    };
+    
+    const filename = photoMap[partner.name] || photoPath.split('/').pop();
+    
+    if (!filename) {
+      console.error('Could not determine filename for', partner.name);
+      return null;
+    }
     
     // Get public URL from partner-photos bucket
     const { data } = supabase.storage
       .from('partner-photos')
       .getPublicUrl(filename);
     
-    console.log('Original photo path:', photoPath);
-    console.log('Extracted filename:', filename);
-    console.log('Generated public URL:', data.publicUrl);
+    console.log('Partner name:', partner.name);
+    console.log('Using filename:', filename);
+    console.log('Generated URL:', data.publicUrl);
     
     return data.publicUrl;
   };
