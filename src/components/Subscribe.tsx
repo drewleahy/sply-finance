@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 
 declare global {
@@ -8,24 +10,39 @@ declare global {
 }
 
 export const Subscribe = () => {
-  const formContainerRef = useRef<HTMLDivElement>(null);
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    // Create HubSpot form once when component mounts
-    if (formContainerRef.current && window.hbspt) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      // Create HubSpot form submission
       window.hbspt.forms.create({
         portalId: "45246649",
         formId: "dae04995-d7a5-4a44-a51a-95843aaa6f63",
-        target: formContainerRef.current,
+        target: formRef.current,
         onFormSubmitted: () => {
           toast({
             title: "Thank you for your interest",
             description: "We'll be in touch with exclusive opportunities.",
           });
+          setEmail("");
         }
       });
+    } catch (error) {
+      console.error('Error submitting to HubSpot:', error);
+      toast({
+        title: "Error",
+        description: "There was an error submitting your email. Please try again.",
+        variant: "destructive"
+      });
     }
-  }, []);
+
+    setIsLoading(false);
+  };
 
   return (
     <section className="py-20 bg-white">
@@ -36,7 +53,23 @@ export const Subscribe = () => {
         <p className="text-gray-600 text-lg mb-8">
           Get access to exclusive investment opportunities and market insights.
         </p>
-        <div ref={formContainerRef} />
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
+          <Input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="bg-gray-50 border-2 border-gray-200 text-gray-800 placeholder:text-gray-500/70 focus:border-gray-400"
+          />
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold whitespace-nowrap"
+          >
+            {isLoading ? "Submitting..." : "Subscribe"}
+          </Button>
+        </form>
       </div>
     </section>
   );
