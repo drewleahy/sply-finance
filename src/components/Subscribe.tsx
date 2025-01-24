@@ -1,25 +1,46 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 
+declare global {
+  interface Window {
+    hbspt: any;
+  }
+}
+
 export const Subscribe = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Create HubSpot form submission
+      window.hbspt.forms.create({
+        portalId: "45246649",
+        formId: "dae04995-d7a5-4a44-a51a-95843aaa6f63",
+        target: formRef.current,
+        onFormSubmitted: () => {
+          toast({
+            title: "Thank you for your interest",
+            description: "We'll be in touch with exclusive opportunities.",
+          });
+          setEmail("");
+        }
+      });
+    } catch (error) {
+      console.error('Error submitting to HubSpot:', error);
+      toast({
+        title: "Error",
+        description: "There was an error submitting your email. Please try again.",
+        variant: "destructive"
+      });
+    }
 
-    toast({
-      title: "Thank you for your interest",
-      description: "We'll be in touch with exclusive opportunities.",
-    });
-
-    setEmail("");
     setIsLoading(false);
   };
 
@@ -32,7 +53,7 @@ export const Subscribe = () => {
         <p className="text-gray-600 text-lg mb-8">
           Get access to exclusive investment opportunities and market insights.
         </p>
-        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
           <Input
             type="email"
             placeholder="Enter your email"
