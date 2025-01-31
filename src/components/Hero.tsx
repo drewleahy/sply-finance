@@ -18,7 +18,7 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-3xl md:text-5xl font-serif text-gray-800 mb-6"
         >
-          Fueling Trade Finance For American Manufacturing
+          Fueling Private Credit for American Manufacturing
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
