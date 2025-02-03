@@ -30,7 +30,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
       case "Tyler Williams":
         return "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z";
       case "Drew Leahy":
-        return "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Drew.png?t=2025-01-18T03%3A16%3A43.393Z";
+        return "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
