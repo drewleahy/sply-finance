@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 export const Hero = () => {
@@ -26,7 +27,7 @@ export const Hero = () => {
           transition={{ delay: 0.5 }}
           className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
         >
-          Fueling Private Credit on Autopilot
+          Private Credit on Autopilot
         </motion.p>
       </div>
     </section>
