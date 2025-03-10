@@ -68,13 +68,14 @@ export const Partners = () => {
       const { data, error } = await supabase
         .from("partners")
         .select("*")
+        .eq('name', 'Drew Leahy')
+        .or('name.eq', 'Tyler Williams')
         .order("display_order", { ascending: true });
       
       if (error) {
         console.error("Error fetching partners:", error);
         throw error;
       }
-      console.log("Fetched partners:", data);
       return data;
     },
   });
