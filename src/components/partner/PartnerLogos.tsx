@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 interface LogoProps {
@@ -29,7 +30,7 @@ export const PartnerLogos = ({ title, partners, gridCols = "grid-cols-2 md:grid-
             <img 
               src={partner.logo} 
               alt={partner.name}
-              className="max-h-16 max-w-full object-contain"
+              className="max-h-16 max-w-full object-contain mx-auto" 
             />
           </motion.div>
         ))}

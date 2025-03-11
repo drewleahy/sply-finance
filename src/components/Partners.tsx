@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { PartnerCard } from "./partner/PartnerCard";
@@ -64,8 +65,7 @@ export const Partners = () => {
       const { data, error } = await supabase
         .from("partners")
         .select("*")
-        .eq('name', 'Drew Leahy')
-        .or('name.eq', 'Tyler Williams')
+        .in('name', ['Drew Leahy', 'Tyler Williams'])
         .order("display_order", { ascending: true });
       
       if (error) {
