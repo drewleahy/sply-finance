@@ -21,10 +21,6 @@ const infrastructurePartners = [
     logo: "/lovable-uploads/62a77196-8d17-4dfc-b3dc-d99f38f9c258.png"
   },
   {
-    name: "Simplex Asset Management",
-    logo: "/lovable-uploads/de2b6e58-00b5-4662-986b-1c3deb737874.png"
-  },
-  {
     name: "Monex",
     logo: "/lovable-uploads/b1ae6445-cd35-4cbc-b787-6611b048a4e3.png"
   }
