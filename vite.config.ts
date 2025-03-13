@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' &&
-    componentTagger({ tagsRoutes: true }),
+    componentTagger(),  // Removed the argument as the function expects 0 arguments
   ].filter(Boolean),
   resolve: {
     alias: {
