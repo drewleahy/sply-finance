@@ -65,7 +65,7 @@ export const Partners = () => {
       const { data, error } = await supabase
         .from("partners")
         .select("*")
-        .in('name', ['Drew Leahy', 'Tyler Williams'])
+        .in('name', ['Drew Leahy', 'Tyler Williams', 'Jamie Wiseman'])
         .order("display_order", { ascending: true });
       
       if (error) {
@@ -86,7 +86,7 @@ export const Partners = () => {
           Experience our leadership driving innovation in trade finance
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           {partners?.map((partner, index) => (
             <PartnerCard key={partner.id} partner={partner} index={index} />
           ))}
