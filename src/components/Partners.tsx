@@ -72,9 +72,12 @@ export const Partners = () => {
         throw error;
       }
       
-      // Log the data to help with debugging
-      console.log("Partners data:", data);
-      return data;
+      // Filter out Omar Marquez from the data if present
+      const filteredData = data?.filter(partner => partner.name !== "Omar Marquez") || [];
+      
+      // Log the filtered data to help with debugging
+      console.log("Partners data (filtered):", filteredData);
+      return filteredData;
     },
   });
 
