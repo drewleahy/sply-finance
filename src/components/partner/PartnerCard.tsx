@@ -41,6 +41,8 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
     }
   };
 
+  console.log("Rendering partner:", partner);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

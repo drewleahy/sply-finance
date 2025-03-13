@@ -59,7 +59,7 @@ const enterpriseCustomers = [
 ];
 
 export const Partners = () => {
-  const { data: partners } = useQuery({
+  const { data: partners, isLoading, error } = useQuery({
     queryKey: ["partners"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -72,9 +72,15 @@ export const Partners = () => {
         console.error("Error fetching partners:", error);
         throw error;
       }
+      
+      // Log the data to help with debugging
+      console.log("Partners data:", data);
       return data;
     },
   });
+
+  if (isLoading) return <div className="text-center py-12">Loading team information...</div>;
+  if (error) return <div className="text-center py-12 text-red-500">Error loading team information</div>;
 
   return (
     <section className="py-24 bg-white">
