@@ -65,7 +65,6 @@ export const Partners = () => {
       const { data, error } = await supabase
         .from("partners")
         .select("*")
-        .in('name', ['Drew Leahy', 'Tyler Williams', 'Jamie Wiseman'])
         .order("display_order", { ascending: true });
       
       if (error) {
