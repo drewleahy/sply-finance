@@ -1,10 +1,11 @@
+
 import { Check } from "lucide-react";
 
 export const FundDetails = () => {
   const mainPoints = [
     "Exclusive access for small to mid cap investors",
     "8-14% Avg Annual Returns",
-    "12m holding period",
+    "24m holding period w/ emergency redemption provisions", // Updated text here
     "5 year investment lookback history and $100M AUM",
     "Investment Dashboard & Treasury Profile",
   ];
