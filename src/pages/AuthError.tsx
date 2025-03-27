@@ -7,7 +7,7 @@ const AuthError = () => {
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6 text-center">
         <img
-          src="/lovable-uploads/18503f02-6635-430b-bfee-0bf8d739b1ef.png"
+          src="/lovable-uploads/6a7d5485-c48a-4b95-be58-1ef832d3faea.png"
           alt="SPLYFI"
           className="w-48 mx-auto mb-6"
         />

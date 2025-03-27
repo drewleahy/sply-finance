@@ -60,7 +60,7 @@ const AdminLogin = () => {
       <div className="w-full max-w-md space-y-4">
         <div className="text-center mb-8">
           <img
-            src="/lovable-uploads/18503f02-6635-430b-bfee-0bf8d739b1ef.png"
+            src="/lovable-uploads/6a7d5485-c48a-4b95-be58-1ef832d3faea.png"
             alt="SPLYFI"
             className="mx-auto w-48 mb-6"
           />
