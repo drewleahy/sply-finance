@@ -1,3 +1,4 @@
+
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -37,8 +38,8 @@ const LPLogin = () => {
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
         <div className="text-center mb-6">
           <img
-            src="/lovable-uploads/78a9eca4-b8b6-4cea-b8f8-7fd5bdbed730.png"
-            alt="SPLY Finance"
+            src="/lovable-uploads/18503f02-6635-430b-bfee-0bf8d739b1ef.png"
+            alt="SPLYFI"
             className="mx-auto w-48 mb-6"
           />
           <h1 className="text-2xl font-bold text-luxon-navy">

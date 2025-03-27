@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -56,12 +57,12 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-4">
         <div className="text-center mb-8">
           <img
-            src="/lovable-uploads/78a9eca4-b8b6-4cea-b8f8-7fd5bdbed730.png"
-            alt="SPLY Finance"
+            src="/lovable-uploads/18503f02-6635-430b-bfee-0bf8d739b1ef.png"
+            alt="SPLYFI"
             className="mx-auto w-48 mb-6"
           />
           <h2 className="text-2xl font-semibold text-gray-900">
-            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLY Finance'}
+            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLYFI'}
           </h2>
           <p className="text-gray-600 mt-2">
             {view === 'update_password' 
