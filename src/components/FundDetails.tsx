@@ -1,3 +1,4 @@
+
 import { Check } from "lucide-react";
 
 export const FundDetails = () => {
@@ -36,6 +37,15 @@ export const FundDetails = () => {
             ))}
           </div>
 
+          {/* Monthly Earnings - Moved above Portfolio Selection */}
+          <div 
+            className="flex items-start gap-4 animate-fadeIn mb-8"
+            style={{ animationDelay: "400ms" }}
+          >
+            <Check className="w-6 h-6 text-sply-gold flex-shrink-0 mt-1" />
+            <p className="text-lg">Transparent Monthly Earnings & Portfolio Holdings</p>
+          </div>
+
           {/* Portfolio Selection */}
           <div className="bg-white/5 rounded-lg p-8 mb-8 animate-fadeIn" style={{ animationDelay: "500ms" }}>
             <h3 className="text-xl font-semibold mb-6 text-sply-gold">
@@ -57,15 +67,6 @@ export const FundDetails = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Monthly Earnings */}
-          <div 
-            className="flex items-start gap-4 animate-fadeIn"
-            style={{ animationDelay: "600ms" }}
-          >
-            <Check className="w-6 h-6 text-sply-gold flex-shrink-0 mt-1" />
-            <p className="text-lg">Transparent Monthly Earnings & Portfolio Holdings</p>
           </div>
         </div>
       </div>
