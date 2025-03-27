@@ -38,7 +38,7 @@ const LPLogin = () => {
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
         <div className="text-center mb-6">
           <img
-            src="/lovable-uploads/6a7d5485-c48a-4b95-be58-1ef832d3faea.png"
+            src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
             alt="SPLYFI"
             className="mx-auto w-48 mb-6"
           />
