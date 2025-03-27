@@ -1,3 +1,4 @@
+
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
 const data = [
@@ -9,7 +10,8 @@ const data = [
   { name: "Other", value: 7 },
 ];
 
-const COLORS = ['#C5A572', '#1A1F2C', '#8E9196', '#F5F5F5', '#2d3748', '#4a5568'];
+// Updated colors - Changed Cash color (index 3) from #F5F5F5 to #33C3F0 (Sky Blue)
+const COLORS = ['#C5A572', '#1A1F2C', '#8E9196', '#33C3F0', '#2d3748', '#4a5568'];
 
 export const AssetAllocation = () => {
   return (
