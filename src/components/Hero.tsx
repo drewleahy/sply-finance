@@ -11,7 +11,7 @@ export const Hero = () => {
           transition={{ duration: 0.5 }}
           src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
           alt="SPLYFI"
-          className="w-64 md:w-80 mx-auto mb-8"
+          className="w-44 md:w-56 mx-auto mb-8" /* Reduced from w-64 md:w-80 */
         />
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

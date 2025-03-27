@@ -9,7 +9,7 @@ const AuthError = () => {
         <img
           src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
           alt="SPLYFI"
-          className="w-48 mx-auto mb-6"
+          className="w-32 mx-auto mb-6" /* Reduced from w-48 */
         />
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
           Authentication Error

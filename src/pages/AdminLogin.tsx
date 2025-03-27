@@ -62,7 +62,7 @@ const AdminLogin = () => {
           <img
             src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
             alt="SPLYFI"
-            className="mx-auto w-48 mb-6"
+            className="mx-auto w-32 mb-6" /* Reduced from w-48 */
           />
           <h2 className="text-2xl font-semibold text-gray-900">
             Admin Portal
