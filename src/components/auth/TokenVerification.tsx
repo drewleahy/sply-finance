@@ -1,5 +1,6 @@
+
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -9,25 +10,60 @@ interface TokenVerificationProps {
 
 export const TokenVerification = ({ onError }: TokenVerificationProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleTokenVerification = async () => {
       try {
+        // First check if we have a hash with access_token (magic link or recovery)
+        const hash = window.location.hash;
+        if (hash && hash.includes('access_token')) {
+          console.log("Access token found in URL hash");
+          
+          // Parse the hash to extract the token type
+          const hashParams = new URLSearchParams(hash.substring(1));
+          const type = hashParams.get('type');
+          
+          console.log("Token type from hash:", type);
+          
+          // If it's a recovery token, handle password reset flow
+          if (type === 'recovery') {
+            console.log("Handling recovery flow");
+            // Get session to confirm authentication
+            const { data, error } = await supabase.auth.getSession();
+            
+            if (error) {
+              console.error("Session error:", error);
+              throw error;
+            }
+            
+            if (data.session) {
+              console.log("User authenticated with recovery token");
+              toast.success("Please set your new password");
+              navigate('/auth?mode=reset_password');
+              return;
+            }
+          }
+          
+          return;
+        }
+        
+        // Legacy handling for token parameter in URL query
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token');
-        const type = params.get('type');
+        const tokenType = params.get('type');
 
         console.log("Token verification started");
-        console.log("Raw token:", token);
-        console.log("Type:", type);
+        console.log("Raw token from query:", token);
+        console.log("Type from query:", tokenType);
 
         if (!token) {
-          console.log("No token found in URL");
+          console.log("No token found in URL query");
           return;
         }
 
-        if (type !== 'recovery') {
-          console.log("Not a recovery request");
+        if (tokenType !== 'recovery') {
+          console.log("Not a recovery request from query params");
           return;
         }
 
@@ -82,7 +118,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
     };
 
     handleTokenVerification();
-  }, [navigate, onError]);
+  }, [navigate, onError, location]);
 
   return null;
 };

@@ -1,6 +1,8 @@
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface MagicLinkHandlerProps {
   onError: (message: string) => void;
@@ -14,15 +16,34 @@ export const MagicLinkHandler = ({ onError }: MagicLinkHandlerProps) => {
       const hash = window.location.hash;
       if (hash && hash.includes('access_token')) {
         try {
+          console.log("Processing access token from hash");
+          
+          // Parse hash to check if it's a recovery token
+          const hashParams = new URLSearchParams(hash.substring(1));
+          const type = hashParams.get('type');
+          
+          // Skip if it's a recovery token (handled by TokenVerification)
+          if (type === 'recovery') {
+            console.log("Recovery token - skipping magic link handler");
+            return;
+          }
+          
+          console.log("Getting session after magic link auth");
           const { data, error } = await supabase.auth.getSession();
-          if (error) throw error;
+          
+          if (error) {
+            console.error("Error handling magic link:", error);
+            throw error;
+          }
           
           if (data.session) {
+            console.log("User authenticated via magic link, redirecting to dashboard");
+            toast.success("Successfully logged in");
             navigate("/dashboard");
           }
         } catch (error) {
           console.error("Error handling magic link:", error);
-          onError("Error logging in with magic link. Please try again.");
+          onError("Error logging in. Please try again.");
         }
       }
     };

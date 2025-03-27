@@ -15,6 +15,7 @@ const Auth = () => {
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
   const [view, setView] = useState<"sign_in" | "update_password">("sign_in");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -22,16 +23,35 @@ const Auth = () => {
     
     if (mode === 'reset_password') {
       const token = sessionStorage.getItem('passwordResetToken');
-      if (!token) {
-        console.log("No reset token found in session");
+      if (!token && !window.location.hash.includes('access_token')) {
+        console.log("No reset token found in session or URL hash");
         setErrorMessage("Invalid password reset session. Please request a new reset link.");
         toast.error("Invalid reset session");
-        navigate('/auth');
-        return;
+        setView("sign_in");
+      } else {
+        console.log("Setting view to update_password");
+        setView("update_password");
       }
-      console.log("Setting view to update_password");
-      setView("update_password");
     }
+
+    // Check if there's an existing session first
+    const checkExistingSession = async () => {
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        if (error) throw error;
+        
+        if (data.session) {
+          console.log("Existing session found, redirecting");
+          navigate('/dashboard');
+        }
+      } catch (error) {
+        console.error("Error checking session:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkExistingSession();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log("Auth event:", event);
@@ -52,6 +72,10 @@ const Auth = () => {
     };
   }, [navigate, location]);
 
+  // Current URL being used for redirects
+  const currentSiteUrl = window.location.origin;
+  console.log("Current site URL for redirects:", currentSiteUrl);
+
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-4">
@@ -59,7 +83,7 @@ const Auth = () => {
           <img
             src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
             alt="SPLYFI"
-            className="mx-auto w-32 mb-6" /* Reduced from w-48 */
+            className="mx-auto w-32 mb-6"
           />
           <h2 className="text-2xl font-semibold text-gray-900">
             {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLYFI'}
@@ -78,28 +102,36 @@ const Auth = () => {
           </Alert>
         )}
 
-        <TokenVerification onError={setErrorMessage} />
-        <MagicLinkHandler onError={setErrorMessage} />
+        {isLoading ? (
+          <div className="flex justify-center items-center p-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          </div>
+        ) : (
+          <>
+            <TokenVerification onError={setErrorMessage} />
+            <MagicLinkHandler onError={setErrorMessage} />
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <SupabaseAuth
-            supabaseClient={supabase}
-            view={view}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: "#1A1F2C",
-                    brandAccent: "#C5A572",
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+              <SupabaseAuth
+                supabaseClient={supabase}
+                view={view}
+                appearance={{
+                  theme: ThemeSupa,
+                  variables: {
+                    default: {
+                      colors: {
+                        brand: "#1A1F2C",
+                        brandAccent: "#C5A572",
+                      },
+                    },
                   },
-                },
-              },
-            }}
-            providers={[]}
-            redirectTo="https://splycapital.com/auth"
-          />
-        </div>
+                }}
+                providers={[]}
+                redirectTo={currentSiteUrl + "/auth"}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
