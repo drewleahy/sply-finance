@@ -19,7 +19,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
         console.log("Expected domain should be:", SITE_URL);
         
         // Check if we're on the wrong domain
-        if (window.location.origin.includes("splycapital.com")) {
+        if (!window.location.origin.includes("splyfinance.com")) {
           console.log("Wrong domain detected, redirecting to correct domain");
           // Preserve the hash and query parameters when redirecting
           const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
