@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SITE_URL } from "@/integrations/supabase/client";
 import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { AuthError } from "@/components/auth/AuthError";
@@ -9,9 +9,6 @@ import { TokenVerification } from "@/components/auth/TokenVerification";
 import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "sonner";
-
-// Define correct domain for redirects
-const SITE_URL = "https://splyfinance.com";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -23,6 +20,15 @@ const Auth = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const mode = params.get('mode');
+    
+    // Check if we're on the wrong domain
+    if (window.location.origin.includes("splycapital.com")) {
+      console.log("Wrong domain detected in Auth component, redirecting to correct domain");
+      // Preserve the hash and query parameters when redirecting
+      const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
+      window.location.href = newUrl;
+      return;
+    }
     
     if (mode === 'reset_password') {
       const token = sessionStorage.getItem('passwordResetToken');

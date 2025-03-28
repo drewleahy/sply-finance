@@ -1,11 +1,8 @@
 
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SITE_URL } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-
-// Define the correct domain
-const SITE_URL = "https://splyfinance.com";
 
 interface TokenVerificationProps {
   onError: (message: string) => void;
