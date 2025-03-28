@@ -6,9 +6,10 @@ import { toast } from "sonner";
 
 interface TokenVerificationProps {
   onError: (message: string) => void;
+  onSetView: (view: string) => void;
 }
 
-export const TokenVerification = ({ onError }: TokenVerificationProps) => {
+export const TokenVerification = ({ onError, onSetView }: TokenVerificationProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -52,7 +53,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
             if (data.session) {
               console.log("User authenticated with recovery token");
               toast.success("Please set your new password");
-              navigate('/auth?mode=reset_password');
+              onSetView('update_password');
               return;
             }
           }
@@ -60,14 +61,41 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
           return;
         }
         
-        // Legacy handling for token parameter in URL query
+        // Check for recovery code parameter (for password reset)
         const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        
+        if (code) {
+          console.log("Recovery code found:", code);
+          
+          try {
+            // For newer Supabase clients, recovery works with the code parameter
+            const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+            
+            if (error) {
+              console.error("Code verification error:", error);
+              toast.error("Invalid or expired reset link");
+              onError("Your password reset link is invalid or has expired. Please request a new one.");
+              navigate('/auth');
+              return;
+            }
+            
+            if (data.session) {
+              console.log("Successfully exchanged code for session");
+              toast.success("Please set your new password");
+              onSetView('update_password');
+              return;
+            }
+          } catch (verifyError) {
+            console.error("Error during code verification:", verifyError);
+            toast.error("Error processing reset link");
+            onError("An error occurred processing your reset link. Please try again.");
+          }
+        }
+        
+        // Legacy handling for token parameter in URL query
         const token = params.get('token');
         const tokenType = params.get('type');
-
-        console.log("Token verification started");
-        console.log("Raw token from query:", token);
-        console.log("Type from query:", tokenType);
 
         if (!token) {
           console.log("No token found in URL query");
@@ -113,7 +141,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
           console.log("Token verified successfully");
           console.log("User data:", data.user);
           sessionStorage.setItem('passwordResetToken', token);
-          navigate('/auth?mode=reset_password');
+          onSetView('update_password');
         } else {
           console.log("No user data in response");
           toast.error("Invalid reset link");
@@ -130,7 +158,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
     };
 
     handleTokenVerification();
-  }, [navigate, onError, location]);
+  }, [navigate, onError, onSetView, location]);
 
   return null;
 };

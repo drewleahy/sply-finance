@@ -14,12 +14,13 @@ const Auth = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
-  const [view, setView] = useState<"sign_in" | "update_password">("sign_in");
+  const [view, setView] = useState<"sign_in" | "sign_up" | "update_password">("sign_in");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const mode = params.get('mode');
+    const code = params.get('code');
     
     // Check if we're on the wrong domain
     if (!window.location.origin.includes("splyfinance.com")) {
@@ -30,17 +31,10 @@ const Auth = () => {
       return;
     }
     
-    if (mode === 'reset_password') {
-      const token = sessionStorage.getItem('passwordResetToken');
-      if (!token && !window.location.hash.includes('access_token')) {
-        console.log("No reset token found in session or URL hash");
-        setErrorMessage("Invalid password reset session. Please request a new reset link.");
-        toast.error("Invalid reset session");
-        setView("sign_in");
-      } else {
-        console.log("Setting view to update_password");
-        setView("update_password");
-      }
+    // Handle password reset from URL params
+    if (mode === 'reset_password' || code) {
+      console.log("Password reset mode detected by URL params");
+      setView("update_password");
     }
 
     // Check if there's an existing session first
@@ -81,6 +75,7 @@ const Auth = () => {
     };
   }, [navigate, location]);
 
+  console.log("Current view:", view);
   console.log("Current site URL for redirects:", SITE_URL);
 
   return (
@@ -115,11 +110,10 @@ const Auth = () => {
           </div>
         ) : (
           <>
-            <TokenVerification onError={setErrorMessage} />
+            <TokenVerification onError={setErrorMessage} onSetView={setView} />
             <MagicLinkHandler onError={setErrorMessage} />
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              {/* Type casting to suppress TypeScript error with auth-ui-react */}
               <SupabaseAuth
                 supabaseClient={supabase as any}
                 view={view}

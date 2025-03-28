@@ -19,9 +19,7 @@ export const supabase = createClient<Database>(
       persistSession: true,
       detectSessionInUrl: true,
       flowType: 'pkce',
-      // Set the site URL to ensure all redirects use the correct domain
-      url: SITE_URL,
-      // Using site instead of redirectTo since redirectTo is not in the type
+      // The correct configuration syntax for Supabase v2.47+
       site: SITE_URL
     }
   }
