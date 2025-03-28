@@ -1,8 +1,10 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { Database } from "@/integrations/supabase/types";
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -22,7 +24,7 @@ export const ProfileForm = () => {
           const { data, error } = await supabase
             .from("profiles")
             .select()
-            .eq("user_id", user.id)
+            .eq("user_id", user.id as any)
             .maybeSingle();
 
           if (error) {
@@ -65,12 +67,16 @@ export const ProfileForm = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("No user found");
 
-      const { error } = await supabase.from("profiles").upsert({
-        user_id: user.id,
+      const profileData: Database['public']['Tables']['profiles']['Update'] = {
         company_name: profile.companyName,
         contact_name: profile.contactName,
         email: profile.email,
         phone: profile.phone,
+      };
+
+      const { error } = await supabase.from("profiles").upsert({
+        ...profileData,
+        user_id: user.id as any,
       });
 
       if (error) throw error;

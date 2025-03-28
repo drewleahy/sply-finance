@@ -17,8 +17,8 @@ const LPLogin = () => {
           const { data: profile } = await supabase
             .from("profiles")
             .select("is_lp")
-            .eq("user_id", session.user.id)
-            .single();
+            .eq("user_id", session.user.id as any)
+            .maybeSingle();
 
           if (profile?.is_lp) {
             navigate("/lp/dashboard");
@@ -53,7 +53,7 @@ const LPLogin = () => {
           </Alert>
         )}
         <Auth
-          supabaseClient={supabase}
+          supabaseClient={supabase as any}
           appearance={{
             theme: ThemeSupa,
             variables: {

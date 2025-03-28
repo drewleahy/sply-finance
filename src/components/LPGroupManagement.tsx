@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -13,12 +14,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
+import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 export const LPGroupManagement = () => {
   const { toast } = useToast();
   const [newGroup, setNewGroup] = useState({ name: "", description: "" });
 
-  const { data: groups, refetch } = useQuery({
+  const { data: groups = [], refetch } = useQuery({
     queryKey: ["lpGroups"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -27,7 +30,7 @@ export const LPGroupManagement = () => {
         .order("name");
       
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
@@ -35,9 +38,14 @@ export const LPGroupManagement = () => {
     e.preventDefault();
     
     try {
+      const groupData: Database['public']['Tables']['lp_groups']['Insert'] = {
+        name: newGroup.name,
+        description: newGroup.description
+      };
+
       const { error } = await supabase
         .from("lp_groups")
-        .insert([newGroup]);
+        .insert(groupData);
 
       if (error) throw error;
 
@@ -85,7 +93,7 @@ export const LPGroupManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {groups?.map((group) => (
+            {groups.map((group) => (
               <TableRow key={group.id}>
                 <TableCell>{group.name}</TableCell>
                 <TableCell>{group.description}</TableCell>

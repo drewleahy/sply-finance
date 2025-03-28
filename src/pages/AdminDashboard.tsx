@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -24,8 +25,8 @@ const AdminDashboard = () => {
       const { data: profile } = await supabase
         .from("profiles")
         .select("is_admin")
-        .eq("user_id", session.user.id)
-        .single();
+        .eq("user_id", session.user.id as any)
+        .maybeSingle();
 
       if (!profile?.is_admin) {
         navigate("/admin");

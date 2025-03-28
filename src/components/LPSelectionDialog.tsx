@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -5,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
+import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 interface LPSelectionDialogProps {
   dealId: string;
@@ -17,7 +20,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { data: lpGroups, isLoading } = useQuery({
+  const { data: lpGroups = [], isLoading } = useQuery({
     queryKey: ["lpGroups"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -25,7 +28,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
         .select("*")
         .order("name");
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
@@ -43,7 +46,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
       const sharings = selectedGroups.map((groupId) => ({
         deal_id: dealId,
         lp_group_id: groupId,
-      }));
+      } as Database['public']['Tables']['lp_groups_deals']['Insert']));
 
       const { error } = await supabase
         .from("lp_groups_deals")
@@ -78,7 +81,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
             <p>Loading LP groups...</p>
           ) : (
             <div className="space-y-2">
-              {lpGroups?.map((group) => (
+              {lpGroups.map((group) => (
                 <div
                   key={group.id}
                   className={`p-4 border rounded-lg cursor-pointer transition-colors ${

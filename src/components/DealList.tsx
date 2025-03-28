@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -5,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { LPSelectionDialog } from "./LPSelectionDialog";
+import { Database } from "@/integrations/supabase/types";
 
 export const DealList = () => {
   const { toast } = useToast();
@@ -27,8 +29,8 @@ export const DealList = () => {
     try {
       const { error } = await supabase
         .from("deals")
-        .update({ status })
-        .eq("id", dealId);
+        .update({ status } as Database['public']['Tables']['deals']['Update'])
+        .eq("id", dealId as string);
 
       if (error) throw error;
 
@@ -60,7 +62,7 @@ export const DealList = () => {
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-2xl font-bold text-luxon-navy mb-6">Available Deals</h2>
       <div className="space-y-4">
-        {deals?.map((deal: any) => (
+        {deals?.map((deal) => (
           <div
             key={deal.id}
             className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"

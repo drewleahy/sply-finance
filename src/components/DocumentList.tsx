@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -11,11 +12,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useQuery } from "@tanstack/react-query";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 export const DocumentList = () => {
   const { toast } = useToast();
 
-  const { data: documents } = useQuery({
+  const { data: documents = [] } = useQuery({
     queryKey: ["lpDocuments"],
     queryFn: async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -27,7 +29,7 @@ export const DocumentList = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
@@ -65,7 +67,7 @@ export const DocumentList = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {documents?.map((doc) => (
+        {documents.map((doc) => (
           <TableRow key={doc.id}>
             <TableCell>{doc.title}</TableCell>
             <TableCell>{doc.description}</TableCell>

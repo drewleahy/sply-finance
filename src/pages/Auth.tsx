@@ -119,8 +119,9 @@ const Auth = () => {
             <MagicLinkHandler onError={setErrorMessage} />
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+              {/* Type casting to suppress TypeScript error with auth-ui-react */}
               <SupabaseAuth
-                supabaseClient={supabase}
+                supabaseClient={supabase as any}
                 view={view}
                 appearance={{
                   theme: ThemeSupa,

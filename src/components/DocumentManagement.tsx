@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
+import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 export const DocumentManagement = () => {
   const { toast } = useToast();
@@ -24,7 +27,7 @@ export const DocumentManagement = () => {
     isGlobal: false,
   });
 
-  const { data: documents, refetch } = useQuery({
+  const { data: documents = [], refetch } = useQuery({
     queryKey: ["documents"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -33,7 +36,7 @@ export const DocumentManagement = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
@@ -58,14 +61,14 @@ export const DocumentManagement = () => {
 
       if (uploadError) throw uploadError;
 
-      const { error: dbError } = await supabase.from("documents").insert([
-        {
-          title: newDocument.title,
-          description: newDocument.description,
-          file_path: filePath,
-          is_global: newDocument.isGlobal,
-        },
-      ]);
+      const documentData: Database['public']['Tables']['documents']['Insert'] = {
+        title: newDocument.title,
+        description: newDocument.description,
+        file_path: filePath,
+        is_global: newDocument.isGlobal,
+      };
+
+      const { error: dbError } = await supabase.from("documents").insert(documentData);
 
       if (dbError) throw dbError;
 
@@ -138,7 +141,7 @@ export const DocumentManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {documents?.map((doc) => (
+            {documents.map((doc) => (
               <TableRow key={doc.id}>
                 <TableCell>{doc.title}</TableCell>
                 <TableCell>{doc.description}</TableCell>

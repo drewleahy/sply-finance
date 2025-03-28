@@ -19,11 +19,12 @@ const AdminLogin = () => {
           setIsLoading(true);
           console.log("User signed in, checking admin status...");
           try {
+            // Use maybeSingle() instead of single() to prevent errors when no matching records found
             const { data: profile, error: profileError } = await supabase
               .from("profiles")
               .select("is_admin, email")
-              .eq("user_id", session.user.id)
-              .single();
+              .eq("user_id", session.user.id as any)
+              .maybeSingle();
 
             console.log("Profile data:", profile);
             console.log("Profile error:", profileError);
@@ -84,7 +85,7 @@ const AdminLogin = () => {
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <Auth
-            supabaseClient={supabase}
+            supabaseClient={supabase as any}
             appearance={{
               theme: ThemeSupa,
               variables: {

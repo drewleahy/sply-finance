@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -15,13 +16,15 @@ import {
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Label } from "@/components/ui/label";
+import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 export const PartnerManagement = () => {
   const { toast } = useToast();
   const [editingPartner, setEditingPartner] = useState<any>(null);
   const [uploading, setUploading] = useState(false);
 
-  const { data: partners, refetch } = useQuery({
+  const { data: partners = [], refetch } = useQuery({
     queryKey: ["partners"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -30,7 +33,7 @@ export const PartnerManagement = () => {
         .order("display_order", { ascending: true });
       
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
@@ -96,14 +99,16 @@ export const PartnerManagement = () => {
 
   const handleSave = async () => {
     try {
+      const updateData: Database['public']['Tables']['partners']['Update'] = {
+        name: editingPartner.name,
+        role: editingPartner.role,
+        bio: editingPartner.bio,
+        photo_url: editingPartner.photo_url,
+      };
+
       const { error } = await supabase
         .from("partners")
-        .update({
-          name: editingPartner.name,
-          role: editingPartner.role,
-          bio: editingPartner.bio,
-          photo_url: editingPartner.photo_url,
-        })
+        .update(updateData)
         .eq("id", editingPartner.id);
 
       if (error) throw error;
@@ -148,7 +153,7 @@ export const PartnerManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {partners?.map((partner) => (
+            {partners.map((partner) => (
               <TableRow key={partner.id}>
                 <TableCell>
                   <Avatar className="h-20 w-20">

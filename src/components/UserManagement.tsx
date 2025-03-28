@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -11,11 +12,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
+import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 export const UserManagement = () => {
   const { toast } = useToast();
 
-  const { data: users, refetch } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -29,16 +32,18 @@ export const UserManagement = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data;
+      return unwrapResult(data);
     },
   });
 
   const toggleUserRole = async (userId: string, field: "is_admin" | "is_lp", currentValue: boolean) => {
     try {
+      const updateData = { [field]: !currentValue } as Database['public']['Tables']['profiles']['Update'];
+      
       const { error } = await supabase
         .from("profiles")
-        .update({ [field]: !currentValue })
-        .eq("user_id", userId);
+        .update(updateData)
+        .eq("user_id", userId as any);
 
       if (error) throw error;
 
@@ -73,7 +78,7 @@ export const UserManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users?.map((user) => (
+            {users.map((user) => (
               <TableRow key={user.id}>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.company_name}</TableCell>
@@ -88,14 +93,14 @@ export const UserManagement = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => toggleUserRole(user.user_id, "is_admin", user.is_admin)}
+                      onClick={() => toggleUserRole(user.user_id || '', "is_admin", !!user.is_admin)}
                     >
                       Toggle Admin
                     </Button>
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => toggleUserRole(user.user_id, "is_lp", user.is_lp)}
+                      onClick={() => toggleUserRole(user.user_id || '', "is_lp", !!user.is_lp)}
                     >
                       Toggle LP
                     </Button>

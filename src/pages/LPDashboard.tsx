@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DocumentList } from "@/components/DocumentList";
+import { ProfileForm } from "@/components/ProfileForm";
 
 const LPDashboard = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkLP = async () => {
+    const checkLPAccess = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
@@ -20,8 +22,8 @@ const LPDashboard = () => {
       const { data: profile } = await supabase
         .from("profiles")
         .select("is_lp")
-        .eq("user_id", session.user.id)
-        .single();
+        .eq("user_id", session.user.id as any)
+        .maybeSingle();
 
       if (!profile?.is_lp) {
         navigate("/lp");
@@ -30,7 +32,7 @@ const LPDashboard = () => {
       setLoading(false);
     };
 
-    checkLP();
+    checkLPAccess();
   }, [navigate]);
 
   const handleSignOut = async () => {
@@ -52,12 +54,23 @@ const LPDashboard = () => {
           </Button>
         </div>
 
-        <div className="space-y-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Your Documents</h2>
-            <DocumentList />
-          </div>
-        </div>
+        <Tabs defaultValue="documents" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="documents">Documents</TabsTrigger>
+            <TabsTrigger value="profile">Profile</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="documents">
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-2xl font-bold text-luxon-navy mb-6">Documents</h2>
+              <DocumentList />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="profile">
+            <ProfileForm />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

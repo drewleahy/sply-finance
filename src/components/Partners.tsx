@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { PartnerCard } from "./partner/PartnerCard";
 import { PartnerLogos } from "./partner/PartnerLogos";
+import { unwrapResult } from "@/utils/supabaseHelpers";
 
 const infrastructurePartners = [
   {
@@ -58,8 +59,17 @@ const enterpriseCustomers = [
   }
 ];
 
+type Partner = {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  photo_url: string | null;
+  display_order: number;
+};
+
 export const Partners = () => {
-  const { data: partners, isLoading, error } = useQuery({
+  const { data: partners = [], isLoading, error } = useQuery({
     queryKey: ["partners"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -73,7 +83,7 @@ export const Partners = () => {
       }
       
       // Filter out Omar Marquez from the data if present
-      const filteredData = data?.filter(partner => partner.name !== "Omar Marquez") || [];
+      const filteredData = unwrapResult<Partner>(data)?.filter(partner => partner.name !== "Omar Marquez") || [];
       
       // Log the filtered data to help with debugging
       console.log("Partners data (filtered):", filteredData);
@@ -95,7 +105,7 @@ export const Partners = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-          {partners?.map((partner, index) => (
+          {partners.map((partner, index) => (
             <PartnerCard key={partner.id} partner={partner} index={index} />
           ))}
         </div>
