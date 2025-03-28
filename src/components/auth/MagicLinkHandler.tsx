@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+// Define the correct domain
+const SITE_URL = "https://splyfinance.com";
+
 interface MagicLinkHandlerProps {
   onError: (message: string) => void;
 }
@@ -14,6 +17,16 @@ export const MagicLinkHandler = ({ onError }: MagicLinkHandlerProps) => {
   useEffect(() => {
     const handleMagicLinkRedirect = async () => {
       const hash = window.location.hash;
+      
+      // Check if we're on the wrong domain
+      if (window.location.origin.includes("splycapital.com")) {
+        console.log("Wrong domain detected in MagicLinkHandler, redirecting to correct domain");
+        // Preserve the hash and query parameters when redirecting
+        const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
+        window.location.href = newUrl;
+        return;
+      }
+      
       if (hash && hash.includes('access_token')) {
         try {
           console.log("Processing access token from hash");

@@ -4,6 +4,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+// Define the correct domain
+const SITE_URL = "https://splyfinance.com";
+
 interface TokenVerificationProps {
   onError: (message: string) => void;
 }
@@ -15,6 +18,18 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
   useEffect(() => {
     const handleTokenVerification = async () => {
       try {
+        console.log("Current URL:", window.location.href);
+        console.log("Expected domain should be:", SITE_URL);
+        
+        // Check if we're on the wrong domain
+        if (window.location.origin.includes("splycapital.com")) {
+          console.log("Wrong domain detected, redirecting to correct domain");
+          // Preserve the hash and query parameters when redirecting
+          const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
+          window.location.href = newUrl;
+          return;
+        }
+        
         // First check if we have a hash with access_token (magic link or recovery)
         const hash = window.location.hash;
         if (hash && hash.includes('access_token')) {

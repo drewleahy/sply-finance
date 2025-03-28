@@ -10,6 +10,9 @@ import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "sonner";
 
+// Define correct domain for redirects
+const SITE_URL = "https://splyfinance.com";
+
 const Auth = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,9 +75,7 @@ const Auth = () => {
     };
   }, [navigate, location]);
 
-  // Current URL being used for redirects
-  const currentSiteUrl = window.location.origin;
-  console.log("Current site URL for redirects:", currentSiteUrl);
+  console.log("Current site URL for redirects:", SITE_URL);
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
@@ -127,7 +128,7 @@ const Auth = () => {
                   },
                 }}
                 providers={[]}
-                redirectTo={currentSiteUrl + "/auth"}
+                redirectTo={`${SITE_URL}/auth`}
               />
             </div>
           </>
