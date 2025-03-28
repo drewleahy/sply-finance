@@ -18,7 +18,7 @@ export const TokenVerification = ({ onError }: TokenVerificationProps) => {
         console.log("Current URL:", window.location.href);
         console.log("Expected domain should be:", SITE_URL);
         
-        // Check if we're on the wrong domain
+        // Check if we're on the wrong domain - verify we're on splyfinance.com
         if (!window.location.origin.includes("splyfinance.com")) {
           console.log("Wrong domain detected, redirecting to correct domain");
           // Preserve the hash and query parameters when redirecting

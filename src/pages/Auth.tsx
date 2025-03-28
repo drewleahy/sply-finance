@@ -22,7 +22,7 @@ const Auth = () => {
     const mode = params.get('mode');
     
     // Check if we're on the wrong domain
-    if (window.location.origin.includes("splycapital.com")) {
+    if (!window.location.origin.includes("splyfinance.com")) {
       console.log("Wrong domain detected in Auth component, redirecting to correct domain");
       // Preserve the hash and query parameters when redirecting
       const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;

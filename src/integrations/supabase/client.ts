@@ -20,7 +20,6 @@ export const supabase = createClient<Database>(
       detectSessionInUrl: true,
       flowType: 'pkce',
       // Set the site URL to ensure all redirects use the correct domain
-      site: SITE_URL,
       redirectTo: `${SITE_URL}/auth`
     }
   }
