@@ -1,7 +1,6 @@
-
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Linkedin, Award, Star } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TeamMemberProps {
@@ -61,21 +60,6 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       )}
     >
       <div className="mb-6 relative">
-        {isPrimary && (
-          <motion.div 
-            initial={{ scale: 0 }} 
-            animate={{ scale: 1 }} 
-            transition={{ delay: 0.5 + index * 0.2 }}
-            className="absolute -top-3 -right-3 text-sply-gold z-10"
-          >
-            {displayName === "Drew Leahy" || displayName === "Tyler Williams" ? (
-              <Award className="w-8 h-8" />
-            ) : (
-              <Star className="w-7 h-7" />
-            )}
-          </motion.div>
-        )}
-        
         <Avatar className={cn(
           "object-cover transition-all duration-300", 
           isPrimary ? "h-52 w-52 border-4 border-white shadow-lg" : "h-40 w-40"
