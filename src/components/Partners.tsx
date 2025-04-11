@@ -5,6 +5,7 @@ import { PartnerCard } from "./partner/PartnerCard";
 import { PartnerLogos } from "./partner/PartnerLogos";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 import { Database } from "@/integrations/supabase/types";
+import { partnerData } from "@/utils/partnerData";
 
 type Partner = Database['public']['Tables']['partners']['Row'];
 
@@ -63,7 +64,7 @@ const enterpriseCustomers = [
 ];
 
 export const Partners = () => {
-  const { data: partners = [], isLoading, error } = useQuery({
+  const { data: fetchedPartners = [], isLoading, error } = useQuery({
     queryKey: ["partners"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -84,6 +85,18 @@ export const Partners = () => {
       return filteredData;
     },
   });
+  
+  // Use local partnerData as fallback if fetched data is empty
+  const partners = fetchedPartners.length > 0 ? fetchedPartners : partnerData.map((partner, index) => ({
+    id: `local-${index}`,
+    name: partner.name,
+    role: partner.role,
+    bio: partner.bio,
+    photo_url: partner.photo_url,
+    display_order: partner.display_order,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  }));
 
   if (isLoading) return <div className="text-center py-12">Loading team information...</div>;
   if (error) return <div className="text-center py-12 text-red-500">Error loading team information</div>;
