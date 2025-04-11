@@ -13,13 +13,14 @@ import {
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
-import { unwrapResult } from "@/utils/supabaseHelpers";
+import { unwrapResult, safeObject, asTableUpdate } from "@/utils/supabaseHelpers";
 
 type Profile = Database['public']['Tables']['profiles']['Row'] & {
   lp_groups?: {
     name: string;
   }
 };
+type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 export const UserManagement = () => {
   const { toast } = useToast();
@@ -44,14 +45,15 @@ export const UserManagement = () => {
 
   const toggleUserRole = async (userId: string, field: "is_admin" | "is_lp", currentValue: boolean) => {
     try {
-      const updateData: Partial<Database['public']['Tables']['profiles']['Update']> = {
+      const updateData = asTableUpdate<ProfileUpdate>({
         [field]: !currentValue
-      };
+      });
       
+      // Use string literal for eq filter to avoid type issues
       const { error } = await supabase
         .from("profiles")
         .update(updateData)
-        .eq("user_id", userId);
+        .eq('user_id', userId);
 
       if (error) throw error;
 
@@ -86,36 +88,41 @@ export const UserManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.company_name}</TableCell>
-                <TableCell>{user.contact_name}</TableCell>
-                <TableCell>{user.lp_groups?.name}</TableCell>
-                <TableCell>
-                  {user.is_admin && <span className="mr-2">Admin</span>}
-                  {user.is_lp && <span>LP</span>}
-                </TableCell>
-                <TableCell>
-                  <div className="space-x-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleUserRole(user.user_id || '', "is_admin", !!user.is_admin)}
-                    >
-                      Toggle Admin
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleUserRole(user.user_id || '', "is_lp", !!user.is_lp)}
-                    >
-                      Toggle LP
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
+            {users.map((user) => {
+              // Use safeObject to ensure type safety
+              const safeUser = safeObject<Profile>(user, {} as Profile);
+              
+              return (
+                <TableRow key={safeUser.id}>
+                  <TableCell>{safeUser.email}</TableCell>
+                  <TableCell>{safeUser.company_name}</TableCell>
+                  <TableCell>{safeUser.contact_name}</TableCell>
+                  <TableCell>{safeUser.lp_groups?.name}</TableCell>
+                  <TableCell>
+                    {safeUser.is_admin && <span className="mr-2">Admin</span>}
+                    {safeUser.is_lp && <span>LP</span>}
+                  </TableCell>
+                  <TableCell>
+                    <div className="space-x-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleUserRole(safeUser.user_id || '', "is_admin", !!safeUser.is_admin)}
+                      >
+                        Toggle Admin
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleUserRole(safeUser.user_id || '', "is_lp", !!safeUser.is_lp)}
+                      >
+                        Toggle LP
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>

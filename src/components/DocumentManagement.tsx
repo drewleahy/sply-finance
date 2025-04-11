@@ -15,9 +15,10 @@ import {
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
-import { unwrapResult } from "@/utils/supabaseHelpers";
+import { unwrapResult, safeObject, asTableInsert } from "@/utils/supabaseHelpers";
 
 type Document = Database['public']['Tables']['documents']['Row'];
+type DocumentInsert = Database['public']['Tables']['documents']['Insert'];
 
 export const DocumentManagement = () => {
   const { toast } = useToast();
@@ -63,12 +64,12 @@ export const DocumentManagement = () => {
 
       if (uploadError) throw uploadError;
 
-      const documentData: Partial<Database['public']['Tables']['documents']['Insert']> = {
+      const documentData = asTableInsert<DocumentInsert>({
         title: newDocument.title,
         description: newDocument.description,
         file_path: filePath,
         is_global: newDocument.isGlobal,
-      };
+      });
 
       const { error: dbError } = await supabase.from("documents").insert(documentData);
 
@@ -143,14 +144,19 @@ export const DocumentManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {documents.map((doc) => (
-              <TableRow key={doc.id}>
-                <TableCell>{doc.title}</TableCell>
-                <TableCell>{doc.description}</TableCell>
-                <TableCell>{doc.is_global ? "Yes" : "No"}</TableCell>
-                <TableCell>{new Date(doc.created_at).toLocaleDateString()}</TableCell>
-              </TableRow>
-            ))}
+            {documents.map((doc) => {
+              // Use safeObject to ensure type safety
+              const document = safeObject<Document>(doc, {} as Document);
+              
+              return (
+                <TableRow key={document.id}>
+                  <TableCell>{document.title}</TableCell>
+                  <TableCell>{document.description}</TableCell>
+                  <TableCell>{document.is_global ? "Yes" : "No"}</TableCell>
+                  <TableCell>{new Date(document.created_at).toLocaleDateString()}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>

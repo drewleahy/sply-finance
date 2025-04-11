@@ -4,140 +4,157 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { safeObject } from "@/utils/supabaseHelpers";
+import { Database } from "@/integrations/supabase/types";
+
+type Profile = Database['public']['Tables']['profiles']['Row'];
 
 export default function LPLogin() {
-  const { toast } = useToast();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Check if user is already logged in and is LP
   useEffect(() => {
     const checkExistingSession = async () => {
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
-          const { data } = await supabase
+          // Use string literal for eq filter
+          const { data, error } = await supabase
             .from("profiles")
             .select("is_lp")
-            .eq("user_id", user.id)
+            .eq('user_id', user.id)
             .single();
 
-          if (safeObject(data, { is_lp: false }).is_lp) {
-            navigate("/lp/dashboard");
-            return;
+          // Use safeObject to handle possible null values
+          const profile = safeObject<{is_lp: boolean}>(data, { is_lp: false });
+          
+          if (profile.is_lp) {
+            setEmail(user.email || '');
+            setIsLoggedIn(true);
           }
         }
       } catch (error) {
         console.error("Session check error:", error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
     checkExistingSession();
-  }, [navigate]);
+  }, []);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
     try {
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (signInError) throw signInError;
-
-      if (signInData.user) {
-        const { data, error } = await supabase
-          .from("profiles")
-          .select("is_lp")
-          .eq("user_id", signInData.user.id)
-          .single();
-
-        if (error) throw error;
-
-        if (!safeObject(data, { is_lp: false }).is_lp) {
-          toast({
-            variant: "destructive",
-            title: "Access Denied",
-            description: "You don't have Limited Partner access.",
-          });
-          await supabase.auth.signOut();
-          setIsLoading(false);
-          return;
-        }
-
-        toast({
-          title: "Success",
-          description: "Welcome to the Limited Partner Dashboard!",
-        });
-
-        navigate("/lp/dashboard");
+      if (error) {
+        throw error;
       }
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        throw new Error("Failed to get user after sign in");
+      }
+
+      // Use string literal for eq filter
+      const { data, error: profileError } = await supabase
+        .from("profiles")
+        .select("is_lp")
+        .eq('user_id', user.id)
+        .single();
+
+      if (profileError) {
+        throw profileError;
+      }
+
+      // Use safeObject to handle possible null values
+      const profile = safeObject<{is_lp: boolean}>(data, { is_lp: false });
+
+      if (!profile.is_lp) {
+        throw new Error("You do not have LP access");
+      }
+
+      toast({
+        title: "Success",
+        description: "You have been signed in to the LP dashboard!",
+      });
+      
+      navigate("/lp");
     } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: error.message || "Failed to login. Please try again.",
+        description: error.message || "An error occurred during sign-in.",
       });
+    } finally {
       setIsLoading(false);
     }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const handleContinue = () => {
+    navigate("/lp");
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    setIsLoggedIn(false);
+    setEmail("");
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Limited Partner Login</CardTitle>
-          <CardDescription>
-            Sign in to access your Limited Partner dashboard
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow">
+        <h1 className="text-2xl font-bold text-center mb-6">LP Portal Login</h1>
+        
+        {isLoggedIn ? (
+          <div className="space-y-4">
+            <p className="text-center">
+              You are already signed in as <strong>{email}</strong>
+            </p>
+            <div className="flex space-x-4 justify-center">
+              <Button onClick={handleContinue} className="w-1/2">
+                Continue to Portal
+              </Button>
+              <Button onClick={handleSignOut} variant="outline" className="w-1/2">
+                Sign Out
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSignIn} className="space-y-4">
+            <div>
               <Input
-                id="email"
                 type="email"
+                placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your.email@example.com"
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+            <div>
               <Input
-                id="password"
                 type="password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Loading..." : "Sign In"}
+              {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
-        </CardContent>
-        <CardFooter>
-          <Button variant="link" onClick={() => navigate("/")} className="w-full">
-            Back to Home
-          </Button>
-        </CardFooter>
-      </Card>
+        )}
+      </div>
     </div>
   );
 }

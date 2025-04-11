@@ -7,9 +7,10 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
-import { unwrapResult } from "@/utils/supabaseHelpers";
+import { unwrapResult, safeObject, asTableInsert } from "@/utils/supabaseHelpers";
 
 type LpGroup = Database['public']['Tables']['lp_groups']['Row'];
+type LpGroupsDealInsert = Database['public']['Tables']['lp_groups_deals']['Insert'];
 
 interface LPSelectionDialogProps {
   dealId: string;
@@ -45,14 +46,18 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const sharings = selectedGroups.map((groupId) => ({
-        deal_id: dealId,
-        lp_group_id: groupId,
-      } as Partial<Database['public']['Tables']['lp_groups_deals']['Insert']>));
+      // Create an array of properly typed objects
+      const sharingsToInsert = selectedGroups.map((groupId) => 
+        asTableInsert<LpGroupsDealInsert>({
+          deal_id: dealId,
+          lp_group_id: groupId,
+        })
+      );
 
+      // Insert the array of objects
       const { error } = await supabase
         .from("lp_groups_deals")
-        .insert(sharings);
+        .insert(sharingsToInsert);
 
       if (error) throw error;
 
@@ -83,29 +88,34 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
             <p>Loading LP groups...</p>
           ) : (
             <div className="space-y-2">
-              {lpGroups.map((group) => (
-                <div
-                  key={group.id}
-                  className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-                    selectedGroups.includes(group.id)
-                      ? "border-luxon-gold bg-luxon-gold/10"
-                      : "border-gray-200 hover:border-luxon-gold"
-                  }`}
-                  onClick={() => handleGroupToggle(group.id)}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium">{group.name}</span>
-                    {selectedGroups.includes(group.id) && (
-                      <Check className="h-5 w-5 text-luxon-gold" />
+              {lpGroups.map((group) => {
+                // Use safeObject to ensure type safety
+                const lpGroup = safeObject<LpGroup>(group, {} as LpGroup);
+                
+                return (
+                  <div
+                    key={lpGroup.id}
+                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                      selectedGroups.includes(lpGroup.id)
+                        ? "border-luxon-gold bg-luxon-gold/10"
+                        : "border-gray-200 hover:border-luxon-gold"
+                    }`}
+                    onClick={() => handleGroupToggle(lpGroup.id)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">{lpGroup.name}</span>
+                      {selectedGroups.includes(lpGroup.id) && (
+                        <Check className="h-5 w-5 text-luxon-gold" />
+                      )}
+                    </div>
+                    {lpGroup.description && (
+                      <p className="text-sm text-gray-500 mt-1">
+                        {lpGroup.description}
+                      </p>
                     )}
                   </div>
-                  {group.description && (
-                    <p className="text-sm text-gray-500 mt-1">
-                      {group.description}
-                    </p>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
           <div className="flex justify-end space-x-2 mt-4">

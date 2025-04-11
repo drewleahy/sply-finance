@@ -6,6 +6,9 @@ import { DocumentList } from "@/components/DocumentList";
 import { ProfileForm } from "@/components/ProfileForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { safeObject } from "@/utils/supabaseHelpers";
+import { Database } from "@/integrations/supabase/types";
+
+type Profile = Database['public']['Tables']['profiles']['Row'];
 
 export default function LPDashboard() {
   const navigate = useNavigate();
@@ -20,13 +23,17 @@ export default function LPDashboard() {
           return;
         }
 
+        // Use string literal for eq filter
         const { data, error } = await supabase
           .from("profiles")
           .select("is_lp")
-          .eq("user_id", user.id)
+          .eq('user_id', user.id)
           .single();
 
-        if (error || !safeObject(data, { is_lp: false }).is_lp) {
+        // Use safeObject to handle possible null values
+        const profile = safeObject<{is_lp: boolean}>(data, { is_lp: false });
+
+        if (error || !profile.is_lp) {
           navigate("/lp/login");
           return;
         }

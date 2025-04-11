@@ -176,11 +176,12 @@ export default function Auth() {
   }
 
   if (code) {
+    // Modified to use proper type conversion for compatibility
     return <TokenVerification setAuthView={(view) => setView(view as AuthView)} />;
   }
 
   if (searchParams.get("error")) {
-    return <AuthError />;
+    return <AuthError message={searchParams.get("error_description") || undefined} />;
   }
 
   return (

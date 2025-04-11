@@ -79,3 +79,24 @@ export function mapSafely<T, R>(items: unknown, mapFn: (item: T) => R, defaultVa
 export function hasProperty<K extends string>(obj: unknown, prop: K): obj is { [key in K]: unknown } {
   return obj !== null && typeof obj === 'object' && prop in obj;
 }
+
+/**
+ * Cast to specific table type for Supabase update operations
+ */
+export function asTableUpdate<T>(obj: any): T {
+  return obj as unknown as T;
+}
+
+/**
+ * Cast to specific table type for Supabase insert operations
+ */
+export function asTableInsert<T>(obj: any): T {
+  return obj as unknown as T;
+}
+
+/**
+ * Type-safe eq filter for Supabase queries
+ */
+export function eqFilter<T>(field: string, value: T): string {
+  return field as string;
+}

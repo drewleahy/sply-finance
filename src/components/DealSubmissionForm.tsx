@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Database } from "@/integrations/supabase/types";
+import { asTableInsert } from "@/utils/supabaseHelpers";
+
+type DealInsert = Database['public']['Tables']['deals']['Insert'];
 
 export const DealSubmissionForm = () => {
   const { toast } = useToast();
@@ -42,7 +46,7 @@ export const DealSubmissionForm = () => {
         pitchDeckUrl = publicUrl;
       }
 
-      const dealData: Partial<Database['public']['Tables']['deals']['Insert']> = {
+      const dealData = asTableInsert<DealInsert>({
         company_name: formData.companyName,
         founder_name: formData.founderName,
         email: formData.email,
@@ -50,7 +54,7 @@ export const DealSubmissionForm = () => {
         description: formData.description,
         investment_amount: parseFloat(formData.investmentAmount),
         pitch_deck_url: pitchDeckUrl,
-      };
+      });
 
       const { error } = await supabase.from("deals").insert(dealData);
 

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import { Database } from "@/integrations/supabase/types";
 import { safeObject } from "@/utils/supabaseHelpers";
 
 type Profile = Database['public']['Tables']['profiles']['Row'];
+type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -70,17 +72,21 @@ export const ProfileForm = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("No user found");
 
-      const profileData: Partial<Database['public']['Tables']['profiles']['Update']> = {
+      // Create the profile data as an object first
+      const profileData: ProfileUpdate = {
         company_name: profile.companyName,
         contact_name: profile.contactName,
         email: profile.email,
         phone: profile.phone,
       };
 
-      const { error } = await supabase.from("profiles").upsert({
-        ...profileData,
-        user_id: user.id,
-      } as any);
+      // Then use upsert with the correct type
+      const { error } = await supabase
+        .from("profiles")
+        .upsert({
+          ...profileData,
+          user_id: user.id,
+        } as any);
 
       if (error) throw error;
 

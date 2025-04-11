@@ -1,65 +1,65 @@
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase, SITE_URL } from "@/integrations/supabase/client";
-import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
-interface MagicLinkHandlerProps {
-  onError: (message: string) => void;
+export interface MagicLinkHandlerProps {
+  onError: (error: string) => void;
 }
 
-export const MagicLinkHandler = ({ onError }: MagicLinkHandlerProps) => {
+export const MagicLinkHandler = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isProcessing, setIsProcessing] = useState(true);
 
   useEffect(() => {
-    const handleMagicLinkRedirect = async () => {
-      const hash = window.location.hash;
-      
-      // Check if we're on the wrong domain
-      if (!window.location.origin.includes("splyfinance.com")) {
-        console.log("Wrong domain detected in MagicLinkHandler, redirecting to correct domain");
-        // Preserve the hash and query parameters when redirecting
-        const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
-        window.location.href = newUrl;
-        return;
-      }
-      
-      if (hash && hash.includes('access_token')) {
-        try {
-          console.log("Processing access token from hash");
+    const handleMagicLink = async () => {
+      try {
+        // Supabase Auth automatically handles magic link redirects
+        // We just need to refresh the session
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) throw error;
+        
+        if (data.session) {
+          toast({
+            title: "Success",
+            description: "You have been signed in successfully.",
+          });
           
-          // Parse hash to check if it's a recovery token
-          const hashParams = new URLSearchParams(hash.substring(1));
-          const type = hashParams.get('type');
-          
-          // Skip if it's a recovery token (handled by TokenVerification)
-          if (type === 'recovery') {
-            console.log("Recovery token - skipping magic link handler");
-            return;
-          }
-          
-          console.log("Getting session after magic link auth");
-          const { data, error } = await supabase.auth.getSession();
-          
-          if (error) {
-            console.error("Error handling magic link:", error);
-            throw error;
-          }
-          
-          if (data.session) {
-            console.log("User authenticated via magic link, redirecting to dashboard");
-            toast.success("Successfully logged in");
-            navigate("/dashboard");
-          }
-        } catch (error) {
-          console.error("Error handling magic link:", error);
-          onError("Error logging in. Please try again.");
+          navigate("/dashboard");
+        } else {
+          throw new Error("No session found. Magic link may be invalid or expired.");
         }
+      } catch (error: any) {
+        console.error("Magic link error:", error);
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: error.message || "Failed to sign in with magic link. Please try again.",
+        });
+        navigate("/auth");
+      } finally {
+        setIsProcessing(false);
       }
     };
 
-    handleMagicLinkRedirect();
-  }, [navigate, onError]);
+    handleMagicLink();
+  }, [navigate, toast]);
 
-  return null;
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          {isProcessing ? "Signing in..." : "Sign In Complete"}
+        </h2>
+        <p className="text-center text-gray-600">
+          {isProcessing
+            ? "Please wait while we verify your credentials."
+            : "You can now close this window."}
+        </p>
+      </div>
+    </div>
+  );
 };

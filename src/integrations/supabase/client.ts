@@ -20,7 +20,7 @@ export const supabase = createClient<Database>(
       detectSessionInUrl: true,
       flowType: 'pkce',
       // Use correct property for Supabase v2.47+
-      url: SITE_URL
+      storage: localStorage
     }
   }
 );

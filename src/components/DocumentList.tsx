@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useQuery } from "@tanstack/react-query";
-import { unwrapResult } from "@/utils/supabaseHelpers";
+import { unwrapResult, safeObject } from "@/utils/supabaseHelpers";
 import { Database } from "@/integrations/supabase/types";
 
 type Document = Database['public']['Tables']['documents']['Row'];
@@ -70,22 +70,27 @@ export const DocumentList = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {documents.map((doc) => (
-          <TableRow key={doc.id}>
-            <TableCell>{doc.title}</TableCell>
-            <TableCell>{doc.description}</TableCell>
-            <TableCell>{new Date(doc.created_at).toLocaleDateString()}</TableCell>
-            <TableCell>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => downloadDocument(doc.file_path, doc.title)}
-              >
-                Download
-              </Button>
-            </TableCell>
-          </TableRow>
-        ))}
+        {documents.map((doc) => {
+          // Use safeObject to ensure type safety
+          const document = safeObject<Document>(doc, {} as Document);
+          
+          return (
+            <TableRow key={document.id}>
+              <TableCell>{document.title}</TableCell>
+              <TableCell>{document.description}</TableCell>
+              <TableCell>{new Date(document.created_at).toLocaleDateString()}</TableCell>
+              <TableCell>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => downloadDocument(document.file_path, document.title)}
+                >
+                  Download
+                </Button>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

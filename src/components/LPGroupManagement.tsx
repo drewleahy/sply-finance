@@ -15,9 +15,10 @@ import {
 } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
-import { unwrapResult } from "@/utils/supabaseHelpers";
+import { unwrapResult, safeObject, asTableInsert } from "@/utils/supabaseHelpers";
 
 type LpGroup = Database['public']['Tables']['lp_groups']['Row'];
+type LpGroupInsert = Database['public']['Tables']['lp_groups']['Insert'];
 
 export const LPGroupManagement = () => {
   const { toast } = useToast();
@@ -40,10 +41,10 @@ export const LPGroupManagement = () => {
     e.preventDefault();
     
     try {
-      const groupData: Partial<Database['public']['Tables']['lp_groups']['Insert']> = {
+      const groupData = asTableInsert<LpGroupInsert>({
         name: newGroup.name,
         description: newGroup.description
-      };
+      });
 
       const { error } = await supabase
         .from("lp_groups")
@@ -95,12 +96,17 @@ export const LPGroupManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {groups.map((group) => (
-              <TableRow key={group.id}>
-                <TableCell>{group.name}</TableCell>
-                <TableCell>{group.description}</TableCell>
-              </TableRow>
-            ))}
+            {groups.map((group) => {
+              // Use safeObject to ensure type safety
+              const safeGroup = safeObject<LpGroup>(group, {} as LpGroup);
+              
+              return (
+                <TableRow key={safeGroup.id}>
+                  <TableCell>{safeGroup.name}</TableCell>
+                  <TableCell>{safeGroup.description}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>
