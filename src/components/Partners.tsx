@@ -1,11 +1,13 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { PartnerCard } from "./partner/PartnerCard";
-import { PartnerLogos } from "./partner/PartnerLogos";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 import { Database } from "@/integrations/supabase/types";
 import { partnerData } from "@/utils/partnerData";
+import { TeamMember } from "./team/TeamMember";
+import { TeamSection } from "./team/TeamSection";
+import { PartnerLogos } from "./partner/PartnerLogos";
+import { motion } from "framer-motion";
 
 type Partner = Database['public']['Tables']['partners']['Row'];
 
@@ -104,29 +106,34 @@ export const Partners = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-gray-900 text-center mb-4">
-          Our Team
-        </h2>
-        <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-          Experience our leadership driving innovation in trade finance
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-serif text-gray-900 mb-4">
+            Leadership Team
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Our experienced team drives innovation in investment strategies and portfolio management
+          </p>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-          {partners.map((partner, index) => (
-            <PartnerCard key={partner.id} partner={partner} index={index} />
-          ))}
+        <TeamSection partners={partners} />
+
+        <div className="mt-32">
+          <PartnerLogos 
+            title="Infrastructure Partners & Funders"
+            partners={infrastructurePartners}
+          />
+
+          <PartnerLogos 
+            title="Enterprise Customers"
+            partners={enterpriseCustomers}
+            gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-7"
+          />
         </div>
-
-        <PartnerLogos 
-          title="Infrastructure Partners & Funders"
-          partners={infrastructurePartners}
-        />
-
-        <PartnerLogos 
-          title="Enterprise Customers"
-          partners={enterpriseCustomers}
-          gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-7"
-        />
       </div>
     </section>
   );
