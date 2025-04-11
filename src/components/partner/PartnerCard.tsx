@@ -21,7 +21,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
         return "https://www.linkedin.com/in/tyler-williams-476283101";
       case "Drew Leahy":
         return "https://www.linkedin.com/in/drewleahy/";
-      case "Jamie Wiseman":
+      case "James Wiseman":
         return "https://www.linkedin.com/in/jamie-wiseman-944782/";
       default:
         return "";
@@ -34,14 +34,12 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
         return "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z";
       case "Drew Leahy":
         return "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png";
-      case "Jamie Wiseman":
-        return "/lovable-uploads/7a18bc79-53c4-4799-845e-17f6f1593801.png";
+      case "James Wiseman":
+        return "/lovable-uploads/092a9b46-2220-4c96-80c5-d4029d622a0b.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
   };
-
-  console.log("Rendering partner:", partner);
 
   return (
     <motion.div
