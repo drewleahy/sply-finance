@@ -12,14 +12,14 @@ interface TeamSectionProps {
 }
 
 export const TeamSection = ({ partners }: TeamSectionProps) => {
-  // Filter for primary team members and ensure they're at the top
+  // Ensure Drew, Tyler, and James are primary team members
   const primaryMembers = partners.filter(partner => 
     partner.name === "Drew Leahy" || 
     partner.name === "Tyler Williams" || 
     partner.name === "James Wiseman"
   );
   
-  // Get the remaining team members
+  // Get the remaining team members (if any)
   const otherMembers = partners.filter(partner => 
     !primaryMembers.some(primaryMember => primaryMember.name === partner.name)
   );
