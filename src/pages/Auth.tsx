@@ -1,142 +1,299 @@
 
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { supabase, SITE_URL } from "@/integrations/supabase/client";
-import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { AuthError } from "@/components/auth/AuthError";
-import { TokenVerification } from "@/components/auth/TokenVerification";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { MagicLinkHandler } from "@/components/auth/MagicLinkHandler";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { toast } from "sonner";
+import { TokenVerification } from "@/components/auth/TokenVerification";
+import { AuthError } from "@/components/auth/AuthError";
+import { useToast } from "@/components/ui/use-toast";
+import { SITE_URL } from "@/integrations/supabase/client";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-const Auth = () => {
+type AuthView = "sign_in" | "sign_up" | "update_password";
+
+export default function Auth() {
+  const { toast } = useToast();
   const navigate = useNavigate();
-  const location = useLocation();
-  const [errorMessage, setErrorMessage] = useState("");
-  const [view, setView] = useState<"sign_in" | "sign_up" | "update_password">("sign_in");
-  const [isLoading, setIsLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+  
+  const mode = searchParams.get("mode");
+  const code = searchParams.get("code");
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [view, setView] = useState<AuthView>(mode === "reset_password" ? "update_password" : "sign_in");
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const mode = params.get('mode');
-    const code = params.get('code');
-    
-    // Check if we're on the wrong domain
-    if (!window.location.origin.includes("splyfinance.com")) {
-      console.log("Wrong domain detected in Auth component, redirecting to correct domain");
-      // Preserve the hash and query parameters when redirecting
-      const newUrl = `${SITE_URL}${window.location.pathname}${window.location.search}${window.location.hash}`;
-      window.location.href = newUrl;
+    // If there's a code parameter and mode is reset_password, set the view to update_password
+    if (code && mode === "reset_password") {
+      setView("update_password");
+    }
+  }, [code, mode]);
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Success",
+        description: "You have been signed in!",
+      });
+      
+      navigate("/dashboard");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "An error occurred during sign-in.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${SITE_URL}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Success",
+        description: "Check your email for the confirmation link.",
+      });
+      
+      navigate("/");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "An error occurred during sign-up.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handlePasswordReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${SITE_URL}/auth?mode=reset_password`,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Success",
+        description: "Check your email for the password reset link.",
+      });
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "An error occurred during password reset.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handlePasswordUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!password) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please enter a new password.",
+      });
       return;
     }
     
-    // Handle password reset from URL params
-    if (mode === 'reset_password' || code) {
-      console.log("Password reset mode detected by URL params");
-      setView("update_password");
-    }
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password,
+      });
 
-    // Check if there's an existing session first
-    const checkExistingSession = async () => {
-      try {
-        const { data, error } = await supabase.auth.getSession();
-        if (error) throw error;
-        
-        if (data.session) {
-          console.log("Existing session found, redirecting");
-          navigate('/dashboard');
-        }
-      } catch (error) {
-        console.error("Error checking session:", error);
-      } finally {
-        setIsLoading(false);
+      if (error) {
+        throw error;
       }
-    };
 
-    checkExistingSession();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log("Auth event:", event);
+      toast({
+        title: "Success",
+        description: "Your password has been updated.",
+      });
       
-      if (event === 'PASSWORD_RECOVERY') {
-        console.log("Password recovery event received");
-        setView('update_password');
-      } else if (event === 'SIGNED_IN') {
-        console.log("User signed in, redirecting to dashboard");
-        sessionStorage.removeItem('passwordResetToken');
-        navigate('/dashboard');
-      }
-    });
+      // Navigate to dashboard after password update
+      navigate("/dashboard");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "An error occurred during password update.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    return () => {
-      console.log("Cleaning up auth state change subscription");
-      subscription.unsubscribe();
-    };
-  }, [navigate, location]);
+  // Handle magic link or token verification
+  if (searchParams.get("type") === "magiclink") {
+    return <MagicLinkHandler />;
+  }
 
-  console.log("Current view:", view);
-  console.log("Current site URL for redirects:", SITE_URL);
+  if (code) {
+    return <TokenVerification setAuthView={(view) => setView(view as AuthView)} />;
+  }
+
+  if (searchParams.get("error")) {
+    return <AuthError />;
+  }
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-4">
-        <div className="text-center mb-8">
-          <img
-            src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
-            alt="SPLYFI"
-            className="mx-auto w-32 mb-6"
-          />
-          <h2 className="text-2xl font-semibold text-gray-900">
-            {view === 'update_password' ? 'Reset Your Password' : 'Welcome to SPLYFI'}
-          </h2>
-          <p className="text-gray-600 mt-2">
-            {view === 'update_password' 
-              ? 'Please enter your new password below'
-              : 'Sign in to access exclusive investment opportunities'
+    <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>
+            {view === "sign_in"
+              ? "Sign In"
+              : view === "sign_up"
+              ? "Sign Up"
+              : "Reset Password"}
+          </CardTitle>
+          <CardDescription>
+            {view === "sign_in"
+              ? "Enter your credentials to sign in to your account."
+              : view === "sign_up"
+              ? "Create a new account to get started."
+              : "Enter your new password."}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            onSubmit={
+              view === "sign_in"
+                ? handleSignIn
+                : view === "sign_up"
+                ? handleSignUp
+                : view === "update_password"
+                ? handlePasswordUpdate
+                : handlePasswordReset
             }
-          </p>
-        </div>
+            className="space-y-4"
+          >
+            {view !== "update_password" && (
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+            )}
 
-        {errorMessage && (
-          <Alert variant="destructive">
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        )}
+            {(view === "sign_in" || view === "sign_up" || view === "update_password") && (
+              <div className="space-y-2">
+                <Label htmlFor="password">
+                  {view === "update_password" ? "New Password" : "Password"}
+                </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            )}
 
-        {isLoading ? (
-          <div className="flex justify-center items-center p-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-          </div>
-        ) : (
-          <>
-            <TokenVerification onError={setErrorMessage} onSetView={setView} />
-            <MagicLinkHandler onError={setErrorMessage} />
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <SupabaseAuth
-                supabaseClient={supabase as any}
-                view={view}
-                appearance={{
-                  theme: ThemeSupa,
-                  variables: {
-                    default: {
-                      colors: {
-                        brand: "#1A1F2C",
-                        brandAccent: "#C5A572",
-                      },
-                    },
-                  },
-                }}
-                providers={[]}
-                redirectTo={`${SITE_URL}/auth`}
-              />
-            </div>
-          </>
-        )}
-      </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading
+                ? "Loading..."
+                : view === "sign_in"
+                ? "Sign In"
+                : view === "sign_up"
+                ? "Sign Up"
+                : view === "update_password"
+                ? "Update Password"
+                : "Send Reset Link"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex flex-col space-y-2">
+          {view === "sign_in" ? (
+            <>
+              <Button
+                variant="link"
+                className="px-0"
+                onClick={() => setView("sign_up")}
+              >
+                Don't have an account? Sign up
+              </Button>
+              <Button
+                variant="link"
+                className="px-0"
+                onClick={() => setView("update_password")}
+              >
+                Forgot your password?
+              </Button>
+            </>
+          ) : view === "sign_up" ? (
+            <Button
+              variant="link"
+              className="px-0"
+              onClick={() => setView("sign_in")}
+            >
+              Already have an account? Sign in
+            </Button>
+          ) : (
+            <Button
+              variant="link"
+              className="px-0"
+              onClick={() => setView("sign_in")}
+            >
+              Back to sign in
+            </Button>
+          )}
+        </CardFooter>
+      </Card>
     </div>
   );
-};
-
-export default Auth;
+}

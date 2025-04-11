@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -8,6 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
 import { unwrapResult } from "@/utils/supabaseHelpers";
+
+type LpGroup = Database['public']['Tables']['lp_groups']['Row'];
 
 interface LPSelectionDialogProps {
   dealId: string;
@@ -28,7 +30,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
         .select("*")
         .order("name");
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<LpGroup>(data);
     },
   });
 
@@ -46,7 +48,7 @@ export const LPSelectionDialog = ({ dealId, isOpen, onClose }: LPSelectionDialog
       const sharings = selectedGroups.map((groupId) => ({
         deal_id: dealId,
         lp_group_id: groupId,
-      } as Database['public']['Tables']['lp_groups_deals']['Insert']));
+      } as Partial<Database['public']['Tables']['lp_groups_deals']['Insert']>));
 
       const { error } = await supabase
         .from("lp_groups_deals")

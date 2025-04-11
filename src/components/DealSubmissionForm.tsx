@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -43,7 +42,7 @@ export const DealSubmissionForm = () => {
         pitchDeckUrl = publicUrl;
       }
 
-      const dealData: Database['public']['Tables']['deals']['Insert'] = {
+      const dealData: Partial<Database['public']['Tables']['deals']['Insert']> = {
         company_name: formData.companyName,
         founder_name: formData.founderName,
         email: formData.email,

@@ -13,6 +13,9 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { unwrapResult } from "@/utils/supabaseHelpers";
+import { Database } from "@/integrations/supabase/types";
+
+type Document = Database['public']['Tables']['documents']['Row'];
 
 export const DocumentList = () => {
   const { toast } = useToast();
@@ -29,7 +32,7 @@ export const DocumentList = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<Document>(data);
     },
   });
 

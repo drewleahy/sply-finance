@@ -1,10 +1,12 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { Database } from "@/integrations/supabase/types";
+import { safeObject } from "@/utils/supabaseHelpers";
+
+type Profile = Database['public']['Tables']['profiles']['Row'];
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -24,7 +26,7 @@ export const ProfileForm = () => {
           const { data, error } = await supabase
             .from("profiles")
             .select()
-            .eq("user_id", user.id as any)
+            .eq("user_id", user.id)
             .maybeSingle();
 
           if (error) {
@@ -38,11 +40,12 @@ export const ProfileForm = () => {
           }
 
           if (data) {
+            const profileData = safeObject<Profile>(data, {} as Profile);
             setProfile({
-              companyName: data.company_name || "",
-              contactName: data.contact_name || "",
-              email: data.email || "",
-              phone: data.phone || "",
+              companyName: profileData.company_name || "",
+              contactName: profileData.contact_name || "",
+              email: profileData.email || "",
+              phone: profileData.phone || "",
             });
           }
         }
@@ -67,7 +70,7 @@ export const ProfileForm = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("No user found");
 
-      const profileData: Database['public']['Tables']['profiles']['Update'] = {
+      const profileData: Partial<Database['public']['Tables']['profiles']['Update']> = {
         company_name: profile.companyName,
         contact_name: profile.contactName,
         email: profile.email,
@@ -76,8 +79,8 @@ export const ProfileForm = () => {
 
       const { error } = await supabase.from("profiles").upsert({
         ...profileData,
-        user_id: user.id as any,
-      });
+        user_id: user.id,
+      } as any);
 
       if (error) throw error;
 

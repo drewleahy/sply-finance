@@ -19,8 +19,8 @@ export const supabase = createClient<Database>(
       persistSession: true,
       detectSessionInUrl: true,
       flowType: 'pkce',
-      // The correct configuration syntax for Supabase v2.47+
-      site: SITE_URL
+      // Use correct property for Supabase v2.47+
+      url: SITE_URL
     }
   }
 );

@@ -17,6 +17,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 
+type LpGroup = Database['public']['Tables']['lp_groups']['Row'];
+
 export const LPGroupManagement = () => {
   const { toast } = useToast();
   const [newGroup, setNewGroup] = useState({ name: "", description: "" });
@@ -30,7 +32,7 @@ export const LPGroupManagement = () => {
         .order("name");
       
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<LpGroup>(data);
     },
   });
 
@@ -38,7 +40,7 @@ export const LPGroupManagement = () => {
     e.preventDefault();
     
     try {
-      const groupData: Database['public']['Tables']['lp_groups']['Insert'] = {
+      const groupData: Partial<Database['public']['Tables']['lp_groups']['Insert']> = {
         name: newGroup.name,
         description: newGroup.description
       };

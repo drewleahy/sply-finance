@@ -19,9 +19,11 @@ import { Label } from "@/components/ui/label";
 import { Database } from "@/integrations/supabase/types";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 
+type Partner = Database['public']['Tables']['partners']['Row'];
+
 export const PartnerManagement = () => {
   const { toast } = useToast();
-  const [editingPartner, setEditingPartner] = useState<any>(null);
+  const [editingPartner, setEditingPartner] = useState<Partner | null>(null);
   const [uploading, setUploading] = useState(false);
 
   const { data: partners = [], refetch } = useQuery({
@@ -33,7 +35,7 @@ export const PartnerManagement = () => {
         .order("display_order", { ascending: true });
       
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<Partner>(data);
     },
   });
 
@@ -65,7 +67,7 @@ export const PartnerManagement = () => {
 
       setUploading(true);
       const fileExt = file.name.split(".").pop();
-      const filePath = `${editingPartner.id}-${Date.now()}.${fileExt}`;
+      const filePath = `${editingPartner?.id}-${Date.now()}.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage
         .from("partner-photos")
@@ -77,10 +79,9 @@ export const PartnerManagement = () => {
         .from("partner-photos")
         .getPublicUrl(filePath);
 
-      setEditingPartner({
-        ...editingPartner,
-        photo_url: publicUrl,
-      });
+      setEditingPartner(prev => 
+        prev ? { ...prev, photo_url: publicUrl } : null
+      );
 
       toast({
         title: "Success",
@@ -98,8 +99,10 @@ export const PartnerManagement = () => {
   };
 
   const handleSave = async () => {
+    if (!editingPartner) return;
+    
     try {
-      const updateData: Database['public']['Tables']['partners']['Update'] = {
+      const updateData: Partial<Database['public']['Tables']['partners']['Update']> = {
         name: editingPartner.name,
         role: editingPartner.role,
         bio: editingPartner.bio,

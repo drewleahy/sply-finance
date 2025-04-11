@@ -7,13 +7,16 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { LPSelectionDialog } from "./LPSelectionDialog";
 import { Database } from "@/integrations/supabase/types";
+import { unwrapResult } from "@/utils/supabaseHelpers";
+
+type Deal = Database['public']['Tables']['deals']['Row'];
 
 export const DealList = () => {
   const { toast } = useToast();
   const [selectedDealId, setSelectedDealId] = useState<string | null>(null);
   const [isLPSelectionOpen, setIsLPSelectionOpen] = useState(false);
 
-  const { data: deals, isLoading, refetch } = useQuery({
+  const { data: deals = [], isLoading, refetch } = useQuery({
     queryKey: ["deals"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -21,16 +24,20 @@ export const DealList = () => {
         .select("*")
         .order("created_at", { ascending: false });
       if (error) throw error;
-      return data;
+      return unwrapResult<Deal>(data);
     },
   });
 
   const handleDealAction = async (dealId: string, status: "approved" | "rejected") => {
     try {
+      const updateData: Partial<Database['public']['Tables']['deals']['Update']> = { 
+        status 
+      };
+      
       const { error } = await supabase
         .from("deals")
-        .update({ status } as Database['public']['Tables']['deals']['Update'])
-        .eq("id", dealId as string);
+        .update(updateData)
+        .eq("id", dealId);
 
       if (error) throw error;
 
@@ -62,7 +69,7 @@ export const DealList = () => {
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-2xl font-bold text-luxon-navy mb-6">Available Deals</h2>
       <div className="space-y-4">
-        {deals?.map((deal) => (
+        {deals.map((deal) => (
           <div
             key={deal.id}
             className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"

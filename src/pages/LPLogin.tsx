@@ -1,75 +1,143 @@
 
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { supabase } from "@/integrations/supabase/client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { safeObject } from "@/utils/supabaseHelpers";
 
-const LPLogin = () => {
+export default function LPLogin() {
+  const { toast } = useToast();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (event === "SIGNED_IN" && session) {
-          const { data: profile } = await supabase
+    const checkExistingSession = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data } = await supabase
             .from("profiles")
             .select("is_lp")
-            .eq("user_id", session.user.id as any)
-            .maybeSingle();
+            .eq("user_id", user.id)
+            .single();
 
-          if (profile?.is_lp) {
+          if (safeObject(data, { is_lp: false }).is_lp) {
             navigate("/lp/dashboard");
-          } else {
-            setErrorMessage("Access denied. LP privileges required.");
-            await supabase.auth.signOut();
+            return;
           }
         }
+      } catch (error) {
+        console.error("Session check error:", error);
+      } finally {
+        setIsLoading(false);
       }
-    );
+    };
 
-    return () => subscription.unsubscribe();
+    checkExistingSession();
   }, [navigate]);
 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (signInError) throw signInError;
+
+      if (signInData.user) {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("is_lp")
+          .eq("user_id", signInData.user.id)
+          .single();
+
+        if (error) throw error;
+
+        if (!safeObject(data, { is_lp: false }).is_lp) {
+          toast({
+            variant: "destructive",
+            title: "Access Denied",
+            description: "You don't have Limited Partner access.",
+          });
+          await supabase.auth.signOut();
+          setIsLoading(false);
+          return;
+        }
+
+        toast({
+          title: "Success",
+          description: "Welcome to the Limited Partner Dashboard!",
+        });
+
+        navigate("/lp/dashboard");
+      }
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "Failed to login. Please try again.",
+      });
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="min-h-screen bg-luxon-navy flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-        <div className="text-center mb-6">
-          <img
-            src="/lovable-uploads/02facf40-6030-4774-aaf1-20ceb43d794c.png"
-            alt="SPLYFI"
-            className="mx-auto w-32 mb-6" /* Reduced from w-48 */
-          />
-          <h1 className="text-2xl font-bold text-luxon-navy">
-            LP Portal
-          </h1>
-        </div>
-        
-        {errorMessage && (
-          <Alert variant="destructive" className="mb-4">
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        )}
-        <Auth
-          supabaseClient={supabase as any}
-          appearance={{
-            theme: ThemeSupa,
-            variables: {
-              default: {
-                colors: {
-                  brand: "#C5A572",
-                  brandAccent: "#1A1F2C",
-                },
-              },
-            },
-          }}
-          providers={[]}
-        />
-      </div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Limited Partner Login</CardTitle>
+          <CardDescription>
+            Sign in to access your Limited Partner dashboard
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Loading..." : "Sign In"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter>
+          <Button variant="link" onClick={() => navigate("/")} className="w-full">
+            Back to Home
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
-};
-
-export default LPLogin;
+}

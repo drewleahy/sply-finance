@@ -39,6 +39,14 @@ export function unwrapResult<T>(result: unknown): T[] {
 }
 
 /**
+ * Type assertion function to help TypeScript understand the shape of data
+ * Use this to cast objects to specific types when you know the data structure
+ */
+export function asType<T>(obj: unknown): T {
+  return obj as T;
+}
+
+/**
  * Safe object accessor that prevents TypeScript errors when accessing properties
  * Use this for single objects (not arrays)
  */

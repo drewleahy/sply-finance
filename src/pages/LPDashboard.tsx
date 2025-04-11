@@ -1,79 +1,71 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DocumentList } from "@/components/DocumentList";
 import { ProfileForm } from "@/components/ProfileForm";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { safeObject } from "@/utils/supabaseHelpers";
 
-const LPDashboard = () => {
+export default function LPDashboard() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkLPAccess = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        navigate("/lp");
-        return;
-      }
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          navigate("/lp/login");
+          return;
+        }
 
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("is_lp")
-        .eq("user_id", session.user.id as any)
-        .maybeSingle();
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("is_lp")
+          .eq("user_id", user.id)
+          .single();
 
-      if (!profile?.is_lp) {
-        navigate("/lp");
+        if (error || !safeObject(data, { is_lp: false }).is_lp) {
+          navigate("/lp/login");
+          return;
+        }
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error checking LP access:", error);
+        navigate("/lp/login");
       }
-      
-      setLoading(false);
     };
 
     checkLPAccess();
   }, [navigate]);
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/lp");
-  };
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-luxon-navy">LP Dashboard</h1>
-          <Button onClick={handleSignOut} variant="outline">
-            Sign Out
-          </Button>
-        </div>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">Limited Partner Dashboard</h1>
 
-        <Tabs defaultValue="documents" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="documents">Documents</TabsTrigger>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="documents">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-2xl font-bold text-luxon-navy mb-6">Documents</h2>
-              <DocumentList />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="profile">
-            <ProfileForm />
-          </TabsContent>
-        </Tabs>
-      </div>
+      <Tabs defaultValue="documents" className="w-full">
+        <TabsList className="mb-6">
+          <TabsTrigger value="documents">Documents</TabsTrigger>
+          <TabsTrigger value="profile">Profile</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="documents">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-2xl font-semibold mb-6">Your Documents</h2>
+            <DocumentList />
+          </div>
+        </TabsContent>
+        
+        <TabsContent value="profile">
+          <ProfileForm />
+        </TabsContent>
+      </Tabs>
     </div>
   );
-};
-
-export default LPDashboard;
+}

@@ -17,6 +17,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 
+type Document = Database['public']['Tables']['documents']['Row'];
+
 export const DocumentManagement = () => {
   const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
@@ -36,7 +38,7 @@ export const DocumentManagement = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<Document>(data);
     },
   });
 
@@ -61,7 +63,7 @@ export const DocumentManagement = () => {
 
       if (uploadError) throw uploadError;
 
-      const documentData: Database['public']['Tables']['documents']['Insert'] = {
+      const documentData: Partial<Database['public']['Tables']['documents']['Insert']> = {
         title: newDocument.title,
         description: newDocument.description,
         file_path: filePath,

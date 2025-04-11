@@ -4,6 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { PartnerCard } from "./partner/PartnerCard";
 import { PartnerLogos } from "./partner/PartnerLogos";
 import { unwrapResult } from "@/utils/supabaseHelpers";
+import { Database } from "@/integrations/supabase/types";
+
+type Partner = Database['public']['Tables']['partners']['Row'];
 
 const infrastructurePartners = [
   {
@@ -58,15 +61,6 @@ const enterpriseCustomers = [
     logo: "/lovable-uploads/29bb4bf7-9656-46d2-9df0-481d9002dda1.png"
   }
 ];
-
-type Partner = {
-  id: string;
-  name: string;
-  role: string;
-  bio: string;
-  photo_url: string | null;
-  display_order: number;
-};
 
 export const Partners = () => {
   const { data: partners = [], isLoading, error } = useQuery({

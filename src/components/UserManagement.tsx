@@ -15,6 +15,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Database } from "@/integrations/supabase/types";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 
+type Profile = Database['public']['Tables']['profiles']['Row'] & {
+  lp_groups?: {
+    name: string;
+  }
+};
+
 export const UserManagement = () => {
   const { toast } = useToast();
 
@@ -32,18 +38,20 @@ export const UserManagement = () => {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return unwrapResult(data);
+      return unwrapResult<Profile>(data);
     },
   });
 
   const toggleUserRole = async (userId: string, field: "is_admin" | "is_lp", currentValue: boolean) => {
     try {
-      const updateData = { [field]: !currentValue } as Database['public']['Tables']['profiles']['Update'];
+      const updateData: Partial<Database['public']['Tables']['profiles']['Update']> = {
+        [field]: !currentValue
+      };
       
       const { error } = await supabase
         .from("profiles")
         .update(updateData)
-        .eq("user_id", userId as any);
+        .eq("user_id", userId);
 
       if (error) throw error;
 
