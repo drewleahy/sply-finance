@@ -16,13 +16,22 @@ export const TeamSection = ({ partners }: TeamSectionProps) => {
   const primaryMembers = partners.filter(partner => 
     partner.name === "Drew Leahy" || 
     partner.name === "Tyler Williams" || 
-    partner.name === "James Wiseman"
+    partner.name === "James Wiseman" ||
+    partner.name === "Jamie Wiseman"  // Include both name variations for James/Jamie
   );
+  
+  // Normalize any "Jamie Wiseman" to "James Wiseman" for display
+  const normalizedMembers = primaryMembers.map(member => {
+    if (member.name === "Jamie Wiseman") {
+      return {...member, name: "James Wiseman"};
+    }
+    return member;
+  });
   
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {primaryMembers.map((member, index) => (
+        {normalizedMembers.map((member, index) => (
           <TeamMember 
             key={member.id} 
             member={member} 

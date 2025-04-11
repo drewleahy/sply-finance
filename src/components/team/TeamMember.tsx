@@ -25,6 +25,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "https://www.linkedin.com/in/drewleahy/";
       case "James Wiseman":
         return "https://www.linkedin.com/in/jamie-wiseman-944782/";
+      case "Jamie Wiseman":
+        return "https://www.linkedin.com/in/jamie-wiseman-944782/";
       default:
         return "";
     }
@@ -38,10 +40,15 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png";
       case "James Wiseman":
         return "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png";
+      case "Jamie Wiseman":
+        return "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
   };
+
+  // Normalize name for consistent display - always show as "James Wiseman"
+  const displayName = member.name === "Jamie Wiseman" ? "James Wiseman" : member.name;
 
   return (
     <motion.div
@@ -61,7 +68,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
             transition={{ delay: 0.5 + index * 0.2 }}
             className="absolute -top-3 -right-3 text-sply-gold z-10"
           >
-            {member.name === "Drew Leahy" || member.name === "Tyler Williams" ? (
+            {displayName === "Drew Leahy" || displayName === "Tyler Williams" ? (
               <Award className="w-8 h-8" />
             ) : (
               <Star className="w-7 h-7" />
@@ -72,12 +79,12 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         <Avatar className={cn("object-cover transition-all duration-300", 
           isPrimary ? "h-52 w-52 border-4 border-white shadow-lg" : "h-40 w-40")}>
           <AvatarImage
-            src={member.photo_url || getPlaceholderImage(member.name)}
-            alt={member.name}
+            src={member.photo_url || getPlaceholderImage(displayName)}
+            alt={displayName}
             className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
           />
           <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
-            {member.name[0]}
+            {displayName[0]}
           </AvatarFallback>
         </Avatar>
       </div>
@@ -86,7 +93,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         "text-gray-900 font-medium mb-2", 
         isPrimary ? "text-2xl" : "text-xl"
       )}>
-        {member.name}
+        {displayName}
       </h3>
       
       <p className="text-gray-600 mb-4">{member.role}</p>
@@ -98,9 +105,9 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         {member.bio}
       </p>
       
-      {getLinkedInUrl(member.name) && (
+      {getLinkedInUrl(displayName) && (
         <a 
-          href={getLinkedInUrl(member.name)} 
+          href={getLinkedInUrl(displayName)} 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"

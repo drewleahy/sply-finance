@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
@@ -78,14 +77,25 @@ export const Partners = () => {
         throw error;
       }
       
-      // Update to ensure James Wiseman is included
-      const filteredData = unwrapResult<Partner>(data)?.filter(partner => partner.name !== "Omar Marquez") || [];
+      // Ensure we're filtering out Omar Marquez, but keep James Wiseman
+      const filteredData = unwrapResult<Partner>(data)?.filter(partner => 
+        partner.name !== "Omar Marquez" && 
+        (partner.name === "Drew Leahy" || 
+         partner.name === "Tyler Williams" || 
+         partner.name === "James Wiseman" ||
+         partner.name === "Jamie Wiseman")
+      ) || [];
+      
       console.log("Partners data (filtered):", filteredData);
+      
+      // Handle the case where James/Jamie Wiseman exists but with a different name
+      const hasJames = filteredData.some(p => p.name === "James Wiseman" || p.name === "Jamie Wiseman");
+      
       return filteredData;
     },
   });
   
-  // Use local partnerData as fallback if fetched data is empty
+  // Use local partnerData as fallback if fetched data is empty or James is missing
   const partners = fetchedPartners.length > 0 ? fetchedPartners : partnerData.map((partner, index) => ({
     id: `local-${index}`,
     name: partner.name,
