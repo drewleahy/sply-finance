@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
@@ -88,15 +89,23 @@ export const Partners = () => {
       
       console.log("Partners data (filtered):", filteredData);
       
-      // Handle the case where James/Jamie Wiseman exists but with a different name
-      const hasJames = filteredData.some(p => p.name === "James Wiseman" || p.name === "Jamie Wiseman");
-      
       return filteredData;
     },
   });
   
+  // Update James's photo URL in any fetched partners data if needed
+  const updatedFetchedPartners = fetchedPartners.map(partner => {
+    if (partner.name === "James Wiseman" || partner.name === "Jamie Wiseman") {
+      return {
+        ...partner,
+        photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png"
+      };
+    }
+    return partner;
+  });
+  
   // Use local partnerData as fallback if fetched data is empty or James is missing
-  const partners = fetchedPartners.length > 0 ? fetchedPartners : partnerData.map((partner, index) => ({
+  const partners = updatedFetchedPartners.length > 0 ? updatedFetchedPartners : partnerData.map((partner, index) => ({
     id: `local-${index}`,
     name: partner.name,
     role: partner.role,

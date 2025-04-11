@@ -17,7 +17,7 @@ export const partnerData = [
   {
     name: "James Wiseman",
     role: "Partner",
-    photo_url: "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png",
+    photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png",
     display_order: 3,
     bio: "James is a seasoned finance professional with extensive experience in venture capital and strategic investment management, contributing critical expertise to our investment strategy and portfolio development."
   }

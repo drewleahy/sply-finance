@@ -39,9 +39,9 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       case "Drew Leahy":
         return "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png";
       case "James Wiseman":
-        return "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png";
+        return "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png";
       case "Jamie Wiseman":
-        return "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png";
+        return "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
@@ -76,8 +76,10 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
           </motion.div>
         )}
         
-        <Avatar className={cn("object-cover transition-all duration-300", 
-          isPrimary ? "h-52 w-52 border-4 border-white shadow-lg" : "h-40 w-40")}>
+        <Avatar className={cn(
+          "object-cover transition-all duration-300", 
+          isPrimary ? "h-52 w-52 border-4 border-white shadow-lg" : "h-40 w-40"
+        )}>
           <AvatarImage
             src={member.photo_url || getPlaceholderImage(displayName)}
             alt={displayName}
