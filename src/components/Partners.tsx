@@ -1,9 +1,9 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
 import { Database } from "@/integrations/supabase/types";
 import { partnerData } from "@/utils/partnerData";
-import { TeamMember } from "./team/TeamMember";
 import { TeamSection } from "./team/TeamSection";
 import { PartnerLogos } from "./partner/PartnerLogos";
 import { motion } from "framer-motion";
@@ -78,6 +78,7 @@ export const Partners = () => {
         throw error;
       }
       
+      // Update to ensure James Wiseman (not Jamie) is included
       const filteredData = unwrapResult<Partner>(data)?.filter(partner => partner.name !== "Omar Marquez") || [];
       console.log("Partners data (filtered):", filteredData);
       return filteredData;
