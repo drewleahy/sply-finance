@@ -78,7 +78,7 @@ export const Partners = () => {
         throw error;
       }
       
-      // Update to ensure James Wiseman (not Jamie) is included
+      // Update to ensure James Wiseman is included
       const filteredData = unwrapResult<Partner>(data)?.filter(partner => partner.name !== "Omar Marquez") || [];
       console.log("Partners data (filtered):", filteredData);
       return filteredData;
