@@ -21,9 +21,7 @@ export const TeamSection = ({ partners }: TeamSectionProps) => {
   
   // Get the remaining team members
   const otherMembers = partners.filter(partner => 
-    partner.name !== "Drew Leahy" && 
-    partner.name !== "Tyler Williams" && 
-    partner.name !== "James Wiseman"
+    !primaryMembers.some(primaryMember => primaryMember.name === partner.name)
   );
   
   return (

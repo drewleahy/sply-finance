@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
@@ -79,10 +78,7 @@ export const Partners = () => {
         throw error;
       }
       
-      // Filter out Omar Marquez from the data if present
       const filteredData = unwrapResult<Partner>(data)?.filter(partner => partner.name !== "Omar Marquez") || [];
-      
-      // Log the filtered data to help with debugging
       console.log("Partners data (filtered):", filteredData);
       return filteredData;
     },
