@@ -35,7 +35,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
       case "Drew Leahy":
         return "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png";
       case "James Wiseman":
-        return "/lovable-uploads/092a9b46-2220-4c96-80c5-d4029d622a0b.png";
+        return "/lovable-uploads/4d455109-73f2-4170-b790-16cc3a3d11a2.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
