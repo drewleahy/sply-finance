@@ -18,7 +18,7 @@ export const AssetAllocation = () => {
     <section className="py-8 md:py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-sply-navy">
-          High Net Worth Asset Allocation
+          Strategic Allocation in Alternative Investments
         </h2>
         <p className="text-base md:text-lg text-gray-600 text-center mb-6 md:mb-8 max-w-3xl mx-auto">
           Alternative investments now make up the largest portion of high-net-worth portfolios
