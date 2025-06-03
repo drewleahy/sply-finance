@@ -19,7 +19,7 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-3xl md:text-5xl font-serif text-gray-800 mb-6"
         >
-          Fueling American Aerospace & Defense Manufacturing
+          Predictable, Asset-Backed Yields from U.S. Defense & Aerospace Contracts
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
