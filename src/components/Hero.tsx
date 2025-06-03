@@ -27,7 +27,7 @@ export const Hero = () => {
           transition={{ delay: 0.5 }}
           className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
         >
-          "Private Credit on Autopilot"
+          SPLYFI offers short-duration, insured purchase order financing, targeting 12%+ annual returns with transparent reporting and institutional-grade underwriting
         </motion.p>
       </div>
     </section>
