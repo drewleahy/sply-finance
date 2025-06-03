@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
@@ -11,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{backgroundColor: '#fafafa'}}>
       {/* Header */}
       <header className="container mx-auto px-4 py-2 flex justify-end bg-white border-b">
         <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold">
