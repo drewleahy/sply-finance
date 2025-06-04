@@ -107,19 +107,6 @@ const Index = () => {
                     info@splyfi.com
                   </a>
                 </li>
-                <li>
-                  <a 
-                    href="tel:+1-555-0123" 
-                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
-                  >
-                    <Phone className="w-4 h-4 mr-2 text-gray-400" />
-                    +1 (555) 012-3456
-                  </a>
-                </li>
-                <li className="text-gray-600 font-noto-serif-ethiopic text-sm flex items-center">
-                  <MapPin className="w-4 h-4 mr-2 text-gray-400" />
-                  New York, NY
-                </li>
               </ul>
             </div>
           </div>
