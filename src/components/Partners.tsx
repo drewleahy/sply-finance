@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
@@ -115,7 +116,7 @@ export const Partners = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 font-montserrat">
+          <h2 className="text-2xl md:text-4xl font-bold mb-6 text-gray-800 font-montserrat">
             Leadership Team
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-sply-gold to-yellow-400 mx-auto mb-6"></div>
