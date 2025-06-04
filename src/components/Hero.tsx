@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden" style={{backgroundColor: '#fafafa'}}>
+    <section className="relative h-[70vh] md:h-screen flex items-center justify-center overflow-hidden" style={{backgroundColor: '#fafafa'}}>
       <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
