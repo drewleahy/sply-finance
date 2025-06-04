@@ -88,7 +88,7 @@ export const WhatWeDo = () => {
                     <div>
                       <h4 className="text-xl font-bold mb-2 font-montserrat">Proven Performance</h4>
                       <p className="text-gray-200 text-base leading-relaxed font-noto-serif-ethiopic">
-                        We've funded over 180 real purchase orders — helping American suppliers fulfill critical contracts, while generating double-digit yields for our investors.
+                        Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
                       </p>
                     </div>
                   </div>
