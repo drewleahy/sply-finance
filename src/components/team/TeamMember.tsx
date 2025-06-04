@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
@@ -62,7 +61,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
   const getImageObjectPosition = (name: string) => {
     switch (name) {
       case "Matt Saffaii":
-        return "object-cover object-center";
+        return "object-cover object-[center_30%] scale-110";
       case "Michael Slawson":
         return "object-top";
       default:
