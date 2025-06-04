@@ -38,7 +38,7 @@ export const MarketOpportunity = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
@@ -46,21 +46,21 @@ export const MarketOpportunity = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-4xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-4 max-w-4xl mx-auto px-4">
               Market Opportunity
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
+            <div className="w-20 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto font-noto-serif-ethiopic leading-relaxed">
               Multiple macro trends are creating an unprecedented opportunity in private credit markets.
             </p>
           </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Market Drivers */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               {marketDrivers.map((driver, index) => (
                 <motion.div
                   key={index}
@@ -74,21 +74,21 @@ export const MarketOpportunity = () => {
                   className="group"
                 >
                   <Card className="bg-gray-50 border-l-4 border-l-sply-navy hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                    <CardContent className="p-6">
+                    <CardContent className="p-5">
                       <div className="flex items-start space-x-4">
                         <motion.div 
                           initial={{ scale: 0, rotate: -180 }}
                           whileInView={{ scale: 1, rotate: 0 }}
                           transition={{ delay: driver.delay + 0.3, duration: 0.6, type: "spring" }}
-                          className="w-12 h-12 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
+                          className="w-10 h-10 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
                         >
-                          <driver.icon className="w-6 h-6 text-white" />
+                          <driver.icon className="w-5 h-5 text-white" />
                         </motion.div>
                         <div className="flex-1">
-                          <h4 className="font-bold text-lg mb-2 font-montserrat text-gray-800">
+                          <h4 className="font-bold text-base mb-2 font-montserrat text-gray-800">
                             {driver.title}
                           </h4>
-                          <p className="text-gray-600 font-noto-serif-ethiopic leading-relaxed">
+                          <p className="text-gray-600 font-noto-serif-ethiopic leading-relaxed text-sm">
                             {driver.description}
                           </p>
                         </div>
@@ -104,21 +104,21 @@ export const MarketOpportunity = () => {
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="lg:pl-8"
+              className="lg:pl-6"
             >
               <Card className="bg-gradient-to-br from-sply-navy to-gray-800 text-white shadow-2xl">
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <TrendingUp className="w-12 h-12 text-sply-gold mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold mb-2 font-montserrat">
+                <CardContent className="p-6">
+                  <div className="text-center mb-4">
+                    <TrendingUp className="w-10 h-10 text-sply-gold mx-auto mb-3" />
+                    <h3 className="text-xl font-bold mb-2 font-montserrat">
                       Portfolio Allocation Shift
                     </h3>
-                    <p className="text-gray-200 font-noto-serif-ethiopic">
+                    <p className="text-gray-200 font-noto-serif-ethiopic text-sm">
                       High-net-worth investors are reallocating to alternatives
                     </p>
                   </div>
                   
-                  <div className="h-[280px] w-full mb-6">
+                  <div className="h-[240px] w-full mb-4">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
@@ -126,7 +126,7 @@ export const MarketOpportunity = () => {
                           cx="50%"
                           cy="50%"
                           labelLine={false}
-                          outerRadius={100}
+                          outerRadius={85}
                           fill="#8884d8"
                           dataKey="value"
                           label={({ name, value }) => `${name} ${value}%`}
@@ -141,8 +141,8 @@ export const MarketOpportunity = () => {
                   </div>
 
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-sply-gold mb-2 font-montserrat">41%</div>
-                    <div className="text-lg text-gray-200 font-noto-serif-ethiopic mb-2">of HNW portfolios now in alternatives</div>
+                    <div className="text-3xl font-bold text-sply-gold mb-1 font-montserrat">41%</div>
+                    <div className="text-base text-gray-200 font-noto-serif-ethiopic mb-2">of HNW portfolios now in alternatives</div>
                     <div className="text-xs text-gray-400">
                       Source:{" "}
                       <a 
