@@ -2,7 +2,7 @@
 export const partnerData = [
   {
     name: "Drew Leahy",
-    role: "Managing Partner",
+    role: "President",
     photo_url: "/lovable-uploads/8334bfa7-2b05-482e-9e5f-9ddd8c7b3ecf.png",
     display_order: 1,
     bio: "Drew Leahy spent a decade in GP/LP funds, managing 100+ LPs across $50M+ AUM, backing software across AI, logistics, and fintech. Prior to fund management, he was an e-commerce operator with millions in total sales and experienced cashflow operational needs critically with international suppliers."
