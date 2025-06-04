@@ -30,7 +30,7 @@ export const PartnerLogos = ({ title, partners, gridCols = "grid-cols-2 md:grid-
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05, duration: 0.4 }}
-            className="group flex items-center justify-center p-3 md:p-4 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-16 md:h-18 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+            className="group flex items-center justify-center p-3 md:p-4 bg-transparent rounded-lg transition-all duration-300 h-16 md:h-18"
           >
             <img 
               src={partner.logo} 
