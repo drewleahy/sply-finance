@@ -127,7 +127,7 @@ export const Partners = () => {
         <TeamSection partners={partners} />
 
         <div className="mt-32">
-          <div className="bg-gray-50 py-16 px-8 rounded-2xl">
+          <div className="py-16 px-8 rounded-2xl" style={{ backgroundColor: '#fafafa' }}>
             <PartnerLogos 
               title="Infrastructure Partners & Funders"
               partners={infrastructurePartners}
