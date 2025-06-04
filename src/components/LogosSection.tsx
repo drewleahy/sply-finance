@@ -58,20 +58,20 @@ const enterpriseCustomers = [
 
 export const LogosSection = () => {
   return (
-    <section className="py-16" style={{ backgroundColor: '#fafafa' }}>
-      <div className="container mx-auto px-4">
-        <div className="py-8 px-8 rounded-2xl" style={{ backgroundColor: '#fafafa' }}>
+    <section className="py-12" style={{ backgroundColor: '#fafafa' }}>
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="py-6 px-6 rounded-xl" style={{ backgroundColor: '#fafafa' }}>
           <PartnerLogos 
             title="Infrastructure Partners & Funders"
             partners={infrastructurePartners}
-            gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+            gridCols="grid-cols-3 md:grid-cols-5"
           />
 
-          <div className="border-t border-gray-200 pt-16">
+          <div className="border-t border-gray-200/60 pt-12">
             <PartnerLogos 
               title="Enterprise Customers"
               partners={enterpriseCustomers}
-              gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+              gridCols="grid-cols-3 md:grid-cols-4 lg:grid-cols-7"
             />
           </div>
         </div>
