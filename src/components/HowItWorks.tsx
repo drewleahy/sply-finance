@@ -48,7 +48,7 @@ export const HowItWorks = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-20"
           >
-            <h2 className="text-2xl md:text-4xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               How It Works
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mb-8 rounded-full"></div>
@@ -92,7 +92,7 @@ export const HowItWorks = () => {
                       <h4 className="font-bold text-lg mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
                         {step.title}
                       </h4>
-                      <p className="text-sm font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
+                      <p className="text-lg font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
                         {step.subtitle}
                       </p>
                     </CardContent>
@@ -126,10 +126,10 @@ export const HowItWorks = () => {
             className="text-center mt-20"
           >
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-6">
+              <p className="text-lg md:text-xl text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-6">
                 Our streamlined process ensures efficient capital deployment and consistent returns for our limited partners through a proven, repeatable framework.
               </p>
-              <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 font-montserrat">
+              <div className="flex justify-center items-center space-x-6 text-lg text-gray-500 font-montserrat">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
                   <span>Insured</span>

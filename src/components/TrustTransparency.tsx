@@ -48,7 +48,7 @@ export const TrustTransparency = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-2xl md:text-4xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               Built for Safety. Designed for Transparency.
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
@@ -84,7 +84,7 @@ export const TrustTransparency = () => {
                     <h4 className="font-bold text-lg mb-3 font-montserrat leading-tight text-gray-800">
                       {feature.title}
                     </h4>
-                    <p className="text-sm font-noto-serif-ethiopic text-gray-600 leading-relaxed">
+                    <p className="text-lg font-noto-serif-ethiopic text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>

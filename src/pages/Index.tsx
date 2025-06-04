@@ -38,7 +38,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-white border-t mt-16">
         <div className="container mx-auto px-4 py-8 flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0">
-          <p className="text-gray-600 font-noto-serif-ethiopic">© 2024 All rights reserved</p>
+          <p className="text-lg text-gray-600 font-noto-serif-ethiopic">© 2024 All rights reserved</p>
           <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold font-montserrat">
             LP LOGIN
           </Link>
