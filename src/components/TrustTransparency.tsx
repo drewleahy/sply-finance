@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Shield, CheckCircle, FileCheck, Users, BarChart3 } from "lucide-react";
+import { Shield, CheckCircle, FileCheck, Users, BarChart3, Scale } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const TrustTransparency = () => {
@@ -34,6 +34,12 @@ export const TrustTransparency = () => {
       icon: BarChart3,
       description: "Real-time performance tracking and reporting",
       delay: 0.4,
+    },
+    {
+      title: "Backed by UCC Liens & Legal Assignments",
+      icon: Scale,
+      description: "Investors benefit from enforceable claims on receivables, providing a clear path to recourse.",
+      delay: 0.5,
     },
   ];
 
