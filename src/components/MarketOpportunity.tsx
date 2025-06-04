@@ -52,7 +52,7 @@ export const MarketOpportunity = () => {
               Market Opportunity
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto font-noto-serif-ethiopic leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto font-noto-serif-ethiopic leading-relaxed whitespace-nowrap">
               Multiple macro trends are creating an unprecedented opportunity in private credit markets.
             </p>
           </motion.div>
