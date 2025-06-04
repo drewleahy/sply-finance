@@ -67,21 +67,25 @@ export const WhatWeDo = () => {
                       <TrendingUp className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2 font-montserrat">Mutual Success</h4>
+                      <h4 className="text-xl font-bold mb-2 font-montserrat">Proven Performance</h4>
                       <p className="text-gray-200 text-lg leading-relaxed font-noto-serif-ethiopic">
-                        We unlock opportunity for American suppliers — and generate yield for our investors.
+                        We've funded over 180 real purchase orders — helping American suppliers fulfill critical contracts, while generating double-digit yields for our investors.
                       </p>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="grid grid-cols-3 gap-4 mt-8">
                     <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-2xl font-bold text-sply-gold font-montserrat">$50M+</div>
-                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic">Capital Deployed</div>
+                      <div className="text-xl font-bold text-sply-gold font-montserrat">$31M+</div>
+                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Purchase Orders Financed</div>
                     </div>
                     <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-2xl font-bold text-sply-gold font-montserrat">100+</div>
-                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic">Suppliers Funded</div>
+                      <div className="text-xl font-bold text-sply-gold font-montserrat">188</div>
+                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Transactions to Date</div>
+                    </div>
+                    <div className="text-center p-4 bg-white/10 rounded-lg">
+                      <div className="text-xl font-bold text-sply-gold font-montserrat">83 Days</div>
+                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Average PO Cycle</div>
                     </div>
                   </div>
                 </CardContent>
