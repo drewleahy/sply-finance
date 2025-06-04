@@ -101,10 +101,10 @@ export const TrustTransparency = () => {
             className="text-center"
           >
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+              <h3 className="text-xl md:text-2xl font-montserrat font-bold text-gray-800 mb-4 max-w-4xl mx-auto px-4">
                 Institutional-Grade Protection
               </h3>
-              <p className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
+              <p className="text-sm md:text-base text-gray-600 mb-6 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
                 Every investment is protected by multiple layers of security, verification, and oversight — giving you the confidence to invest with complete peace of mind.
               </p>
             </div>
