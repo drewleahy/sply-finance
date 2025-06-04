@@ -21,11 +21,11 @@ export const WhatWeDo = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Left Side - Problem/Solution */}
             <div className="space-y-8">
-              <Card className="border-l-4 border-l-red-500 bg-red-50/50">
+              <Card className="border-l-4 border-l-gray-400 bg-gray-50/80">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mt-1">
-                      <Zap className="w-4 h-4 text-red-600" />
+                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mt-1">
+                      <Zap className="w-4 h-4 text-gray-600" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-2">The Challenge</h4>
@@ -41,11 +41,11 @@ export const WhatWeDo = () => {
                 <ArrowRight className="w-8 h-8 text-sply-gold" />
               </div>
 
-              <Card className="border-l-4 border-l-sply-gold bg-yellow-50/50">
+              <Card className="border-l-4 border-l-sply-navy bg-white">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mt-1">
-                      <Shield className="w-4 h-4 text-sply-gold" />
+                    <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center mt-1">
+                      <Shield className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-2">Our Solution</h4>
