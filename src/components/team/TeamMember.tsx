@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
@@ -69,23 +70,23 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
             alt={displayName}
             className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
           />
-          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
+          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-noto-serif-ethiopic">
             {displayName[0]}
           </AvatarFallback>
         </Avatar>
       </div>
       
       <h3 className={cn(
-        "text-gray-900 font-medium mb-2", 
+        "text-gray-900 font-bold mb-2 font-montserrat", 
         isPrimary ? "text-2xl" : "text-xl"
       )}>
         {displayName}
       </h3>
       
-      <p className="text-gray-600 mb-4">{member.role}</p>
+      <p className="text-gray-600 mb-4 font-noto-serif-ethiopic">{member.role}</p>
       
       <p className={cn(
-        "text-gray-600 leading-relaxed mb-4",
+        "text-gray-600 leading-relaxed mb-4 font-noto-serif-ethiopic",
         isPrimary ? "text-sm max-w-sm" : "text-xs max-w-xs"
       )}>
         {member.bio}
@@ -99,7 +100,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
           className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
         >
           <Linkedin className="w-5 h-5" />
-          <span className="text-sm">LinkedIn</span>
+          <span className="text-sm font-noto-serif-ethiopic">LinkedIn</span>
         </a>
       )}
     </motion.div>

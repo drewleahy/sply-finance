@@ -55,14 +55,14 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
             alt={partner.name}
             className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
           />
-          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-serif">
+          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-noto-serif-ethiopic">
             {partner.name[0]}
           </AvatarFallback>
         </Avatar>
       </div>
-      <h3 className="text-2xl text-gray-900 font-medium mb-2">{partner.name}</h3>
-      <p className="text-gray-600 mb-4">{partner.role}</p>
-      <p className="text-gray-600 text-sm leading-relaxed max-w-sm mb-4">
+      <h3 className="text-2xl text-gray-900 font-bold mb-2 font-montserrat">{partner.name}</h3>
+      <p className="text-gray-600 mb-4 font-noto-serif-ethiopic">{partner.role}</p>
+      <p className="text-gray-600 text-sm leading-relaxed max-w-sm mb-4 font-noto-serif-ethiopic">
         {partner.bio}
       </p>
       {getLinkedInUrl(partner.name) && (
@@ -73,7 +73,7 @@ export const PartnerCard = ({ partner, index }: PartnerCardProps) => {
           className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
         >
           <Linkedin className="w-5 h-5" />
-          <span className="text-sm">LinkedIn</span>
+          <span className="text-sm font-noto-serif-ethiopic">LinkedIn</span>
         </a>
       )}
     </motion.div>
