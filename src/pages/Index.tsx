@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { WhatWeDo } from "@/components/WhatWeDo";
@@ -51,6 +50,26 @@ const Index = () => {
               <p className="text-gray-600 mb-4 font-noto-serif-ethiopic leading-relaxed text-sm">
                 Powering American manufacturing through innovative trade finance solutions.
               </p>
+              
+              {/* Social Links */}
+              <div className="flex space-x-3">
+                <a 
+                  href="https://linkedin.com/in/drew-leahy" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-sply-navy hover:text-white transition-all duration-200"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/tyler-williams-476283101/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-sply-navy hover:text-white transition-all duration-200"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
             </div>
 
             {/* Quick Links */}
