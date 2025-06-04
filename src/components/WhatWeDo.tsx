@@ -35,9 +35,9 @@ export const WhatWeDo = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="relative"
             >
-              <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/10 to-transparent transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:from-sply-gold/15 cursor-pointer">
-                <CardContent className="p-4 lg:p-6">
-                  <div className="flex items-start space-x-3">
+              <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/10 to-transparent transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:from-sply-gold/15 cursor-pointer min-h-[140px]">
+                <CardContent className="p-4 lg:p-6 h-full flex items-center">
+                  <div className="flex items-start space-x-3 w-full">
                     <div className="flex-shrink-0 w-7 h-7 bg-sply-gold text-white rounded-full flex items-center justify-center font-bold text-sm">
                       1
                     </div>
@@ -63,9 +63,9 @@ export const WhatWeDo = () => {
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               className="relative"
             >
-              <Card className="border-l-4 border-l-gray-400 bg-gray-50/80 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-100/90 cursor-pointer">
-                <CardContent className="p-4 lg:p-6">
-                  <div className="flex items-start space-x-3">
+              <Card className="border-l-4 border-l-gray-400 bg-gray-50/80 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-100/90 cursor-pointer min-h-[140px]">
+                <CardContent className="p-4 lg:p-6 h-full flex items-center">
+                  <div className="flex items-start space-x-3 w-full">
                     <div className="flex-shrink-0 w-7 h-7 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
                       2
                     </div>
@@ -89,9 +89,9 @@ export const WhatWeDo = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-50/50 cursor-pointer">
-                <CardContent className="p-4 lg:p-6">
-                  <div className="flex items-start space-x-3">
+              <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-50/50 cursor-pointer min-h-[140px]">
+                <CardContent className="p-4 lg:p-6 h-full flex items-center">
+                  <div className="flex items-start space-x-3 w-full">
                     <div className="flex-shrink-0 w-7 h-7 bg-sply-navy text-white rounded-full flex items-center justify-center font-bold text-sm">
                       3
                     </div>
