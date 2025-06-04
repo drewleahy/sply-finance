@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
@@ -66,54 +65,46 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2 }}
-      className={cn(
-        "flex flex-col items-center text-center group",
-        isPrimary && "bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-      )}
+      transition={{ delay: index * 0.1 }}
+      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 aspect-square flex flex-col justify-between"
     >
-      <div className="mb-6 relative">
-        <Avatar className={cn(
-          "object-cover transition-all duration-300", 
-          isPrimary ? "h-52 w-52 border-4 border-white shadow-lg" : "h-40 w-40"
-        )}>
-          <AvatarImage
-            src={member.photo_url || getPlaceholderImage(displayName)}
-            alt={displayName}
-            className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
-          />
-          <AvatarFallback className="bg-gray-100 text-4xl text-gray-500 font-noto-serif-ethiopic">
-            {displayName[0]}
-          </AvatarFallback>
-        </Avatar>
+      <div className="flex flex-col items-center text-center flex-grow">
+        <div className="mb-4 relative">
+          <Avatar className="h-24 w-24 border-3 border-gray-200 shadow-md">
+            <AvatarImage
+              src={member.photo_url || getPlaceholderImage(displayName)}
+              alt={displayName}
+              className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
+            />
+            <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
+              {displayName[0]}
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        
+        <h3 className="text-lg font-bold text-gray-900 mb-1 font-montserrat">
+          {displayName}
+        </h3>
+        
+        <p className="text-gray-600 mb-3 font-noto-serif-ethiopic text-sm">{member.role}</p>
+        
+        <p className="text-gray-600 leading-relaxed text-xs font-noto-serif-ethiopic line-clamp-4 flex-grow">
+          {member.bio}
+        </p>
       </div>
       
-      <h3 className={cn(
-        "text-gray-900 font-bold mb-2 font-montserrat", 
-        isPrimary ? "text-2xl" : "text-xl"
-      )}>
-        {displayName}
-      </h3>
-      
-      <p className="text-gray-600 mb-4 font-noto-serif-ethiopic">{member.role}</p>
-      
-      <p className={cn(
-        "text-gray-600 leading-relaxed mb-4 font-noto-serif-ethiopic",
-        isPrimary ? "text-sm max-w-sm" : "text-xs max-w-xs"
-      )}>
-        {member.bio}
-      </p>
-      
       {getLinkedInUrl(displayName) && (
-        <a 
-          href={getLinkedInUrl(displayName)} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-        >
-          <Linkedin className="w-5 h-5" />
-          <span className="text-sm font-noto-serif-ethiopic">LinkedIn</span>
-        </a>
+        <div className="mt-4 pt-4 border-t border-gray-100">
+          <a 
+            href={getLinkedInUrl(displayName)} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
+          >
+            <Linkedin className="w-4 h-4" />
+            <span className="font-noto-serif-ethiopic">LinkedIn</span>
+          </a>
+        </div>
       )}
     </motion.div>
   );
