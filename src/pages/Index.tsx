@@ -9,6 +9,7 @@ import { FundDetails } from "@/components/FundDetails";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TrustTransparency } from "@/components/TrustTransparency";
+import { MarketOpportunity } from "@/components/MarketOpportunity";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -33,6 +34,7 @@ const Index = () => {
         <WhatWeDo />
         <HowItWorks />
         <TrustTransparency />
+        <MarketOpportunity />
         <InvestmentThesis />
         <Partners />
         <FundDetails />
