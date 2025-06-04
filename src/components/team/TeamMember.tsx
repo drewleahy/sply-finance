@@ -62,13 +62,13 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
   const getImageObjectPosition = (name: string) => {
     switch (name) {
       case "Matt Saffaii":
-        return "object-cover object-[center_30%] scale-110";
+        return "object-cover object-[center_30%] scale-110 group-hover:scale-125";
       case "Michael Slawson":
-        return "object-cover object-center scale-125";
+        return "object-cover object-center scale-125 group-hover:scale-150";
       case "Haley Swank":
-        return "object-cover object-[center_20%]";
+        return "object-cover object-[center_20%] group-hover:scale-105";
       default:
-        return "object-center";
+        return "object-center group-hover:scale-105";
     }
   };
 
@@ -88,7 +88,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
             <AvatarImage
               src={member.photo_url || getPlaceholderImage(displayName)}
               alt={displayName}
-              className={`object-cover ${getImageObjectPosition(displayName)} w-full h-full transition-all duration-300 grayscale group-hover:grayscale-0 group-hover:scale-105`}
+              className={`object-cover ${getImageObjectPosition(displayName)} w-full h-full transition-all duration-300 grayscale group-hover:grayscale-0`}
             />
             <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
               {displayName[0]}
