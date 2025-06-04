@@ -66,7 +66,7 @@ export const HowItWorks = () => {
             </div>
             
             {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
               {steps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -79,20 +79,20 @@ export const HowItWorks = () => {
                   }}
                   className="flex flex-col items-center group"
                 >
-                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full h-64 max-w-sm mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
-                    <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full h-48 max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
+                    <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                       <motion.div 
                         initial={{ scale: 0, rotate: -180 }}
                         whileInView={{ scale: 1, rotate: 0 }}
                         transition={{ delay: step.delay + 0.4, duration: 0.6, type: "spring" }}
-                        className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
+                        className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
                       >
-                        <step.icon className="w-10 h-10 text-white" />
+                        <step.icon className="w-8 h-8 text-white" />
                       </motion.div>
-                      <h4 className="font-bold text-xl mb-3 font-montserrat leading-tight tracking-tight text-gray-800">
+                      <h4 className="font-bold text-lg mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
                         {step.title}
                       </h4>
-                      <p className="text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
+                      <p className="text-sm font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
                         {step.subtitle}
                       </p>
                     </CardContent>
@@ -100,12 +100,12 @@ export const HowItWorks = () => {
                   
                   {/* Enhanced Mobile Connection Indicator */}
                   {index < steps.length - 1 && (
-                    <div className="lg:hidden mt-8 mb-4">
+                    <div className="lg:hidden mt-6 mb-2">
                       <motion.div
                         initial={{ opacity: 0, scale: 0, rotate: -90 }}
                         whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ delay: step.delay + 0.6, duration: 0.4, type: "spring" }}
-                        className="w-8 h-8 text-gray-500"
+                        className="w-6 h-6 text-gray-500"
                       >
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full drop-shadow-sm">
                           <path d="M12 2L12 22M12 22L18 16M12 22L6 16"/>
