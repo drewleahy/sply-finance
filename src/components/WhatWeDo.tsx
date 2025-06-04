@@ -108,23 +108,6 @@ export const WhatWeDo = () => {
               </Card>
             </motion.div>
           </div>
-
-          {/* Bottom Summary - Enhanced styling to match other sections */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className="text-center"
-          >
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-montserrat font-bold text-gray-800 mb-4 max-w-4xl mx-auto px-4">
-                Asset-Backed Investment Strategy
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-6 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
-                Our streamlined process ensures efficient capital deployment and consistent returns through a proven, repeatable framework backed by real assets and institutional partnerships.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
