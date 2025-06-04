@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
@@ -64,6 +65,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "object-cover object-[center_30%] scale-110";
       case "Michael Slawson":
         return "object-cover object-center scale-125";
+      case "Haley Swank":
+        return "object-cover object-[center_20%]";
       default:
         return "object-center";
     }
