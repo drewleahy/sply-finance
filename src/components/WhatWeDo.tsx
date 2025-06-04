@@ -98,9 +98,6 @@ export const WhatWeDo = () => {
                       <p className="text-gray-200 text-xs lg:text-sm leading-relaxed font-noto-serif-ethiopic">
                         Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
                       </p>
-                      <p className="text-gray-300 text-xs italic mt-1 font-noto-serif-ethiopic">
-                        As of data collected November 2023 – March 2025
-                      </p>
                     </div>
                   </div>
                   
@@ -120,6 +117,9 @@ export const WhatWeDo = () => {
                         <div className="text-xs text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Average PO Cycle</div>
                       </div>
                     </div>
+                    <p className="text-gray-300 text-xs italic mt-2 font-noto-serif-ethiopic text-center">
+                      As of data collected November 2023 – March 2025
+                    </p>
                   </div>
                 </CardContent>
               </Card>
