@@ -78,7 +78,6 @@ export const Partners = () => {
         throw error;
       }
       
-      // Ensure we're filtering out Omar Marquez, but keep James Wiseman
       const filteredData = unwrapResult<Partner>(data)?.filter(partner => 
         partner.name !== "Omar Marquez" && 
         (partner.name === "Drew Leahy" || 
@@ -93,19 +92,8 @@ export const Partners = () => {
     },
   });
   
-  // Update James's photo URL in any fetched partners data if needed
-  const updatedFetchedPartners = fetchedPartners.map(partner => {
-    if (partner.name === "James Wiseman" || partner.name === "Jamie Wiseman") {
-      return {
-        ...partner,
-        photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png"
-      };
-    }
-    return partner;
-  });
-  
-  // Use local partnerData as fallback if fetched data is empty or James is missing
-  const partners = updatedFetchedPartners.length > 0 ? updatedFetchedPartners : partnerData.map((partner, index) => ({
+  // Use local partnerData as primary source, convert to the expected format
+  const partners = partnerData.map((partner, index) => ({
     id: `local-${index}`,
     name: partner.name,
     role: partner.role,
