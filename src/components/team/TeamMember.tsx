@@ -80,7 +80,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 aspect-square flex flex-col justify-between hover:scale-105"
+      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col justify-between hover:scale-105"
     >
       <div className="flex flex-col items-center text-center flex-grow">
         <div className="mb-4 relative">
@@ -102,7 +102,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         
         <p className="text-gray-600 mb-3 font-noto-serif-ethiopic text-sm">{member.role}</p>
         
-        <p className="text-gray-600 leading-relaxed text-xs font-noto-serif-ethiopic line-clamp-4 flex-grow">
+        <p className="text-gray-600 leading-relaxed text-xs font-noto-serif-ethiopic flex-grow">
           {member.bio}
         </p>
       </div>
