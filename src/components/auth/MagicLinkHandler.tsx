@@ -49,12 +49,12 @@ export const MagicLinkHandler = () => {
   }, [navigate, toast]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-noto-serif-ethiopic">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-4 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-center font-montserrat">
           {isProcessing ? "Signing in..." : "Sign In Complete"}
         </h2>
-        <p className="text-center text-gray-600">
+        <p className="text-center text-gray-600 font-noto-serif-ethiopic">
           {isProcessing
             ? "Please wait while we verify your credentials."
             : "You can now close this window."}

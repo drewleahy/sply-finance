@@ -29,7 +29,7 @@ export const TeamSection = ({ partners }: TeamSectionProps) => {
   });
   
   return (
-    <>
+    <div className="font-noto-serif-ethiopic">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {normalizedMembers.map((member, index) => (
           <TeamMember 
@@ -40,6 +40,6 @@ export const TeamSection = ({ partners }: TeamSectionProps) => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
