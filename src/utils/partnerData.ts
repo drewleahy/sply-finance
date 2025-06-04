@@ -19,6 +19,6 @@ export const partnerData = [
     role: "Partner",
     photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png",
     display_order: 3,
-    bio: "James is a seasoned finance professional with extensive experience in venture capital and strategic investment management, contributing critical expertise to our investment strategy and portfolio development."
+    bio: "Jamie Wiseman is a private equity attorney and investor with 25+ years of experience across fund structuring, real estate, and private markets. He's a Principal at Cayuga Capital and was previously Associate General Counsel at Strategic Value Partners, where he led $1B+ in global real estate acquisitions. Jamie began his legal career at Debevoise & Plimpton and Gibson Dunn, and holds a J.D. and B.A. from Cornell University."
   }
 ];
