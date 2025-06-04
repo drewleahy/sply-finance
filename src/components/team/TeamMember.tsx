@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
@@ -58,6 +59,17 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
     }
   };
 
+  const getImageObjectPosition = (name: string) => {
+    switch (name) {
+      case "Matt Saffaii":
+        return "object-top";
+      case "Michael Slawson":
+        return "object-top";
+      default:
+        return "object-center";
+    }
+  };
+
   // Normalize name for consistent display - always show as "James Wiseman"
   const displayName = member.name === "Jamie Wiseman" ? "James Wiseman" : member.name;
 
@@ -74,7 +86,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
             <AvatarImage
               src={member.photo_url || getPlaceholderImage(displayName)}
               alt={displayName}
-              className="object-cover object-center w-full h-full transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0"
+              className={`object-cover ${getImageObjectPosition(displayName)} w-full h-full transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0`}
             />
             <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
               {displayName[0]}
