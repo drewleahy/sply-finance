@@ -1,4 +1,5 @@
 
+
 export const partnerData = [
   {
     name: "Drew Leahy",
@@ -20,5 +21,13 @@ export const partnerData = [
     photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png",
     display_order: 3,
     bio: "Jamie Wiseman is a private equity attorney and investor with 25+ years of experience across fund structuring, real estate, and private markets. He's a Principal at Cayuga Capital and was previously Associate General Counsel at Strategic Value Partners, where he led $1B+ in global real estate acquisitions. Jamie began his legal career at Debevoise & Plimpton and Gibson Dunn, and holds a J.D. and B.A. from Cornell University."
+  },
+  {
+    name: "Matt Saffaii",
+    role: "General Partner",
+    photo_url: "/lovable-uploads/c4830ecd-7c8f-4fff-8292-15424ff7b1f3.png",
+    display_order: 4,
+    bio: "Matt Saffaii runs a $1B private equity fund across 6 vintages with great success (Arrowroot PE) and connections to many lenders via the leverage across his portfolios."
   }
 ];
+

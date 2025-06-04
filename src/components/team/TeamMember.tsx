@@ -27,6 +27,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "https://www.linkedin.com/in/jamie-wiseman-944782/";
       case "Jamie Wiseman":
         return "https://www.linkedin.com/in/jamie-wiseman-944782/";
+      case "Matt Saffaii":
+        return "https://www.linkedin.com/in/matthew-j-s-673570/";
       default:
         return "";
     }
@@ -42,6 +44,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png";
       case "Jamie Wiseman":
         return "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png";
+      case "Matt Saffaii":
+        return "/lovable-uploads/c4830ecd-7c8f-4fff-8292-15424ff7b1f3.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }
