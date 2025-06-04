@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { WhatWeDo } from "@/components/WhatWeDo";
@@ -103,9 +104,12 @@ const Index = () => {
                 >
                   Privacy Policy
                 </Link>
-                <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
+                <Link 
+                  to="/terms" 
+                  className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic"
+                >
                   Terms of Service
-                </span>
+                </Link>
                 <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
                   Investment Disclosures
                 </span>
