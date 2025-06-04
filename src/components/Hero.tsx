@@ -29,7 +29,7 @@ export const Hero = () => {
           className="flex justify-center"
         >
           <Button className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat px-8 py-3 text-lg">
-            Request Access
+            Connect with Our Team
           </Button>
         </motion.div>
       </div>
