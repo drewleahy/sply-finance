@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,6 +14,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import LPLogin from "./pages/LPLogin";
 import LPDashboard from "./pages/LPDashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -31,6 +33,7 @@ const App = () => {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/lp" element={<LPLogin />} />
             <Route path="/lp/dashboard" element={<LPDashboard />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
           <Toaster />
           <SonnerToaster />
