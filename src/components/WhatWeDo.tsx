@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const WhatWeDo = () => {
   return (
@@ -8,19 +9,30 @@ export const WhatWeDo = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               Our Approach
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
             <h3 className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
               Private credit that powers U.S. manufacturing by funding real purchase orders — fast, insured, and transparent.
             </h3>
-          </div>
+          </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
             {/* Left Side - Problem/Solution */}
-            <div className="space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-6"
+            >
               <Card className="border-l-4 border-l-gray-400 bg-gray-50/80">
                 <CardContent className="p-4">
                   <div className="flex items-start space-x-3">
@@ -56,10 +68,15 @@ export const WhatWeDo = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
 
             {/* Right Side - Value Proposition */}
-            <div className="lg:pl-8">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:pl-8"
+            >
               <Card className="border-2 border-sply-navy bg-sply-navy text-white shadow-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-start space-x-4 mb-6">
@@ -90,8 +107,25 @@ export const WhatWeDo = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
+
+          {/* Bottom Summary - Enhanced styling to match other sections */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+            className="text-center"
+          >
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-montserrat font-bold text-gray-800 mb-4 max-w-4xl mx-auto px-4">
+                Asset-Backed Investment Strategy
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 mb-6 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
+                Our streamlined process ensures efficient capital deployment and consistent returns through a proven, repeatable framework backed by real assets and institutional partnerships.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
