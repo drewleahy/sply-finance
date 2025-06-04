@@ -55,7 +55,7 @@ export const TrustTransparency = () => {
             className="text-center mb-16"
           >
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
-              Built for Safety. Designed for Transparency.
+              yield built with safety and transparency
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
             <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
