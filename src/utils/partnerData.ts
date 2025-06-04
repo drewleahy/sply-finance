@@ -33,7 +33,7 @@ export const partnerData = [
     role: "Advisor",
     photo_url: "/lovable-uploads/57c65b12-1433-47b2-b924-494dfc22de9e.png",
     display_order: 5,
-    bio: "Michael Slawson is a seasoned investor and operator with experience across venture capital, M&A, and consumer brands. He was a founding team member at Springdale Ventures and previously led brand investments at SKU, working with early-stage CPG companies. Michael brings deep expertise in scaling consumer businesses and navigating early-stage capital strategy."
+    bio: "Michael Slawson has raised over $100M in private credit to fuel growth for companies through his work at Hum Capital. He now leads Apero Advisors, where he partners with sponsor-backed B2B businesses to build, test, and scale go-to-market systems. His expertise spans fractional sales leadership, market studies, and AI-powered GTM workflows that drive efficient and sustainable growth."
   },
   {
     name: "Haley Swank",
