@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Zap, Shield, TrendingUp, Target } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const WhatWeDo = () => {
@@ -38,17 +38,12 @@ export const WhatWeDo = () => {
               {/* The Opportunity - New First Block */}
               <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/5 to-transparent transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-sply-gold/10 cursor-pointer">
                 <CardContent className="p-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-sply-gold rounded-full flex items-center justify-center mt-1 transition-transform duration-300 group-hover:scale-110">
-                      <Target className="w-3 h-3 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Opportunity</h4>
-                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
-                        American suppliers are receiving more purchase orders than ever — but capital isn't keeping up. 
-                        Rising demand from defense and infrastructure projects is creating a financing gap across U.S. manufacturing.
-                      </p>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Opportunity</h4>
+                    <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
+                      American suppliers are receiving more purchase orders than ever — but capital isn't keeping up. 
+                      Rising demand from defense and infrastructure projects is creating a financing gap across U.S. manufacturing.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -59,16 +54,11 @@ export const WhatWeDo = () => {
 
               <Card className="border-l-4 border-l-gray-400 bg-gray-50/80 transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-100/90 cursor-pointer">
                 <CardContent className="p-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center mt-1 transition-all duration-300 hover:bg-gray-300">
-                      <Zap className="w-3 h-3 text-gray-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Challenge</h4>
-                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
-                        Small vendors win big contracts — but lack the cash to fulfill them. Banks can't move fast enough.
-                      </p>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Challenge</h4>
+                    <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
+                      Small vendors win big contracts — but lack the cash to fulfill them. Banks can't move fast enough.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -79,16 +69,11 @@ export const WhatWeDo = () => {
 
               <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-50/50 cursor-pointer flex-grow">
                 <CardContent className="p-4 h-full flex flex-col">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center mt-1 transition-all duration-300 hover:bg-sply-navy">
-                      <Shield className="w-3 h-3 text-white" />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">Our Solution</h4>
-                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
-                        SPLYFI bridges that gap — funding verified purchase orders from Fortune 1000 and government buyers.
-                      </p>
-                    </div>
+                  <div className="flex-grow">
+                    <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">Our Solution</h4>
+                    <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
+                      SPLYFI bridges that gap — funding verified purchase orders from Fortune 1000 and government buyers.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
