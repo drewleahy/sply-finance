@@ -127,16 +127,21 @@ export const Partners = () => {
         <TeamSection partners={partners} />
 
         <div className="mt-32">
-          <PartnerLogos 
-            title="Infrastructure Partners & Funders"
-            partners={infrastructurePartners}
-          />
+          <div className="bg-gray-50 py-16 px-8 rounded-2xl">
+            <PartnerLogos 
+              title="Infrastructure Partners & Funders"
+              partners={infrastructurePartners}
+              gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+            />
 
-          <PartnerLogos 
-            title="Enterprise Customers"
-            partners={enterpriseCustomers}
-            gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-7"
-          />
+            <div className="border-t border-gray-200 pt-16">
+              <PartnerLogos 
+                title="Enterprise Customers"
+                partners={enterpriseCustomers}
+                gridCols="grid-cols-2 md:grid-cols-3 lg:grid-cols-7"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
