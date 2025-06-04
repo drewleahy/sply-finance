@@ -110,9 +110,12 @@ const Index = () => {
                 >
                   Terms of Service
                 </Link>
-                <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
+                <Link 
+                  to="/investment-disclosures" 
+                  className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic"
+                >
                   Investment Disclosures
-                </span>
+                </Link>
               </div>
             </div>
             

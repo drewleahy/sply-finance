@@ -16,6 +16,7 @@ import LPLogin from "./pages/LPLogin";
 import LPDashboard from "./pages/LPDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import InvestmentDisclosures from "./pages/InvestmentDisclosures";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/lp/dashboard" element={<LPDashboard />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/investment-disclosures" element={<InvestmentDisclosures />} />
           </Routes>
           <Toaster />
           <SonnerToaster />
