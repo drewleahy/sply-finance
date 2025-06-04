@@ -31,7 +31,7 @@ export const HowItWorks = () => {
     },
     {
       title: "Yield Returned",
-      subtitle: "(capital + yield to investor)",
+      subtitle: "(principal + yield)",
       icon: TrendingUp,
       delay: 0.6,
     },
