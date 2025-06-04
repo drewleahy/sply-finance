@@ -72,39 +72,45 @@ export const WhatWeDo = () => {
               </Card>
             </motion.div>
 
-            {/* Right Side - Value Proposition */}
+            {/* Right Side - Enhanced Proven Performance */}
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="lg:pl-8"
             >
-              <Card className="border-2 border-sply-navy bg-sply-navy text-white shadow-2xl">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-sply-gold rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-white" />
+              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-sply-navy via-sply-navy to-gray-900 text-white shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                {/* Elevated background pattern */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sply-gold via-yellow-400 to-sply-gold"></div>
+                
+                <CardContent className="relative p-10">
+                  <div className="flex items-start space-x-6 mb-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-sply-gold to-yellow-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <TrendingUp className="w-8 h-8 text-white" />
                     </div>
-                    <div>
-                      <h4 className="text-xl font-bold mb-2 font-montserrat">Proven Performance</h4>
-                      <p className="text-gray-200 text-base leading-relaxed font-noto-serif-ethiopic">
-                        Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-bold mb-4 font-montserrat bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+                        Proven Performance
+                      </h4>
+                      <p className="text-gray-200 text-lg leading-relaxed font-noto-serif-ethiopic">
+                        Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating <span className="text-sply-gold font-semibold">12%+ annualized yield</span>.
                       </p>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-3 gap-4 mt-8">
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">$31M+</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Purchase Orders Financed</div>
+                  <div className="grid grid-cols-3 gap-6 mt-10">
+                    <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-sply-gold font-montserrat mb-2 drop-shadow-lg">$31M+</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic leading-tight">Purchase Orders<br />Financed</div>
                     </div>
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">188</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Transactions to Date</div>
+                    <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-sply-gold font-montserrat mb-2 drop-shadow-lg">188</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic leading-tight">Transactions<br />to Date</div>
                     </div>
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">83 Days</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Average PO Cycle</div>
+                    <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-sply-gold font-montserrat mb-2 drop-shadow-lg">83 Days</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic leading-tight">Average PO<br />Cycle</div>
                     </div>
                   </div>
                 </CardContent>
