@@ -119,7 +119,7 @@ export const Partners = () => {
           <h2 className="text-2xl md:text-4xl font-bold mb-6 text-gray-800 font-montserrat">
             Leadership Team
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-sply-gold to-yellow-400 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-noto-serif-ethiopic">
             Led by Operators. Backed by Experience.
           </p>
