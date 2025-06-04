@@ -58,7 +58,7 @@ export const MarketOpportunity = () => {
           </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Side - Market Drivers */}
             <div className="space-y-8">
               {marketDrivers.map((driver, index) => (
@@ -159,23 +159,6 @@ export const MarketOpportunity = () => {
               </Card>
             </motion.div>
           </div>
-
-          {/* Bottom Call to Action - Simplified Format */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className="text-center"
-          >
-            <div className="max-w-4xl mx-auto">
-              <h4 className="text-xl font-bold mb-4 font-montserrat text-gray-800">
-                The Perfect Storm for Private Credit
-              </h4>
-              <p className="text-lg font-noto-serif-ethiopic leading-relaxed text-gray-600">
-                As traditional financing shrinks and infrastructure spending surges, SPLYFI positions you at the center of this massive market opportunity — with institutional-grade protection and transparency.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
