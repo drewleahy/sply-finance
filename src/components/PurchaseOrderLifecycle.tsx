@@ -184,7 +184,10 @@ export const PurchaseOrderLifecycle = () => {
               className="text-center"
             >
               <div className={`w-24 h-24 rounded-full ${steps[activeStep].bgColor} flex items-center justify-center mx-auto mb-6`}>
-                <steps[activeStep].icon className={`w-12 h-12 ${steps[activeStep].color}`} />
+                {(() => {
+                  const IconComponent = steps[activeStep].icon;
+                  return <IconComponent className={`w-12 h-12 ${steps[activeStep].color}`} />;
+                })()}
               </div>
               <h3 className="text-xl font-semibold text-sply-navy mb-4">
                 {steps[activeStep].title}
