@@ -1,4 +1,5 @@
 
+
 export const partnerData = [
   {
     name: "Drew Leahy",
@@ -40,6 +41,7 @@ export const partnerData = [
     role: "Chief of Staff",
     photo_url: "/lovable-uploads/a04feed4-4b2e-498b-9e22-f363b216c4f9.png",
     display_order: 6,
-    bio: "Haley Swank is an experienced operator with over a decade of experience across AI, SaaS, and consumer startups. She has led product strategy, go-to-market execution, and operations at venture-backed companies, and has been closely involved in raising capital and scaling early-stage teams. As a co-founder of FLÎKR Fire, she built a profitable, multi-million-dollar omni-channel brand and successfully led it through an exit."
+    bio: "Haley Swank is an experienced operator with over a decade of experience across AI, SaaS, and consumer startups. She has led product strategy, go-to-market execution, and operations at venture-backed companies, and has been closely involved in raising capital and scaling early-stage teams. As co-founder and President of FLÎKR Fire, she built a profitable, multi-million-dollar omni-channel brand and successfully led it through an exit."
   }
 ];
+
