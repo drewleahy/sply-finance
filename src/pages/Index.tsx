@@ -1,5 +1,6 @@
 
 import { Hero } from "@/components/Hero";
+import { LogosSection } from "@/components/LogosSection";
 import { Partners } from "@/components/Partners";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -27,6 +28,7 @@ const Index = () => {
 
       <main className="flex-grow" style={{backgroundColor: '#fafafa'}}>
         <Hero />
+        <LogosSection />
         <WhatWeDo />
         <HowItWorks />
         <TrustTransparency />
