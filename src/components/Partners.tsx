@@ -116,7 +116,7 @@ export const Partners = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 font-montserrat">
             Leadership Team
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-noto-serif-ethiopic">
