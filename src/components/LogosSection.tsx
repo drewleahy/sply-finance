@@ -58,22 +58,38 @@ const enterpriseCustomers = [
 
 export const LogosSection = () => {
   return (
-    <section className="py-12" style={{ backgroundColor: '#fafafa' }}>
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="py-6 px-6 rounded-xl" style={{ backgroundColor: '#fafafa' }}>
+    <section className="py-16 md:py-20" style={{ backgroundColor: '#fafafa' }}>
+      <div className="container mx-auto px-6 max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-lg md:text-xl font-montserrat font-light text-gray-800 mb-3">
+            Trusted by Industry Leaders
+          </h2>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-sply-gold to-transparent mx-auto"></div>
+        </motion.div>
+
+        <div className="space-y-16">
           <PartnerLogos 
             title="Infrastructure Partners & Funders"
             partners={infrastructurePartners}
-            gridCols="grid-cols-3 md:grid-cols-5"
+            variant="infrastructure"
           />
 
-          <div className="border-t border-gray-200/60 pt-12">
-            <PartnerLogos 
-              title="Enterprise Customers"
-              partners={enterpriseCustomers}
-              gridCols="grid-cols-3 md:grid-cols-4 lg:grid-cols-7"
-            />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200/50"></div>
+            </div>
           </div>
+
+          <PartnerLogos 
+            title="Enterprise Customers"
+            partners={enterpriseCustomers}
+            variant="enterprise"
+          />
         </div>
       </div>
     </section>
