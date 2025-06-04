@@ -160,14 +160,14 @@ export const MarketOpportunity = () => {
             </motion.div>
           </div>
 
-          {/* Bottom Call to Action */}
+          {/* Bottom Call to Action - Simplified Format */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
-            <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white rounded-2xl p-8 border-2 border-gray-200 shadow-xl">
+            <div className="max-w-4xl mx-auto">
               <h4 className="text-xl font-bold mb-4 font-montserrat text-gray-800">
                 The Perfect Storm for Private Credit
               </h4>
