@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Shield, CheckCircle, FileCheck, Users, BarChart3, Scale } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -55,7 +54,7 @@ export const TrustTransparency = () => {
             className="text-center mb-16"
           >
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
-              yield built with safety and transparency
+              Yield Built with Safety and Transparency.
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
             <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
