@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
+import { ArrowRight, Zap, Shield, TrendingUp, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const WhatWeDo = () => {
@@ -28,13 +28,35 @@ export const WhatWeDo = () => {
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
-            {/* Left Side - Problem/Solution */}
+            {/* Left Side - Problem/Solution Flow */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-6"
             >
+              {/* The Opportunity - New First Block */}
+              <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/5 to-transparent">
+                <CardContent className="p-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-sply-gold rounded-full flex items-center justify-center mt-1">
+                      <Target className="w-3 h-3 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Opportunity</h4>
+                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
+                        American suppliers are receiving more purchase orders than ever — but capital isn't keeping up. 
+                        Rising demand from defense and infrastructure projects is creating a financing gap across U.S. manufacturing.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="flex justify-center">
+                <ArrowRight className="w-6 h-6 text-sply-gold" />
+              </div>
+
               <Card className="border-l-4 border-l-gray-400 bg-gray-50/80">
                 <CardContent className="p-4">
                   <div className="flex items-start space-x-3">
