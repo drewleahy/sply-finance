@@ -80,16 +80,12 @@ const Index = () => {
               <h4 className="text-sm font-semibold mb-4 text-gray-900 font-montserrat uppercase tracking-wide">
                 Access
               </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link 
-                    to="/lp" 
-                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
-                  >
-                    Limited Partner Portal
-                  </Link>
-                </li>
-              </ul>
+              <Link 
+                to="/lp" 
+                className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm block"
+              >
+                Limited Partner Portal
+              </Link>
             </div>
 
             {/* Contact Info */}
@@ -97,17 +93,13 @@ const Index = () => {
               <h4 className="text-sm font-semibold mb-4 text-gray-900 font-montserrat uppercase tracking-wide">
                 Contact
               </h4>
-              <ul className="space-y-3">
-                <li>
-                  <a 
-                    href="mailto:info@splyfi.com" 
-                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
-                  >
-                    <Mail className="w-4 h-4 mr-2 text-gray-400" />
-                    info@splyfi.com
-                  </a>
-                </li>
-              </ul>
+              <a 
+                href="mailto:info@splyfi.com" 
+                className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
+              >
+                <Mail className="w-4 h-4 mr-2 text-gray-400" />
+                info@splyfi.com
+              </a>
             </div>
           </div>
 
@@ -122,15 +114,15 @@ const Index = () => {
               
               {/* Legal Links */}
               <div className="flex flex-wrap items-center space-x-6 text-xs">
-                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
+                <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
                   Privacy Policy
-                </button>
-                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
+                </span>
+                <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
                   Terms of Service
-                </button>
-                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
+                </span>
+                <span className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic cursor-pointer">
                   Investment Disclosures
-                </button>
+                </span>
               </div>
             </div>
             
