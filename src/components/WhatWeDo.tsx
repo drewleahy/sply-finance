@@ -27,13 +27,13 @@ export const WhatWeDo = () => {
           </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch mb-24">
             {/* Left Side - Problem/Solution Flow */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-3"
+              className="space-y-3 flex flex-col"
             >
               {/* The Opportunity - New First Block */}
               <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/5 to-transparent transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-sply-gold/10 cursor-pointer">
@@ -77,13 +77,13 @@ export const WhatWeDo = () => {
                 <ArrowRight className="w-5 h-5 text-sply-gold" />
               </div>
 
-              <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-50/50 cursor-pointer">
-                <CardContent className="p-4">
+              <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-50/50 cursor-pointer flex-grow">
+                <CardContent className="p-4 h-full flex flex-col">
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center mt-1 transition-all duration-300 hover:bg-sply-navy">
                       <Shield className="w-3 h-3 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-grow">
                       <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">Our Solution</h4>
                       <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
                         SPLYFI bridges that gap — funding verified purchase orders from Fortune 1000 and government buyers.
@@ -99,10 +99,10 @@ export const WhatWeDo = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:pl-8"
+              className="lg:pl-8 flex"
             >
-              <Card className="border-2 border-sply-navy bg-sply-navy text-white shadow-2xl">
-                <CardContent className="p-8">
+              <Card className="border-2 border-sply-navy bg-sply-navy text-white shadow-2xl flex-grow flex flex-col">
+                <CardContent className="p-8 flex flex-col h-full">
                   <div className="flex items-start space-x-4 mb-6">
                     <div className="w-12 h-12 bg-sply-gold rounded-full flex items-center justify-center">
                       <TrendingUp className="w-6 h-6 text-white" />
@@ -115,7 +115,7 @@ export const WhatWeDo = () => {
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-3 gap-4 mt-8">
+                  <div className="grid grid-cols-3 gap-4 mt-auto">
                     <div className="text-center p-4 bg-white/10 rounded-lg">
                       <div className="text-xl font-bold text-sply-gold font-montserrat">$31M+</div>
                       <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Purchase Orders Financed</div>
