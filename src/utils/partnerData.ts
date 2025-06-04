@@ -1,5 +1,3 @@
-
-
 export const partnerData = [
   {
     name: "Drew Leahy",
@@ -17,7 +15,7 @@ export const partnerData = [
   },
   {
     name: "James Wiseman",
-    role: "Partner",
+    role: "General Counsel",
     photo_url: "/lovable-uploads/d5f96b45-0af7-4971-b7f3-0eef36becf49.png",
     display_order: 3,
     bio: "Jamie Wiseman is a private equity attorney and investor with 25+ years of experience across fund structuring, real estate, and private markets. He's a Principal at Cayuga Capital and was previously Associate General Counsel at Strategic Value Partners, where he led $1B+ in global real estate acquisitions. Jamie began his legal career at Debevoise & Plimpton and Gibson Dunn, and holds a J.D. and B.A. from Cornell University."
@@ -44,4 +42,3 @@ export const partnerData = [
     bio: "Haley Swank is an operator with 10+ years of experience across consumer B2B, DTC, SaaS, and AI. She co-founded FLÎKR Fire, scaling it into a profitable omni-channel brand with 2,400+ retail partners and leading it through a successful exit. She has led product, GTM, and operations across multiple early-stage startups."
   }
 ];
-
