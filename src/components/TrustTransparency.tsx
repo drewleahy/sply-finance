@@ -38,7 +38,7 @@ export const TrustTransparency = () => {
   ];
 
   return (
-    <section className="py-24" style={{backgroundColor: '#fafafa'}}>
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
