@@ -25,7 +25,7 @@ const Index = () => {
         </Link>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow" style={{backgroundColor: '#fafafa'}}>
         <Hero />
         <WhatWeDo />
         <HowItWorks />

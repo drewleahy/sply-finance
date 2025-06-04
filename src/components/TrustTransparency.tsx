@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Shield, CheckCircle, FileCheck, Users, BarChart3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -38,7 +37,7 @@ export const TrustTransparency = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-24" style={{backgroundColor: '#fafafa'}}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}

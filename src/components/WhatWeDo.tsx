@@ -1,11 +1,10 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const WhatWeDo = () => {
   return (
-    <section className="py-12 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-12" style={{backgroundColor: '#fafafa'}}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
