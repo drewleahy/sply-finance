@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { WhatWeDo } from "@/components/WhatWeDo";
@@ -7,7 +8,6 @@ import { MarketOpportunity } from "@/components/MarketOpportunity";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
-import { CTA } from "@/components/CTA";
 
 const Index = () => {
   return (
@@ -32,7 +32,6 @@ const Index = () => {
         <TrustTransparency />
         <MarketOpportunity />
         <Partners />
-        <CTA />
       </main>
 
       {/* Modern Simplified Footer */}
