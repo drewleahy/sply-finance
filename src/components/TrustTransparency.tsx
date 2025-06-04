@@ -58,7 +58,7 @@ export const TrustTransparency = () => {
           </motion.div>
 
           {/* Trust Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {trustFeatures.map((feature, index) => (
               <motion.div
                 key={index}
@@ -93,18 +93,19 @@ export const TrustTransparency = () => {
             ))}
           </div>
 
-          {/* Bottom Summary */}
+          {/* Bottom Summary - Clean Design */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
-            <div className="max-w-3xl mx-auto bg-gradient-to-r from-sply-navy to-gray-800 rounded-2xl p-8 text-white shadow-2xl">
-              <h4 className="text-xl font-bold mb-4 font-montserrat">
+            <div className="max-w-4xl mx-auto">
+              <h4 className="text-2xl md:text-3xl font-bold mb-6 font-montserrat text-sply-navy">
                 Institutional-Grade Protection
               </h4>
-              <p className="text-lg font-noto-serif-ethiopic leading-relaxed opacity-90">
+              <div className="w-16 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
+              <p className="text-lg md:text-xl font-noto-serif-ethiopic leading-relaxed text-gray-700 max-w-3xl mx-auto">
                 Every investment is protected by multiple layers of security, verification, and oversight — giving you the confidence to invest with complete peace of mind.
               </p>
             </div>
