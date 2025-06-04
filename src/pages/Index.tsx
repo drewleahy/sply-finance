@@ -9,6 +9,7 @@ import { FundDetails } from "@/components/FundDetails";
 import { AssetAllocation } from "@/components/AssetAllocation";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
+import { TrustTransparency } from "@/components/TrustTransparency";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -32,6 +33,7 @@ const Index = () => {
         <Hero />
         <WhatWeDo />
         <HowItWorks />
+        <TrustTransparency />
         <AssetAllocation />
         <InvestmentThesis />
         <Partners />
