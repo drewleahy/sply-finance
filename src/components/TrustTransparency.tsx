@@ -93,7 +93,7 @@ export const TrustTransparency = () => {
             ))}
           </div>
 
-          {/* Bottom Summary - Clean Design */}
+          {/* Bottom Summary - Formatted like HowItWorks */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -101,11 +101,10 @@ export const TrustTransparency = () => {
             className="text-center"
           >
             <div className="max-w-4xl mx-auto">
-              <h4 className="text-xl md:text-2xl font-bold mb-6 font-montserrat text-sply-navy">
+              <h3 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
                 Institutional-Grade Protection
-              </h4>
-              <div className="w-16 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
-              <p className="text-base md:text-lg font-noto-serif-ethiopic leading-relaxed text-gray-700 max-w-3xl mx-auto">
+              </h3>
+              <p className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
                 Every investment is protected by multiple layers of security, verification, and oversight — giving you the confidence to invest with complete peace of mind.
               </p>
             </div>
