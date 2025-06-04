@@ -98,6 +98,9 @@ export const WhatWeDo = () => {
                       <p className="text-gray-200 text-xs lg:text-sm leading-relaxed font-noto-serif-ethiopic">
                         Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
                       </p>
+                      <p className="text-gray-300 text-xs italic mt-1 font-noto-serif-ethiopic">
+                        As of data collected November 2023 – March 2025
+                      </p>
                     </div>
                   </div>
                   
