@@ -88,14 +88,6 @@ export const WhatWeDo = () => {
               </Card>
             </div>
           </div>
-
-          {/* Bottom CTA Section */}
-          <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-sply-gold/10 px-6 py-3 rounded-full">
-              <span className="text-sply-navy font-semibold font-noto-serif-ethiopic">Ready to bridge the gap?</span>
-              <ArrowRight className="w-4 h-4 text-sply-navy" />
-            </div>
-          </div>
         </div>
       </div>
     </section>
