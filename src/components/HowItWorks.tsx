@@ -51,7 +51,7 @@ export const HowItWorks = () => {
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               How It Works
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mb-8 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
             <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
               From purchase order to investor yield — a fast, secure, repeatable model that transforms manufacturing finance.
             </p>
