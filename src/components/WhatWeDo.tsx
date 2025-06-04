@@ -103,30 +103,34 @@ export const WhatWeDo = () => {
             >
               <Card className="border-2 border-sply-navy bg-sply-navy text-white shadow-2xl flex-grow flex flex-col">
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-sply-gold rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-white" />
+                  {/* Header with Icon */}
+                  <div className="flex items-center space-x-4 mb-8">
+                    <div className="w-16 h-16 bg-sply-gold rounded-full flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2 font-montserrat">Proven Performance</h4>
-                      <p className="text-gray-200 text-base leading-relaxed font-noto-serif-ethiopic">
+                      <h4 className="text-2xl font-bold mb-3 font-montserrat">Proven Performance</h4>
+                      <p className="text-gray-200 text-lg leading-relaxed font-noto-serif-ethiopic">
                         Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
                       </p>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-3 gap-4 mt-auto">
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">$31M+</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Purchase Orders Financed</div>
+                  {/* Statistics Grid */}
+                  <div className="grid grid-cols-1 gap-6 mt-auto">
+                    <div className="text-center p-6 bg-white/10 rounded-lg border border-white/20">
+                      <div className="text-3xl font-bold text-sply-gold font-montserrat mb-2">$31M+</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Purchase Orders Financed</div>
                     </div>
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">188</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Transactions to Date</div>
-                    </div>
-                    <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-xl font-bold text-sply-gold font-montserrat">83 Days</div>
-                      <div className="text-xs text-gray-300 font-noto-serif-ethiopic">Average PO Cycle</div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-6 bg-white/10 rounded-lg border border-white/20">
+                        <div className="text-2xl font-bold text-sply-gold font-montserrat mb-2">188</div>
+                        <div className="text-xs text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Transactions to Date</div>
+                      </div>
+                      <div className="text-center p-6 bg-white/10 rounded-lg border border-white/20">
+                        <div className="text-2xl font-bold text-sply-gold font-montserrat mb-2">83 Days</div>
+                        <div className="text-xs text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Average PO Cycle</div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
