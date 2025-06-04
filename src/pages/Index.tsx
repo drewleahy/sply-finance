@@ -36,59 +36,72 @@ const Index = () => {
         <Subscribe />
       </main>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-sply-navy text-white">
+      {/* Modern Simplified Footer */}
+      <footer className="bg-white border-t border-gray-100">
         <div className="container mx-auto px-4">
           {/* Main Footer Content */}
-          <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="py-12 grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            
             {/* Company Info */}
-            <div className="lg:col-span-2">
+            <div className="md:col-span-1">
               <h3 
-                className="text-3xl font-bold mb-4 text-white"
+                className="text-2xl font-bold mb-3 text-sply-navy"
                 style={{ fontFamily: 'ADAM, sans-serif' }}
               >
                 SPLYFI
               </h3>
-              <p className="text-gray-300 mb-6 max-w-md font-noto-serif-ethiopic leading-relaxed">
-                Powering American manufacturing through innovative trade finance solutions. 
-                We bridge the gap between opportunity and capital for small vendors with Fortune 1000 contracts.
+              <p className="text-gray-600 mb-6 font-noto-serif-ethiopic leading-relaxed text-sm">
+                Powering American manufacturing through innovative trade finance solutions.
               </p>
-              <div className="flex space-x-4">
+              
+              {/* Social Links */}
+              <div className="flex space-x-3">
                 <a 
                   href="https://linkedin.com/in/drew-leahy" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sply-gold transition-colors"
+                  className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-sply-navy hover:text-white transition-all duration-200"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/tyler-williams-476283101/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sply-gold transition-colors"
+                  className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-sply-navy hover:text-white transition-all duration-200"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4 font-montserrat">Access</h4>
+              <h4 className="text-sm font-semibold mb-4 text-gray-900 font-montserrat uppercase tracking-wide">
+                Access
+              </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/lp" className="text-gray-300 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+                  <Link 
+                    to="/lp" 
+                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
+                  >
                     Limited Partner Portal
                   </Link>
                 </li>
                 <li>
-                  <Link to="/submit-deal" className="text-gray-300 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+                  <Link 
+                    to="/submit-deal" 
+                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
+                  >
                     Submit Deal
                   </Link>
                 </li>
                 <li>
-                  <Link to="/auth" className="text-gray-300 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+                  <Link 
+                    to="/auth" 
+                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
+                  >
                     Vendor Login
                   </Link>
                 </li>
@@ -97,52 +110,63 @@ const Index = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-semibold mb-4 font-montserrat">Contact</h4>
+              <h4 className="text-sm font-semibold mb-4 text-gray-900 font-montserrat uppercase tracking-wide">
+                Contact
+              </h4>
               <ul className="space-y-3">
-                <li className="flex items-center text-gray-300 font-noto-serif-ethiopic">
-                  <Mail className="w-4 h-4 mr-3" />
-                  <a href="mailto:info@splyfi.com" className="hover:text-sply-gold transition-colors">
+                <li>
+                  <a 
+                    href="mailto:info@splyfi.com" 
+                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
+                  >
+                    <Mail className="w-4 h-4 mr-2 text-gray-400" />
                     info@splyfi.com
                   </a>
                 </li>
-                <li className="flex items-center text-gray-300 font-noto-serif-ethiopic">
-                  <Phone className="w-4 h-4 mr-3" />
-                  <a href="tel:+1-555-0123" className="hover:text-sply-gold transition-colors">
+                <li>
+                  <a 
+                    href="tel:+1-555-0123" 
+                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
+                  >
+                    <Phone className="w-4 h-4 mr-2 text-gray-400" />
                     +1 (555) 012-3456
                   </a>
                 </li>
-                <li className="flex items-start text-gray-300 font-noto-serif-ethiopic">
-                  <MapPin className="w-4 h-4 mr-3 mt-1 flex-shrink-0" />
-                  <span>New York, NY</span>
+                <li className="text-gray-600 font-noto-serif-ethiopic text-sm flex items-center">
+                  <MapPin className="w-4 h-4 mr-2 text-gray-400" />
+                  New York, NY
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Bottom Footer */}
-          <div className="py-8 border-t border-gray-700">
+          <div className="py-6 border-t border-gray-100">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-sm text-gray-400 font-noto-serif-ethiopic">
+              
+              {/* Copyright */}
+              <div className="text-xs text-gray-500 font-noto-serif-ethiopic">
                 © 2024 SPLYFI. All rights reserved.
               </div>
               
-              <div className="flex flex-wrap items-center space-x-6 text-sm">
-                <button className="text-gray-400 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+              {/* Legal Links */}
+              <div className="flex flex-wrap items-center space-x-6 text-xs">
+                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
                   Privacy Policy
                 </button>
-                <button className="text-gray-400 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
                   Terms of Service
                 </button>
-                <button className="text-gray-400 hover:text-sply-gold transition-colors font-noto-serif-ethiopic">
+                <button className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic">
                   Investment Disclosures
                 </button>
               </div>
             </div>
             
             {/* Risk Disclaimer */}
-            <div className="mt-6 pt-6 border-t border-gray-700">
-              <p className="text-xs text-gray-500 font-noto-serif-ethiopic leading-relaxed">
-                <strong>Investment Risk Disclosure:</strong> All investments involve risk, including the potential loss of principal. 
+            <div className="mt-6 pt-6 border-t border-gray-50">
+              <p className="text-xs text-gray-400 font-noto-serif-ethiopic leading-relaxed max-w-4xl">
+                <span className="font-medium text-gray-500">Investment Risk Disclosure:</span> All investments involve risk, including the potential loss of principal. 
                 Past performance does not guarantee future results. SPLYFI securities are offered to qualified investors only. 
                 Please consult with your financial advisor before making any investment decisions.
               </p>
