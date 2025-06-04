@@ -108,7 +108,7 @@ export const Partners = () => {
   if (error) return <div className="text-center py-12 text-red-500">Error loading team information</div>;
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
