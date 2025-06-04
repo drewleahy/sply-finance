@@ -1,3 +1,4 @@
+
 export const partnerData = [
   {
     name: "Drew Leahy",

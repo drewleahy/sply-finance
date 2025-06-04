@@ -18,7 +18,7 @@ export const TeamSection = ({ partners }: TeamSectionProps) => {
     partner.name === "Tyler Williams" || 
     partner.name === "James Wiseman" ||
     partner.name === "Jamie Wiseman" ||  // Include both name variations for James/Jamie
-    partner.name === "Matt Saffaii" ||
+    partner.name === "Matthew Saffaii" ||
     partner.name === "Michael Slawson" ||
     partner.name === "Haley Swank"
   );
