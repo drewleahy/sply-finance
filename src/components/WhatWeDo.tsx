@@ -33,7 +33,7 @@ export const WhatWeDo = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-6"
+              className="space-y-3"
             >
               {/* The Opportunity - New First Block */}
               <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/5 to-transparent">
@@ -53,8 +53,8 @@ export const WhatWeDo = () => {
                 </CardContent>
               </Card>
 
-              <div className="flex justify-center">
-                <ArrowRight className="w-6 h-6 text-sply-gold" />
+              <div className="flex justify-center py-1">
+                <ArrowRight className="w-5 h-5 text-sply-gold" />
               </div>
 
               <Card className="border-l-4 border-l-gray-400 bg-gray-50/80">
@@ -73,8 +73,8 @@ export const WhatWeDo = () => {
                 </CardContent>
               </Card>
 
-              <div className="flex justify-center">
-                <ArrowRight className="w-6 h-6 text-sply-gold" />
+              <div className="flex justify-center py-1">
+                <ArrowRight className="w-5 h-5 text-sply-gold" />
               </div>
 
               <Card className="border-l-4 border-l-sply-navy bg-white">
