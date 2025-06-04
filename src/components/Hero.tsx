@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
@@ -21,6 +22,16 @@ export const Hero = () => {
         >
           SPLYFI offers short-duration, insured purchase order financing, targeting 12%+ annual returns with transparent reporting and institutional-grade underwriting
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="flex justify-center"
+        >
+          <Button className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat px-8 py-3 text-lg">
+            Request Access
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
