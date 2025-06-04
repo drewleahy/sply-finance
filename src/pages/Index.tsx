@@ -1,7 +1,5 @@
-
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
-import { Subscribe } from "@/components/Subscribe";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TrustTransparency } from "@/components/TrustTransparency";
@@ -33,7 +31,6 @@ const Index = () => {
         <TrustTransparency />
         <MarketOpportunity />
         <Partners />
-        <Subscribe />
       </main>
 
       {/* Modern Simplified Footer */}
