@@ -28,6 +28,12 @@ export const partnerData = [
     photo_url: "/lovable-uploads/c4830ecd-7c8f-4fff-8292-15424ff7b1f3.png",
     display_order: 4,
     bio: "Matt Saffaii runs a $1B private equity fund across 6 vintages with great success (Arrowroot PE) and connections to many lenders via the leverage across his portfolios."
+  },
+  {
+    name: "Michael Slawson",
+    role: "Advisor",
+    photo_url: "/lovable-uploads/57c65b12-1433-47b2-b924-494dfc22de9e.png",
+    display_order: 5,
+    bio: "Michael Slawson is a seasoned investor and operator with experience across venture capital, M&A, and consumer brands. He was a founding team member at Springdale Ventures and previously led brand investments at SKU, working with early-stage CPG companies. Michael brings deep expertise in scaling consumer businesses and navigating early-stage capital strategy."
   }
 ];
-
