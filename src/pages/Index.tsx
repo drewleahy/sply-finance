@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
@@ -17,7 +16,7 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-2 flex justify-between items-center bg-white border-b">
         <h1 
-          className="text-4xl md:text-5xl font-bold text-gray-800"
+          className="text-2xl md:text-3xl font-bold text-gray-800"
           style={{ fontFamily: 'ADAM, sans-serif' }}
         >
           SPLYFI
