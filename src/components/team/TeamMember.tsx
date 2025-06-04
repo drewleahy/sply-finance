@@ -62,13 +62,13 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
   const getImageObjectPosition = (name: string) => {
     switch (name) {
       case "Matt Saffaii":
-        return "object-cover object-[center_30%] scale-110 group-hover:scale-125";
+        return "object-cover object-[center_30%] scale-110";
       case "Michael Slawson":
-        return "object-cover object-center scale-125 group-hover:scale-150";
+        return "object-cover object-center scale-125";
       case "Haley Swank":
-        return "object-cover object-[center_20%] group-hover:scale-105";
+        return "object-cover object-[center_20%]";
       default:
-        return "object-center group-hover:scale-105";
+        return "object-center";
     }
   };
 
@@ -80,7 +80,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 aspect-square flex flex-col justify-between"
+      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 aspect-square flex flex-col justify-between hover:scale-105"
     >
       <div className="flex flex-col items-center text-center flex-grow">
         <div className="mb-4 relative">
