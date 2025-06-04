@@ -48,7 +48,7 @@ export const HowItWorks = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-5xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               How It Works
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mb-8 rounded-full"></div>

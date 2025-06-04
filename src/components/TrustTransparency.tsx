@@ -48,7 +48,7 @@ export const TrustTransparency = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               Built for Safety. Designed for Transparency.
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
@@ -101,7 +101,7 @@ export const TrustTransparency = () => {
             className="text-center"
           >
             <div className="max-w-4xl mx-auto">
-              <h4 className="text-2xl md:text-3xl font-bold mb-6 font-montserrat text-sply-navy">
+              <h4 className="text-xl md:text-2xl font-bold mb-6 font-montserrat text-sply-navy">
                 Institutional-Grade Protection
               </h4>
               <div className="w-16 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>

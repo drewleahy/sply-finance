@@ -9,10 +9,10 @@ export const WhatWeDo = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               Our Approach
             </h2>
-            <h3 className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
+            <h3 className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
               Private credit that powers U.S. manufacturing by funding real purchase orders — fast, insured, and transparent.
             </h3>
           </div>
