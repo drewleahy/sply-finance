@@ -4,7 +4,6 @@ import { Partners } from "@/components/Partners";
 import { Subscribe } from "@/components/Subscribe";
 import { InvestmentFlow } from "@/components/InvestmentFlow";
 import { WhatWeDo } from "@/components/WhatWeDo";
-import { HowItWorks } from "@/components/HowItWorks";
 import { TrustTransparency } from "@/components/TrustTransparency";
 import { MarketOpportunity } from "@/components/MarketOpportunity";
 import { Button } from "@/components/ui/button";
@@ -29,7 +28,6 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <WhatWeDo />
-        <HowItWorks />
         <TrustTransparency />
         <MarketOpportunity />
         <Partners />
