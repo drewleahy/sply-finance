@@ -27,11 +27,11 @@ const Index = () => {
 
       <main className="flex-grow" style={{backgroundColor: '#fafafa'}}>
         <Hero />
+        <Partners />
         <WhatWeDo />
         <HowItWorks />
         <TrustTransparency />
         <MarketOpportunity />
-        <Partners />
       </main>
 
       {/* Modern Simplified Footer */}
