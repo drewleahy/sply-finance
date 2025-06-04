@@ -62,7 +62,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
   const getImageObjectPosition = (name: string) => {
     switch (name) {
       case "Matt Saffaii":
-        return "object-top";
+        return "object-[center_20%]";
       case "Michael Slawson":
         return "object-top";
       default:
