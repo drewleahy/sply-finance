@@ -96,7 +96,7 @@ export const WhatWeDo = () => {
                     <div>
                       <h4 className="text-lg lg:text-xl font-bold mb-1 lg:mb-2 font-montserrat">Proven Performance</h4>
                       <p className="text-gray-200 text-xs lg:text-sm leading-relaxed font-noto-serif-ethiopic">
-                        Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield.
+                        Funding has enabled over 180 real-world transactions, accelerating U.S. production and generating 12%+ annualized yield built with safety and transparency.
                       </p>
                     </div>
                   </div>
