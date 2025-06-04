@@ -31,6 +31,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "https://www.linkedin.com/in/matthew-j-s-673570/";
       case "Michael Slawson":
         return "https://www.linkedin.com/in/michael-slawson/";
+      case "Haley Swank":
+        return "https://www.linkedin.com/in/haley-swank/";
       default:
         return "";
     }
@@ -50,6 +52,8 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
         return "/lovable-uploads/c4830ecd-7c8f-4fff-8292-15424ff7b1f3.png";
       case "Michael Slawson":
         return "/lovable-uploads/57c65b12-1433-47b2-b924-494dfc22de9e.png";
+      case "Haley Swank":
+        return "/lovable-uploads/a04feed4-4b2e-498b-9e22-f363b216c4f9.png";
       default:
         return "https://images.unsplash.com/photo-1461749280684-dccba630e2f6";
     }

@@ -1,5 +1,4 @@
 
-
 export const partnerData = [
   {
     name: "Drew Leahy",
@@ -35,5 +34,12 @@ export const partnerData = [
     photo_url: "/lovable-uploads/57c65b12-1433-47b2-b924-494dfc22de9e.png",
     display_order: 5,
     bio: "Michael Slawson is a seasoned investor and operator with experience across venture capital, M&A, and consumer brands. He was a founding team member at Springdale Ventures and previously led brand investments at SKU, working with early-stage CPG companies. Michael brings deep expertise in scaling consumer businesses and navigating early-stage capital strategy."
+  },
+  {
+    name: "Haley Swank",
+    role: "Chief of Staff",
+    photo_url: "/lovable-uploads/a04feed4-4b2e-498b-9e22-f363b216c4f9.png",
+    display_order: 6,
+    bio: "Haley Swank is an operator with 10+ years of experience across consumer B2B, DTC, SaaS, and AI. She co-founded FLÎKR Fire, scaling it into a profitable omni-channel brand with 2,400+ retail partners and leading it through a successful exit. She has led product, GTM, and operations across multiple early-stage startups."
   }
 ];
