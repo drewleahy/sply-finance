@@ -70,11 +70,11 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
     >
       <div className="flex flex-col items-center text-center flex-grow">
         <div className="mb-4 relative">
-          <Avatar className="h-24 w-24 border-3 border-gray-200 shadow-md">
+          <Avatar className="h-24 w-24 border-2 border-gray-200 shadow-md overflow-hidden">
             <AvatarImage
               src={member.photo_url || getPlaceholderImage(displayName)}
               alt={displayName}
-              className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
+              className="object-cover object-center w-full h-full transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
             />
             <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
               {displayName[0]}
