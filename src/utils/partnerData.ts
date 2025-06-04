@@ -40,6 +40,6 @@ export const partnerData = [
     role: "Chief of Staff",
     photo_url: "/lovable-uploads/a04feed4-4b2e-498b-9e22-f363b216c4f9.png",
     display_order: 6,
-    bio: "Haley Swank is an operator with 10+ years of experience across consumer B2B, DTC, SaaS, and AI. She co-founded FLÎKR Fire, scaling it into a profitable omni-channel brand with 2,400+ retail partners and leading it through a successful exit. She has led product, GTM, and operations across multiple early-stage startups."
+    bio: "Haley Swank is an experienced operator with over a decade in AI, SaaS, and consumer startups. At EKOM AI, she served as EVP & Chief of Staff, leading company-wide product strategy, go-to-market execution, and operational scale for an AI-native commerce platform. She co-founded FLÎKR Fire, growing it into a multi-million-dollar, profitable omni-channel brand with over 2,400 retail partners, and led it through a successful exit. Haley has built and led cross-functional teams across product, growth, and operations at multiple early-stage ventures, translating vision into scalable execution."
   }
 ];
