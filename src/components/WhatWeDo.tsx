@@ -13,7 +13,7 @@ export const WhatWeDo = () => {
               Our Approach
             </h2>
             <h3 className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
-              Private Credit That Powers U.S. Manufacturing
+              Private credit that powers U.S. manufacturing by funding real purchase orders — fast, insured, and transparent.
             </h3>
           </div>
 
