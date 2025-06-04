@@ -1,4 +1,5 @@
 
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { Subscribe } from "@/components/Subscribe";
@@ -67,3 +68,4 @@ const Index = () => {
 };
 
 export default Index;
+
