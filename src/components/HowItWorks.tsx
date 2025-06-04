@@ -52,7 +52,7 @@ export const HowItWorks = () => {
               How It Works
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mb-8 rounded-full"></div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
               From purchase order to investor yield — a fast, secure, repeatable model that transforms manufacturing finance.
             </p>
           </motion.div>
@@ -92,7 +92,7 @@ export const HowItWorks = () => {
                       <h4 className="font-bold text-lg mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
                         {step.title}
                       </h4>
-                      <p className="text-lg font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
+                      <p className="text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
                         {step.subtitle}
                       </p>
                     </CardContent>
@@ -126,7 +126,7 @@ export const HowItWorks = () => {
             className="text-center mt-20"
           >
             <div className="max-w-3xl mx-auto">
-              <p className="text-lg md:text-xl text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-6">
+              <p className="text-base md:text-lg text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-6">
                 Our streamlined process ensures efficient capital deployment and consistent returns for our limited partners through a proven, repeatable framework.
               </p>
               <div className="flex justify-center items-center space-x-6 text-lg text-gray-500 font-montserrat">

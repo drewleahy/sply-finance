@@ -12,7 +12,7 @@ export const WhatWeDo = () => {
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
               Our Approach
             </h2>
-            <h3 className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
+            <h3 className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
               Private credit that powers U.S. manufacturing by funding real purchase orders — fast, insured, and transparent.
             </h3>
           </div>
@@ -68,7 +68,7 @@ export const WhatWeDo = () => {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold mb-2 font-montserrat">Proven Performance</h4>
-                      <p className="text-gray-200 text-lg leading-relaxed font-noto-serif-ethiopic">
+                      <p className="text-gray-200 text-base leading-relaxed font-noto-serif-ethiopic">
                         We've funded over 180 real purchase orders — helping American suppliers fulfill critical contracts, while generating double-digit yields for our investors.
                       </p>
                     </div>

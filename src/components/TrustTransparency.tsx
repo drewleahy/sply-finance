@@ -52,7 +52,7 @@ export const TrustTransparency = () => {
               Built for Safety. Designed for Transparency.
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
               Your investment security is our priority. Every layer of protection is designed to ensure complete transparency and institutional-grade safety.
             </p>
           </motion.div>
@@ -84,7 +84,7 @@ export const TrustTransparency = () => {
                     <h4 className="font-bold text-lg mb-3 font-montserrat leading-tight text-gray-800">
                       {feature.title}
                     </h4>
-                    <p className="text-lg font-noto-serif-ethiopic text-gray-600 leading-relaxed">
+                    <p className="text-base font-noto-serif-ethiopic text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -105,7 +105,7 @@ export const TrustTransparency = () => {
                 Institutional-Grade Protection
               </h4>
               <div className="w-16 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
-              <p className="text-lg md:text-xl font-noto-serif-ethiopic leading-relaxed text-gray-700 max-w-3xl mx-auto">
+              <p className="text-base md:text-lg font-noto-serif-ethiopic leading-relaxed text-gray-700 max-w-3xl mx-auto">
                 Every investment is protected by multiple layers of security, verification, and oversight — giving you the confidence to invest with complete peace of mind.
               </p>
             </div>
