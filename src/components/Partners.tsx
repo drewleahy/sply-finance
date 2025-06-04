@@ -53,19 +53,19 @@ export const Partners = () => {
   if (error) return <div className="text-center py-12 text-red-500">Error loading team information</div>;
 
   return (
-    <section className="py-24" style={{ backgroundColor: '#fafafa' }}>
+    <section className="py-16 sm:py-20 lg:py-24" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-6 text-gray-800 font-montserrat">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-800 font-montserrat">
             Leadership Team
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 rounded-full"></div>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-noto-serif-ethiopic">
+          <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-4 sm:mb-6 rounded-full"></div>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-noto-serif-ethiopic px-2">
             Led by Operators. Backed by Experience.
           </p>
         </motion.div>

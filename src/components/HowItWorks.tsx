@@ -38,7 +38,7 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-gray-50/30 to-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-gray-50/30 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
@@ -46,13 +46,13 @@ export const HowItWorks = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-20"
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-4 sm:mb-6 max-w-4xl mx-auto px-4">
               How It Works
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-8 rounded-full"></div>
-            <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed">
+            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 sm:mb-8 rounded-full"></div>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed px-2">
               From purchase order to investor yield — a fast, secure, repeatable model that transforms manufacturing finance.
             </p>
           </motion.div>
@@ -66,7 +66,7 @@ export const HowItWorks = () => {
             </div>
             
             {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-4 relative z-10">
               {steps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -79,20 +79,20 @@ export const HowItWorks = () => {
                   }}
                   className="flex flex-col items-center group"
                 >
-                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full h-48 max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
-                    <CardContent className="p-6 text-center h-full flex flex-col justify-center">
+                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full h-40 sm:h-44 lg:h-48 max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
+                    <CardContent className="p-4 sm:p-6 text-center h-full flex flex-col justify-center">
                       <motion.div 
                         initial={{ scale: 0, rotate: -180 }}
                         whileInView={{ scale: 1, rotate: 0 }}
                         transition={{ delay: step.delay + 0.4, duration: 0.6, type: "spring" }}
-                        className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
+                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
                       >
-                        <step.icon className="w-8 h-8 text-white" />
+                        <step.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                       </motion.div>
-                      <h4 className="font-bold text-lg mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
+                      <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
                         {step.title}
                       </h4>
-                      <p className="text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
+                      <p className="text-sm sm:text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
                         {step.subtitle}
                       </p>
                     </CardContent>
@@ -100,12 +100,12 @@ export const HowItWorks = () => {
                   
                   {/* Enhanced Mobile Connection Indicator */}
                   {index < steps.length - 1 && (
-                    <div className="lg:hidden mt-6 mb-2">
+                    <div className="sm:hidden lg:hidden mt-4 mb-2">
                       <motion.div
                         initial={{ opacity: 0, scale: 0, rotate: -90 }}
                         whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ delay: step.delay + 0.6, duration: 0.4, type: "spring" }}
-                        className="w-6 h-6 text-gray-500"
+                        className="w-5 h-5 text-gray-500"
                       >
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full drop-shadow-sm">
                           <path d="M12 2L12 22M12 22L18 16M12 22L6 16"/>
@@ -123,23 +123,23 @@ export const HowItWorks = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-            className="text-center mt-20"
+            className="text-center mt-12 sm:mt-16 lg:mt-20"
           >
             <div className="max-w-3xl mx-auto">
-              <p className="text-base md:text-lg text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-6">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 font-noto-serif-ethiopic leading-relaxed mb-4 sm:mb-6 px-2">
                 Our streamlined process ensures efficient capital deployment and consistent returns for our limited partners through a proven, repeatable framework.
               </p>
-              <div className="flex justify-center items-center space-x-6 text-lg text-gray-500 font-montserrat">
+              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-sm sm:text-base lg:text-lg text-gray-500 font-montserrat">
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-gray-500 rounded-full"></div>
                   <span>Insured</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-gray-600 rounded-full"></div>
                   <span>Transparent</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-gray-700 rounded-full"></div>
                   <span>Repeatable</span>
                 </div>
               </div>

@@ -16,12 +16,12 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-2 flex justify-between items-center bg-white border-b">
         <h1 
-          className="text-2xl md:text-3xl font-bold text-gray-800"
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800"
           style={{ fontFamily: 'ADAM, sans-serif' }}
         >
           SPLYFI
         </h1>
-        <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold font-montserrat">
+        <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold font-montserrat text-sm sm:text-base">
           LP LOGIN
         </Link>
       </header>
@@ -40,17 +40,17 @@ const Index = () => {
       <footer className="bg-white border-t border-gray-100">
         <div className="container mx-auto px-4">
           {/* Main Footer Content */}
-          <div className="py-8 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             
             {/* Company Info */}
             <div className="md:col-span-1">
               <h3 
-                className="text-2xl font-bold mb-2 text-sply-navy"
+                className="text-xl sm:text-2xl font-bold mb-2 text-sply-navy"
                 style={{ fontFamily: 'ADAM, sans-serif' }}
               >
                 SPLYFI
               </h3>
-              <p className="text-gray-600 mb-4 font-noto-serif-ethiopic leading-relaxed text-sm">
+              <p className="text-gray-600 mb-4 font-noto-serif-ethiopic leading-relaxed text-xs sm:text-sm">
                 Powering American manufacturing through innovative trade finance solutions.
               </p>
             </div>
@@ -62,12 +62,12 @@ const Index = () => {
             <div className="md:flex md:justify-end md:space-x-12">
               {/* Quick Links */}
               <div className="mb-6 md:mb-0">
-                <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
+                <h4 className="text-xs sm:text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
                   Access
                 </h4>
                 <Link 
                   to="/lp" 
-                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm block"
+                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-xs sm:text-sm block"
                 >
                   Limited Partner Portal
                 </Link>
@@ -75,14 +75,14 @@ const Index = () => {
 
               {/* Contact Info */}
               <div>
-                <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
+                <h4 className="text-xs sm:text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
                   Contact
                 </h4>
                 <a 
                   href="mailto:info@splyfi.com" 
-                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
+                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-xs sm:text-sm flex items-center"
                 >
-                  <Mail className="w-4 h-4 mr-2 text-gray-400" />
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2 text-gray-400" />
                   info@splyfi.com
                 </a>
               </div>
@@ -90,7 +90,7 @@ const Index = () => {
           </div>
 
           {/* Bottom Footer */}
-          <div className="py-4 border-t border-gray-100">
+          <div className="py-3 sm:py-4 border-t border-gray-100">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
               
               {/* Copyright */}
@@ -99,7 +99,7 @@ const Index = () => {
               </div>
               
               {/* Legal Links */}
-              <div className="flex flex-wrap items-center space-x-6 text-xs">
+              <div className="flex flex-wrap justify-center items-center space-x-4 sm:space-x-6 text-xs">
                 <Link 
                   to="/privacy" 
                   className="text-gray-500 hover:text-sply-navy transition-colors font-noto-serif-ethiopic"
@@ -122,7 +122,7 @@ const Index = () => {
             </div>
             
             {/* Risk Disclaimer */}
-            <div className="mt-4 pt-4 border-t border-gray-50">
+            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-50">
               <p className="text-xs text-gray-400 font-noto-serif-ethiopic leading-relaxed max-w-4xl">
                 <span className="font-medium text-gray-500">Investment Risk Disclosure:</span> All investments involve risk, including the potential loss of principal. 
                 Past performance does not guarantee future results. SPLYFI securities are offered to qualified investors only. 

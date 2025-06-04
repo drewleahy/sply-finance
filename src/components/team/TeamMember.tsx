@@ -80,27 +80,27 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col justify-between hover:scale-105"
+      className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col justify-between hover:scale-105"
     >
       <div className="flex flex-col items-center text-center flex-grow">
-        <div className="mb-4 relative">
-          <Avatar className="h-24 w-24 border-2 border-gray-200 shadow-md overflow-hidden">
+        <div className="mb-3 sm:mb-4 relative">
+          <Avatar className="h-20 w-20 sm:h-24 sm:w-24 border-2 border-gray-200 shadow-md overflow-hidden">
             <AvatarImage
               src={member.photo_url || getPlaceholderImage(displayName)}
               alt={displayName}
               className={`object-cover ${getImageObjectPosition(displayName)} w-full h-full transition-all duration-300 grayscale group-hover:grayscale-0`}
             />
-            <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
+            <AvatarFallback className="bg-gray-100 text-xl sm:text-2xl text-gray-500 font-noto-serif-ethiopic">
               {displayName[0]}
             </AvatarFallback>
           </Avatar>
         </div>
         
-        <h3 className="text-lg font-bold text-gray-900 mb-1 font-montserrat">
+        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 font-montserrat">
           {displayName}
         </h3>
         
-        <p className="text-gray-600 mb-3 font-noto-serif-ethiopic text-sm">{member.role}</p>
+        <p className="text-gray-600 mb-2 sm:mb-3 font-noto-serif-ethiopic text-xs sm:text-sm">{member.role}</p>
         
         <p className="text-gray-600 leading-relaxed text-xs font-noto-serif-ethiopic flex-grow">
           {member.bio}
@@ -108,14 +108,14 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       </div>
       
       {getLinkedInUrl(displayName) && (
-        <div className="mt-4 pt-4 border-t border-gray-100">
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
           <a 
             href={getLinkedInUrl(displayName)} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-xs sm:text-sm"
           >
-            <Linkedin className="w-4 h-4" />
+            <Linkedin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="font-noto-serif-ethiopic">LinkedIn</span>
           </a>
         </div>
