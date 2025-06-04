@@ -63,7 +63,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
       case "Matt Saffaii":
         return "object-cover object-[center_30%] scale-110";
       case "Michael Slawson":
-        return "object-top";
+        return "object-cover object-center scale-125";
       default:
         return "object-center";
     }
