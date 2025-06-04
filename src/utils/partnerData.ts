@@ -12,7 +12,7 @@ export const partnerData = [
     role: "General Partner",
     photo_url: "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z",
     display_order: 2,
-    bio: "Tyler Williams is a serial entrepreneur turned seasoned investor, with a proven track record of building and scaling successful companies, culminating in multiple successful exits. This entrepreneurial foundation has honed his expertise in private equity and alternative investments."
+    bio: "Tyler Williams is a seed investor in KLEAR (our trade finance partner), diligencing the deal thoroughly for investment and introducing multiple strategic investors around the table."
   },
   {
     name: "James Wiseman",
