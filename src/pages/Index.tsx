@@ -53,31 +53,37 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
-                Access
-              </h4>
-              <Link 
-                to="/lp" 
-                className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm block"
-              >
-                Limited Partner Portal
-              </Link>
-            </div>
+            {/* Empty space to push content right */}
+            <div className="hidden md:block"></div>
 
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
-                Contact
-              </h4>
-              <a 
-                href="mailto:info@splyfi.com" 
-                className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
-              >
-                <Mail className="w-4 h-4 mr-2 text-gray-400" />
-                info@splyfi.com
-              </a>
+            {/* Quick Links and Contact - Right aligned */}
+            <div className="md:flex md:justify-end md:space-x-12">
+              {/* Quick Links */}
+              <div className="mb-6 md:mb-0">
+                <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
+                  Access
+                </h4>
+                <Link 
+                  to="/lp" 
+                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm block"
+                >
+                  Limited Partner Portal
+                </Link>
+              </div>
+
+              {/* Contact Info */}
+              <div>
+                <h4 className="text-sm font-semibold mb-3 text-gray-900 font-montserrat uppercase tracking-wide">
+                  Contact
+                </h4>
+                <a 
+                  href="mailto:info@splyfi.com" 
+                  className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm flex items-center"
+                >
+                  <Mail className="w-4 h-4 mr-2 text-gray-400" />
+                  info@splyfi.com
+                </a>
+              </div>
             </div>
           </div>
 
