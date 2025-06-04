@@ -9,62 +9,37 @@ interface LogoProps {
 interface PartnerLogosProps {
   title: string;
   partners: LogoProps[];
-  variant?: "infrastructure" | "enterprise";
+  gridCols?: string;
 }
 
-export const PartnerLogos = ({ title, partners, variant = "infrastructure" }: PartnerLogosProps) => {
-  const isInfrastructure = variant === "infrastructure";
-  
+export const PartnerLogos = ({ title, partners, gridCols = "grid-cols-2 md:grid-cols-3 lg:grid-cols-6" }: PartnerLogosProps) => {
   return (
-    <div className="mb-20">
+    <div className="mb-16">
       <motion.h3 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-xs md:text-sm font-montserrat font-medium text-gray-500 text-center mb-12 uppercase tracking-[0.2em] letterspacing-wide"
+        className="text-sm md:text-base font-montserrat font-semibold text-sply-navy/80 text-center mb-8 uppercase tracking-wider"
       >
         {title}
       </motion.h3>
-      
-      {isInfrastructure ? (
-        // Infrastructure partners in a clean horizontal row
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex items-center justify-center"
-            >
-              <img 
-                src={partner.logo} 
-                alt={partner.name}
-                className="h-6 md:h-8 max-w-[120px] md:max-w-[140px] object-contain filter grayscale opacity-60 hover:grayscale-0 hover:opacity-90 transition-all duration-500 hover:scale-105" 
-              />
-            </motion.div>
-          ))}
-        </div>
-      ) : (
-        // Enterprise customers in a more spacious grid
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 md:gap-8 items-center justify-items-center max-w-6xl mx-auto">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
-              className="flex items-center justify-center p-4"
-            >
-              <img 
-                src={partner.logo} 
-                alt={partner.name}
-                className="h-5 md:h-7 max-w-[100px] md:max-w-[120px] object-contain filter grayscale opacity-50 hover:grayscale-0 hover:opacity-80 transition-all duration-500 hover:scale-105" 
-              />
-            </motion.div>
-          ))}
-        </div>
-      )}
+      <div className={`grid ${gridCols} gap-4 md:gap-6`}>
+        {partners.map((partner, index) => (
+          <motion.div
+            key={partner.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.4 }}
+            className="group flex items-center justify-center p-3 md:p-4 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-16 md:h-18 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+          >
+            <img 
+              src={partner.logo} 
+              alt={partner.name}
+              className="max-h-8 md:max-h-10 max-w-full object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105" 
+            />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
