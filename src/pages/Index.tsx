@@ -89,22 +89,6 @@ const Index = () => {
                     Limited Partner Portal
                   </Link>
                 </li>
-                <li>
-                  <Link 
-                    to="/submit-deal" 
-                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
-                  >
-                    Submit Deal
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/auth" 
-                    className="text-gray-600 hover:text-sply-navy transition-colors font-noto-serif-ethiopic text-sm"
-                  >
-                    Vendor Login
-                  </Link>
-                </li>
               </ul>
             </div>
 
