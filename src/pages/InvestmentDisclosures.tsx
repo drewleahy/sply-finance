@@ -20,27 +20,27 @@ const InvestmentDisclosures = () => {
       </header>
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 font-montserrat">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 font-montserrat">
           Investment Disclosures
         </h1>
 
-        <div className="prose prose-lg max-w-none space-y-8">
+        <div className="prose prose-sm max-w-none space-y-6">
           {/* Important Risk Warning */}
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-            <h2 className="text-xl font-semibold text-yellow-800 mb-3 font-montserrat">
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+            <h2 className="text-lg font-semibold text-yellow-800 mb-2 font-montserrat">
               Important Risk Warning
             </h2>
-            <p className="text-yellow-700 leading-relaxed">
+            <p className="text-yellow-700 leading-relaxed text-sm">
               Investments in SPLYFI securities involve substantial risk and are suitable only for sophisticated investors who can afford to lose their entire investment. Past performance is not indicative of future results.
             </p>
           </div>
 
           {/* General Investment Risks */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               General Investment Risks
             </h2>
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-3 text-gray-700 text-sm">
               <p className="leading-relaxed">
                 <strong>Loss of Capital:</strong> You may lose some or all of your investment. There is no guarantee of return of principal or any specific rate of return.
               </p>
@@ -58,10 +58,10 @@ const InvestmentDisclosures = () => {
 
           {/* Credit and Operational Risks */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               Credit and Operational Risks
             </h2>
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-3 text-gray-700 text-sm">
               <p className="leading-relaxed">
                 <strong>Credit Risk:</strong> Borrowers may default on their obligations, resulting in loss of principal and interest.
               </p>
@@ -76,10 +76,10 @@ const InvestmentDisclosures = () => {
 
           {/* Market and Economic Risks */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               Market and Economic Risks
             </h2>
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-3 text-gray-700 text-sm">
               <p className="leading-relaxed">
                 <strong>Economic Conditions:</strong> Changes in economic conditions, including recession, inflation, or deflation, may adversely affect investment performance.
               </p>
@@ -94,14 +94,14 @@ const InvestmentDisclosures = () => {
 
           {/* Suitability and Eligibility */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               Investor Suitability
             </h2>
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-3 text-gray-700 text-sm">
               <p className="leading-relaxed">
                 SPLYFI securities are offered only to "accredited investors" as defined under federal securities laws. Investment should only be considered by investors who:
               </p>
-              <ul className="list-disc pl-6 space-y-2">
+              <ul className="list-disc pl-5 space-y-1">
                 <li>Can afford to lose their entire investment</li>
                 <li>Have adequate financial resources and liquidity to bear the risks</li>
                 <li>Have sufficient knowledge and experience to evaluate the investment</li>
@@ -112,30 +112,30 @@ const InvestmentDisclosures = () => {
 
           {/* Forward-Looking Statements */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               Forward-Looking Statements
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed text-sm">
               This website contains forward-looking statements that involve risks and uncertainties. Actual results may differ materially from those projected. Forward-looking statements speak only as of the date made and are subject to change without notice.
             </p>
           </section>
 
           {/* No Investment Advice */}
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-montserrat">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3 font-montserrat">
               No Investment Advice
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed text-sm">
               The information on this website does not constitute investment advice, and you should consult with your financial advisor, attorney, and accountant before making any investment decision. SPLYFI does not provide tax, legal, or investment advice.
             </p>
           </section>
 
           {/* Contact Information */}
-          <section className="bg-gray-100 p-6 rounded-lg">
-            <h2 className="text-xl font-semibold text-gray-900 mb-3 font-montserrat">
+          <section className="bg-gray-100 p-4 rounded-lg">
+            <h2 className="text-base font-semibold text-gray-900 mb-2 font-montserrat">
               Questions About These Disclosures?
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed text-sm">
               For questions regarding these investment disclosures or to obtain additional risk information, please contact us at{" "}
               <a href="mailto:info@splyfi.com" className="text-sply-navy hover:underline">
                 info@splyfi.com
@@ -144,7 +144,7 @@ const InvestmentDisclosures = () => {
           </section>
 
           {/* Last Updated */}
-          <div className="text-sm text-gray-500 pt-8 border-t border-gray-200">
+          <div className="text-xs text-gray-500 pt-6 border-t border-gray-200">
             Last updated: December 2024
           </div>
         </div>
