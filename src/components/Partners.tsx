@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { unwrapResult } from "@/utils/supabaseHelpers";
@@ -131,7 +132,7 @@ export const Partners = () => {
             Leadership Team
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-noto-serif-ethiopic">
-            Our experienced team drives innovation in investment strategies and portfolio management
+            Led by Operators. Backed by Experience.
           </p>
         </motion.div>
         
