@@ -29,7 +29,7 @@ export const Hero = () => {
           className="flex justify-center"
         >
           <Button 
-            className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat px-8 py-3 text-lg"
+            className="bg-sply-gold hover:bg-sply-gold/90 text-white font-noto-serif-ethiopic px-8 py-3 text-lg"
             onClick={() => window.open('https://calendly.com/d/cr4f-gjy-gn9/splyfi-intro-call', '_blank')}
           >
             Connect with Our Team
