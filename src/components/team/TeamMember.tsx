@@ -74,7 +74,7 @@ export const TeamMember = ({ member, index, isPrimary = false }: TeamMemberProps
             <AvatarImage
               src={member.photo_url || getPlaceholderImage(displayName)}
               alt={displayName}
-              className="object-cover object-center w-full h-full transition-transform duration-300 group-hover:scale-105 grayscale hover:grayscale-0"
+              className="object-cover object-center w-full h-full transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0"
             />
             <AvatarFallback className="bg-gray-100 text-2xl text-gray-500 font-noto-serif-ethiopic">
               {displayName[0]}
