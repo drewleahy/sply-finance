@@ -28,7 +28,10 @@ export const Hero = () => {
           transition={{ delay: 0.7 }}
           className="flex justify-center"
         >
-          <Button className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat px-8 py-3 text-lg">
+          <Button 
+            className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat px-8 py-3 text-lg"
+            onClick={() => window.open('https://calendly.com/d/cr4f-gjy-gn9/splyfi-intro-call', '_blank')}
+          >
             Connect with Our Team
           </Button>
         </motion.div>
