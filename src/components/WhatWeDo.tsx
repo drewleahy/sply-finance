@@ -10,7 +10,7 @@ export const WhatWeDo = () => {
           {/* Header Section */}
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-4xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
-              What We Do
+              Our Approach
             </h2>
             <h3 className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 font-noto-serif-ethiopic">
               Private Credit That Powers U.S. Manufacturing
