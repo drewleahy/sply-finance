@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { InvestmentThesis } from "@/components/InvestmentThesis";
@@ -7,6 +8,7 @@ import { TeamAlpha } from "@/components/TeamAlpha";
 import { FundDetails } from "@/components/FundDetails";
 import { AssetAllocation } from "@/components/AssetAllocation";
 import { WhatWeDo } from "@/components/WhatWeDo";
+import { HowItWorks } from "@/components/HowItWorks";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -29,6 +31,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <WhatWeDo />
+        <HowItWorks />
         <AssetAllocation />
         <InvestmentThesis />
         <Partners />
