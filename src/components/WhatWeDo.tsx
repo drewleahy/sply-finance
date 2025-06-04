@@ -9,10 +9,10 @@ export const WhatWeDo = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-sply-navy mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-sply-navy mb-6 font-montserrat">
               What We Do
             </h2>
-            <h3 className="text-2xl md:text-3xl font-serif text-sply-gold mb-8">
+            <h3 className="text-2xl md:text-3xl font-noto-serif-ethiopic text-sply-gold mb-8">
               Private Credit That Powers U.S. Manufacturing
             </h3>
           </div>
@@ -28,8 +28,8 @@ export const WhatWeDo = () => {
                       <Zap className="w-3 h-3 text-gray-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800 mb-2 text-sm">The Challenge</h4>
-                      <p className="text-gray-600 text-sm">
+                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">The Challenge</h4>
+                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
                         Small vendors win big contracts — but lack the cash to fulfill them. Banks can't move fast enough.
                       </p>
                     </div>
@@ -48,8 +48,8 @@ export const WhatWeDo = () => {
                       <Shield className="w-3 h-3 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800 mb-2 text-sm">Our Solution</h4>
-                      <p className="text-gray-600 text-sm">
+                      <h4 className="font-semibold text-gray-800 mb-2 text-sm font-montserrat">Our Solution</h4>
+                      <p className="text-gray-600 text-sm font-noto-serif-ethiopic">
                         SPLYFI bridges that gap — funding verified purchase orders from Fortune 1000 and government buyers.
                       </p>
                     </div>
@@ -67,8 +67,8 @@ export const WhatWeDo = () => {
                       <TrendingUp className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">Mutual Success</h4>
-                      <p className="text-gray-200 text-lg leading-relaxed">
+                      <h4 className="text-xl font-bold mb-2 font-montserrat">Mutual Success</h4>
+                      <p className="text-gray-200 text-lg leading-relaxed font-noto-serif-ethiopic">
                         We unlock opportunity for American suppliers — and generate yield for our investors.
                       </p>
                     </div>
@@ -76,12 +76,12 @@ export const WhatWeDo = () => {
                   
                   <div className="grid grid-cols-2 gap-4 mt-8">
                     <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-2xl font-bold text-sply-gold">$50M+</div>
-                      <div className="text-sm text-gray-300">Capital Deployed</div>
+                      <div className="text-2xl font-bold text-sply-gold font-montserrat">$50M+</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic">Capital Deployed</div>
                     </div>
                     <div className="text-center p-4 bg-white/10 rounded-lg">
-                      <div className="text-2xl font-bold text-sply-gold">100+</div>
-                      <div className="text-sm text-gray-300">Suppliers Funded</div>
+                      <div className="text-2xl font-bold text-sply-gold font-montserrat">100+</div>
+                      <div className="text-sm text-gray-300 font-noto-serif-ethiopic">Suppliers Funded</div>
                     </div>
                   </div>
                 </CardContent>
@@ -92,7 +92,7 @@ export const WhatWeDo = () => {
           {/* Bottom CTA Section */}
           <div className="text-center">
             <div className="inline-flex items-center space-x-2 bg-sply-gold/10 px-6 py-3 rounded-full">
-              <span className="text-sply-navy font-semibold">Ready to bridge the gap?</span>
+              <span className="text-sply-navy font-semibold font-noto-serif-ethiopic">Ready to bridge the gap?</span>
               <ArrowRight className="w-4 h-4 text-sply-navy" />
             </div>
           </div>

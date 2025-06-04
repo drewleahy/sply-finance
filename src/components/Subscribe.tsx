@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,10 +48,10 @@ export const Subscribe = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 max-w-xl text-center">
-        <h2 className="text-3xl md:text-4xl font-serif text-gray-800 mb-6">
+        <h2 className="text-3xl md:text-4xl font-montserrat text-gray-800 mb-6">
           Join Our Network
         </h2>
-        <p className="text-gray-600 text-lg mb-8">
+        <p className="text-gray-600 text-lg mb-8 font-noto-serif-ethiopic">
           Get access to exclusive investment opportunities and market insights.
         </p>
         <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
@@ -60,12 +61,12 @@ export const Subscribe = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="bg-gray-50 border-2 border-gray-200 text-gray-800 placeholder:text-gray-500/70 focus:border-gray-400"
+            className="bg-gray-50 border-2 border-gray-200 text-gray-800 placeholder:text-gray-500/70 focus:border-gray-400 font-noto-serif-ethiopic"
           />
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold whitespace-nowrap"
+            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold whitespace-nowrap font-montserrat"
           >
             {isLoading ? "Submitting..." : "Subscribe"}
           </Button>

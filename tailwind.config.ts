@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,12 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'noto-serif-ethiopic': ['Noto Serif Ethiopic', 'serif'],
+        'sans': ['Noto Serif Ethiopic', 'serif'],
+        'serif': ['Montserrat', 'sans-serif'],
+      },
       colors: {
         sply: {
           navy: "#1A1F2C",

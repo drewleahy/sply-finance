@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 const thesisPoints = [
@@ -22,10 +23,10 @@ export const InvestmentThesis = () => {
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-serif text-gray-800 text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-montserrat text-gray-800 text-center mb-8">
           Why Invest in Trade Financing?
         </h2>
-        <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto font-noto-serif-ethiopic">
           American manufacturing is experiencing a resurgence, driven by increased infrastructure investment, job growth, and advanced technologies.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -38,8 +39,8 @@ export const InvestmentThesis = () => {
               className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
             >
               <div className="text-4xl mb-4">{point.icon}</div>
-              <h3 className="text-xl text-gray-800 mb-4">{point.title}</h3>
-              <p className="text-gray-600">{point.description}</p>
+              <h3 className="text-xl text-gray-800 mb-4 font-montserrat">{point.title}</h3>
+              <p className="text-gray-600 font-noto-serif-ethiopic">{point.description}</p>
             </motion.div>
           ))}
         </div>

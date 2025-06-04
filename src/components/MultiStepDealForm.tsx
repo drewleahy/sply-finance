@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -38,10 +39,10 @@ export const MultiStepDealForm = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-4xl font-noto-serif-ethiopic">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-sply-navy mb-2">Submit a Deal</h1>
-        <p className="text-sply-muted">
+        <h1 className="text-3xl font-bold text-sply-navy mb-2 font-montserrat">Submit a Deal</h1>
+        <p className="text-sply-muted font-noto-serif-ethiopic">
           Share your startup with potential investors
         </p>
       </div>
@@ -57,7 +58,7 @@ export const MultiStepDealForm = () => {
             >
               <div className="relative z-10 flex flex-col items-center">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  className={`w-8 h-8 rounded-full flex items-center justify-center font-montserrat ${
                     step.id <= currentStep
                       ? "bg-sply-gold text-white"
                       : "bg-gray-200 text-gray-500"
@@ -66,8 +67,8 @@ export const MultiStepDealForm = () => {
                   {step.id}
                 </div>
                 <div className="mt-2 text-sm text-center hidden md:block">
-                  <div className="font-medium">{step.title}</div>
-                  <div className="text-luxon-muted text-xs">
+                  <div className="font-medium font-montserrat">{step.title}</div>
+                  <div className="text-luxon-muted text-xs font-noto-serif-ethiopic">
                     {step.description}
                   </div>
                 </div>
@@ -93,10 +94,15 @@ export const MultiStepDealForm = () => {
             variant="outline"
             onClick={handleBack}
             disabled={currentStep === 1}
+            className="font-montserrat"
           >
             Back
           </Button>
-          <Button onClick={handleNext} disabled={currentStep === steps.length}>
+          <Button 
+            onClick={handleNext} 
+            disabled={currentStep === steps.length}
+            className="font-montserrat"
+          >
             {currentStep === steps.length ? "Submit" : "Next"}
           </Button>
         </div>
