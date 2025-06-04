@@ -58,7 +58,7 @@ const enterpriseCustomers = [
 
 export const LogosSection = () => {
   return (
-    <section className="py-8" style={{ backgroundColor: '#fafafa' }}>
+    <section className="py-4" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="py-6 px-6 rounded-xl" style={{ backgroundColor: '#fafafa' }}>
           <PartnerLogos 
