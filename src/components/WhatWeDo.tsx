@@ -4,6 +4,8 @@ import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const WhatWeDo = () => {
+  console.log("WhatWeDo component is rendering");
+  
   return (
     <section className="py-12" style={{backgroundColor: '#fafafa'}}>
       <div className="container mx-auto px-4">
