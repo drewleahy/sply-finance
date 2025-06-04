@@ -1,10 +1,9 @@
 
+
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { Subscribe } from "@/components/Subscribe";
 import { InvestmentFlow } from "@/components/InvestmentFlow";
-import { TeamAlpha } from "@/components/TeamAlpha";
-import { FundDetails } from "@/components/FundDetails";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TrustTransparency } from "@/components/TrustTransparency";
@@ -35,9 +34,7 @@ const Index = () => {
         <TrustTransparency />
         <MarketOpportunity />
         <Partners />
-        <FundDetails />
         <InvestmentFlow />
-        <TeamAlpha />
         <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 font-montserrat">Need PO Financing?</h2>
           <p className="text-gray-600 mb-6 font-noto-serif-ethiopic">
@@ -73,3 +70,4 @@ const Index = () => {
 };
 
 export default Index;
+
