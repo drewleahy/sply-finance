@@ -1,5 +1,4 @@
 
-
 import { Hero } from "@/components/Hero";
 import { Partners } from "@/components/Partners";
 import { Subscribe } from "@/components/Subscribe";
@@ -35,24 +34,6 @@ const Index = () => {
         <MarketOpportunity />
         <Partners />
         <InvestmentFlow />
-        <section className="container mx-auto px-4 py-12 bg-gray-50 rounded-lg my-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 font-montserrat">Need PO Financing?</h2>
-          <p className="text-gray-600 mb-6 font-noto-serif-ethiopic">
-            Manufacturing Companies: Looking for financing solutions? Submit your deal for review today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/submit-deal">
-              <Button className="bg-gray-800 hover:bg-gray-700 text-white font-montserrat">
-                Submit a Deal
-              </Button>
-            </Link>
-            <Link to="/lp">
-              <Button className="bg-sply-gold hover:bg-sply-gold/90 text-white font-montserrat">
-                Apply to Become A Limited Partner
-              </Button>
-            </Link>
-          </div>
-        </section>
         <Subscribe />
       </main>
 
@@ -70,4 +51,3 @@ const Index = () => {
 };
 
 export default Index;
-
