@@ -203,7 +203,7 @@ const PrivacyPolicy = () => {
               </p>
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                 <p><strong>SPLYFI</strong></p>
-                <p>Email: <a href="mailto:privacy@splyfi.com" className="text-sply-navy hover:underline">privacy@splyfi.com</a></p>
+                <p>Email: <a href="mailto:info@splyfi.com" className="text-sply-navy hover:underline">info@splyfi.com</a></p>
                 <p>General Inquiries: <a href="mailto:info@splyfi.com" className="text-sply-navy hover:underline">info@splyfi.com</a></p>
               </div>
             </section>
