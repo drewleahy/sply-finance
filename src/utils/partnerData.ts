@@ -11,7 +11,7 @@ export const partnerData = [
     role: "General Partner",
     photo_url: "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z",
     display_order: 2,
-    bio: "Tyler Williams is a seasoned investor and serial entrepreneur with a track record of founding, scaling, and exiting multiple successful ventures. As a General Partner at SPLYFINANCE, he brings sharp operational insight and deep expertise in private equity and alternative assets. Tyler was an early investor in KLEAR, SPLYFINANCE's trade finance partner, where he played a key role in underwriting the deal and assembling a strategic syndicate."
+    bio: "Tyler Williams is a seasoned investor and serial entrepreneur with a track record of founding, scaling, and exiting multiple successful ventures. Tyler was an early investor in KLEAR, SPLYFINANCE's trade finance partner, where he played a key role in underwriting the deal and assembling a strategic syndicate."
   },
   {
     name: "James Wiseman",
