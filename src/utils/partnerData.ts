@@ -42,8 +42,6 @@ export const partnerData = [
     role: "Chief of Staff",
     photo_url: "/lovable-uploads/a04feed4-4b2e-498b-9e22-f363b216c4f9.png",
     display_order: 6,
-    bio: "Haley Swank has over a decade of operating experience across AI, SaaS, and consumer startups, leading product, GTM, and operations at venture-backed companies. Prior to that, she built a profitable B2B and DTC e-commerce brand with multi-million-dollar sales and firsthand exposure to international supply chain and cashflow challenges."
+    bio: "Haley Swank has over a decade of operating experience across AI, SaaS, and consumer brands, leading product, GTM, and operations at venture-backed companies. Prior to that, she built a profitable B2B and DTC e-commerce brand with multi-million-dollar sales and firsthand exposure to international supply chain and cashflow challenges."
   }
 ];
-
-
