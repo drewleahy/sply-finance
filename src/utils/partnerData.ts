@@ -1,5 +1,3 @@
-
-
 export const partnerData = [
   {
     name: "Drew Leahy",
@@ -13,7 +11,7 @@ export const partnerData = [
     role: "General Partner",
     photo_url: "https://aazfuzqjeszvqqlnoeoa.supabase.co/storage/v1/object/public/partner-photos/Tyler.jpg?t=2025-01-18T03%3A17%3A10.792Z",
     display_order: 2,
-    bio: "Tyler Williams is a seed investor in KLEAR (our trade finance partner), diligencing the deal thoroughly for investment and introducing multiple strategic investors around the table."
+    bio: "Tyler Williams is a seasoned investor and serial entrepreneur with a track record of founding, scaling, and exiting multiple successful ventures. As a General Partner at SPLYFINANCE, he brings sharp operational insight and deep expertise in private equity and alternative assets. Tyler was an early investor in KLEAR, SPLYFINANCE's trade finance partner, where he played a key role in underwriting the deal and assembling a strategic syndicate."
   },
   {
     name: "James Wiseman",
@@ -44,4 +42,3 @@ export const partnerData = [
     bio: "Haley Swank is an experienced operator with over a decade of experience across AI, SaaS, and consumer startups. She has led product strategy, go-to-market execution, and operations at venture-backed companies, and has been closely involved in raising capital and scaling early-stage teams. As co-founder and President of FLÎKR Fire, she built a profitable, multi-million-dollar omni-channel brand and successfully led it through an exit."
   }
 ];
-
