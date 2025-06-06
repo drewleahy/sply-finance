@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
 
@@ -88,11 +87,7 @@ export const LogosSection = () => {
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
-                    className={`max-w-full object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105 ${
-                      partner.name === "General Dynamics" || partner.name === "Lockheed Martin" 
-                        ? "max-h-14 md:max-h-20" 
-                        : "max-h-12 md:max-h-16"
-                    }`}
+                    className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
                   />
                 </motion.div>
               ))}
