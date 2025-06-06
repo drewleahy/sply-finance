@@ -136,7 +136,7 @@ export const WhatWeDo = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                   <div className="text-center p-3 sm:p-4 bg-white/10 rounded-xl border border-white/20">
                     <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-sply-gold font-montserrat mb-1">$31M+</div>
-                    <div className="text-xs text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Purchase Orders Financed</div>
+                    <div className="text-xs text-gray-300 font-noto-serif-ethiopic uppercase tracking-wide">Post-Delivery Receivables Funded</div>
                   </div>
                   <div className="text-center p-3 sm:p-4 bg-white/10 rounded-xl border border-white/20">
                     <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-sply-gold font-montserrat mb-1">188</div>
