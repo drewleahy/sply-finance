@@ -22,7 +22,7 @@ export const WhatWeDo = () => {
             </h2>
             <div className="w-12 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-3 sm:mb-4 rounded-full"></div>
             <h3 className="text-xs sm:text-sm md:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto px-2 lg:px-4 font-noto-serif-ethiopic leading-relaxed">
-              Private credit that powers U.S. manufacturing by funding real purchase orders — fast, insured, and transparent.
+              Private credit that powers U.S. manufacturing by financing real receivables — fast, transparent, and reliable.
             </h3>
           </motion.div>
 
