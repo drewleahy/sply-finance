@@ -6,32 +6,37 @@ import { Card, CardContent } from "@/components/ui/card";
 export const HowItWorks = () => {
   const steps = [
     {
-      title: "PO Issued",
-      subtitle: "(by F1000/Gov)",
+      title: "Receivable Issued",
+      subtitle: "(By Fortune 1000 or Government Buyer)",
+      description: "The vendor delivers goods or services and issues a verified invoice to a creditworthy customer.",
       icon: FileText,
       delay: 0,
     },
     {
-      title: "Underwritten & Insured",
-      subtitle: "(SPLYFI + Allianz)",
+      title: "Receivable Underwritten",
+      subtitle: "(SPLYFI + Partners)",
+      description: "The receivable is reviewed for credit quality, terms, and counterparty risk using institutional-grade underwriting standards.",
       icon: Shield,
       delay: 0.15,
     },
     {
       title: "Capital Deployed",
-      subtitle: "(to U.S. vendor)",
+      subtitle: "(To U.S. Vendor)",
+      description: "SPLYFI advances funds to the vendor, freeing up working capital while they wait for payment.",
       icon: DollarSign,
       delay: 0.3,
     },
     {
-      title: "Order Fulfilled",
-      subtitle: "(payment collected)",
+      title: "Payment Collected",
+      subtitle: "(From Buyer)",
+      description: "The buyer remits payment directly to SPLYFI at invoice maturity, typically within 30–90 days.",
       icon: CheckCircle,
       delay: 0.45,
     },
     {
       title: "Yield Returned",
-      subtitle: "(principal + yield)",
+      subtitle: "(Principal + Yield to Investors)",
+      description: "Investors receive their principal and earned yield, completing a short-duration, repeatable financing cycle.",
       icon: TrendingUp,
       delay: 0.6,
     },
@@ -79,21 +84,26 @@ export const HowItWorks = () => {
                   }}
                   className="flex flex-col items-center group"
                 >
-                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full h-40 sm:h-44 lg:h-48 max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
-                    <CardContent className="p-4 sm:p-6 text-center h-full flex flex-col justify-center">
-                      <motion.div 
-                        initial={{ scale: 0, rotate: -180 }}
-                        whileInView={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: step.delay + 0.4, duration: 0.6, type: "spring" }}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
-                      >
-                        <step.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
-                      </motion.div>
-                      <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
-                        {step.title}
-                      </h4>
-                      <p className="text-sm sm:text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600">
-                        {step.subtitle}
+                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
+                    <CardContent className="p-4 sm:p-6 text-center h-full flex flex-col justify-between">
+                      <div>
+                        <motion.div 
+                          initial={{ scale: 0, rotate: -180 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          transition={{ delay: step.delay + 0.4, duration: 0.6, type: "spring" }}
+                          className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
+                        >
+                          <step.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
+                        </motion.div>
+                        <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
+                          {step.title}
+                        </h4>
+                        <p className="text-sm sm:text-base font-noto-serif-ethiopic opacity-70 leading-relaxed font-medium text-gray-600 mb-3">
+                          {step.subtitle}
+                        </p>
+                      </div>
+                      <p className="text-xs sm:text-sm font-noto-serif-ethiopic text-gray-700 leading-relaxed">
+                        {step.description}
                       </p>
                     </CardContent>
                   </Card>
