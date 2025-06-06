@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { LogosSection } from "@/components/LogosSection";
 import { Partners } from "@/components/Partners";
@@ -15,7 +16,7 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-2 flex justify-between items-center bg-white border-b">
         <h1 
-          className="text-xl sm:text-2xl md:text-3xl text-gray-800"
+          className="text-lg sm:text-xl md:text-2xl text-gray-800"
           style={{ fontFamily: 'ADAM, sans-serif' }}
         >
           <span className="font-medium">SPLY</span>
