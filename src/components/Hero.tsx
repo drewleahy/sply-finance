@@ -32,7 +32,7 @@ export const Hero = () => {
           transition={{ delay: 0.5 }}
           className="text-sm sm:text-base md:text-lg text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-2 sm:px-4 font-noto-serif-ethiopic leading-relaxed"
         >
-          SPLYFI offers short-duration, insured purchase order financing, targeting 12%+ annual returns with transparent reporting and institutional-grade underwriting
+          SPLYFI offers short-duration, insured receivables financing, targeting 12%+ annual returns with transparent reporting and institutional-grade underwriting
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
