@@ -72,7 +72,7 @@ export const WhatWeDo = () => {
                     <div className="flex-grow">
                       <h4 className="font-semibold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base font-montserrat">The Challenge</h4>
                       <p className="text-gray-600 text-xs sm:text-sm font-noto-serif-ethiopic leading-relaxed">
-                        Small vendors win big contracts — but lack the cash to fulfill them. Banks can't move fast enough.
+                        Small vendors deliver on major contracts — but are left waiting on payment. With cash tied up and banks too slow, they struggle to fund the next job.
                       </p>
                     </div>
                   </div>
