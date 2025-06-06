@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Shield, CheckCircle, FileCheck, Users, BarChart3, Scale } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const TrustTransparency = () => {
   const trustFeatures = [
     {
-      title: "Allianz-backed Insurance",
+      title: "Allianz backed Insurance",
       icon: Shield,
       description: "Industry-leading coverage protecting your investment",
       delay: 0,
