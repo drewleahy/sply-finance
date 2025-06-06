@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/Hero";
 import { LogosSection } from "@/components/LogosSection";
 import { Partners } from "@/components/Partners";
@@ -16,10 +15,11 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-2 flex justify-between items-center bg-white border-b">
         <h1 
-          className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800"
+          className="text-xl sm:text-2xl md:text-3xl text-gray-800"
           style={{ fontFamily: 'ADAM, sans-serif' }}
         >
-          SPLYFI
+          <span className="font-medium">SPLY</span>
+          <span className="font-bold">FI</span>
         </h1>
         <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold font-montserrat text-sm sm:text-base">
           LP LOGIN
