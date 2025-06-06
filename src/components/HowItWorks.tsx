@@ -53,7 +53,7 @@ export const HowItWorks = () => {
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-sply-navy to-sply-gold mx-auto mb-6 sm:mb-8 rounded-full"></div>
             <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-noto-serif-ethiopic leading-relaxed px-2">
-              From purchase order to investor yield — a fast, secure, repeatable model that transforms manufacturing finance.
+              From invoice to investor yield — a streamlined, reliable model redefining manufacturing finance.
             </p>
           </motion.div>
 
