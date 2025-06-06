@@ -127,7 +127,7 @@ export const WhatWeDo = () => {
                     <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <h4 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 font-montserrat">Proven Performance</h4>
-                  <p className="text-gray-200 text-xs sm:text-sm lg:text-base leading-relaxed font-noto-serif-ethiopic max-w-xl mx-auto">
+                  <p className="text-gray-200 text-xs sm:text-sm lg:text-base leading-relaxed font-noto-serif-ethiopic max-w-2xl mx-auto">
                     Funding has enabled over 180 real-world transactions, accelerating U.S. production<br />
                     and generating 12%+ annualized yield built with safety and transparency.
                   </p>
