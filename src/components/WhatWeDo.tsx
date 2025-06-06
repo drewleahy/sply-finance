@@ -98,7 +98,7 @@ export const WhatWeDo = () => {
                     <div className="flex-grow">
                       <h4 className="font-semibold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base font-montserrat">Our Solution</h4>
                       <p className="text-gray-600 text-xs sm:text-sm font-noto-serif-ethiopic leading-relaxed">
-                        SPLYFI bridges that gap — funding verified purchase orders from Fortune 1000 and government buyers.
+                        SPLYFI bridges that gap — financing verified receivables from Fortune 1000 and government buyers.
                       </p>
                     </div>
                   </div>
