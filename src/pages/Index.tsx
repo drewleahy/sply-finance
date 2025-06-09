@@ -6,6 +6,7 @@ import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TrustTransparency } from "@/components/TrustTransparency";
 import { MarketOpportunity } from "@/components/MarketOpportunity";
+import { InvestorCTA } from "@/components/InvestorCTA";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
@@ -34,6 +35,7 @@ const Index = () => {
         <HowItWorks />
         <TrustTransparency />
         <MarketOpportunity />
+        <InvestorCTA />
         <Partners />
       </main>
 
