@@ -70,10 +70,6 @@ const enterpriseCustomers = [
 ];
 
 export const LogosSection = () => {
-  console.log("DEBUG: Full enterprise customers array:", enterpriseCustomers);
-  console.log("DEBUG: Anduril entry:", enterpriseCustomers.find(c => c.name === "Anduril"));
-  console.log("DEBUG: Siemens entry:", enterpriseCustomers.find(c => c.name === "Siemens"));
-  
   return (
     <section className="py-4" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4 max-w-6xl">
@@ -94,60 +90,52 @@ export const LogosSection = () => {
               Enterprise Customers
             </motion.h3>
             
-            {/* Debug: Show total count */}
-            <div className="text-center mb-4 text-sm text-gray-500">
-              DEBUG: Showing {enterpriseCustomers.length} customers
-            </div>
-            
-            {/* Faster Continuous Scroll Carousel for Enterprise Customers */}
+            {/* Continuous Scroll Container */}
             <div className="relative overflow-hidden">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                  dragFree: true,
-                }}
-                className="w-full max-w-5xl mx-auto"
-              >
-                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_15s_linear_infinite] hover:[animation-play-state:paused]">
-                  {[...enterpriseCustomers, ...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => {
-                    const isAndurilOrSiemens = partner.name === "Anduril" || partner.name === "Siemens";
-                    console.log(`DEBUG: Rendering ${partner.name} (${index}) - Is new logo: ${isAndurilOrSiemens}`);
-                    
-                    return (
-                      <CarouselItem key={`${partner.name}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: (index % enterpriseCustomers.length) * 0.05, duration: 0.4 }}
-                          className={`group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm ${isAndurilOrSiemens ? 'border-red-300 bg-red-50/50' : ''}`}
-                        >
-                          <img 
-                            src={partner.logo} 
-                            alt={partner.name}
-                            className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:filter group-hover:grayscale transition-all duration-300 group-hover:scale-105"
-                            style={{
-                              objectFit: 'contain',
-                              objectPosition: 'center'
-                            }}
-                            onLoad={() => console.log(`SUCCESS: Image loaded for ${partner.name}`)}
-                            onError={(e) => {
-                              console.error(`ERROR: Image failed to load for ${partner.name}:`, partner.logo);
-                              console.error('Error details:', e);
-                            }}
-                          />
-                          {/* Debug text overlay for new logos */}
-                          {isAndurilOrSiemens && (
-                            <div className="absolute top-0 left-0 text-xs bg-red-500 text-white px-1 rounded">
-                              {partner.name}
-                            </div>
-                          )}
-                        </motion.div>
-                      </CarouselItem>
-                    );
-                  })}
-                </CarouselContent>
-              </Carousel>
+              <div className="flex animate-scroll">
+                {/* First set */}
+                {enterpriseCustomers.map((partner, index) => (
+                  <div key={`set1-${partner.name}-${index}`} className="flex-shrink-0 w-1/3 md:w-1/4 lg:w-1/5 px-2 md:px-4">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.4 }}
+                      className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                    >
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:opacity-60 group-hover:grayscale transition-all duration-300 group-hover:scale-105"
+                        style={{
+                          objectFit: 'contain',
+                          objectPosition: 'center'
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                ))}
+                {/* Second set for seamless loop */}
+                {enterpriseCustomers.map((partner, index) => (
+                  <div key={`set2-${partner.name}-${index}`} className="flex-shrink-0 w-1/3 md:w-1/4 lg:w-1/5 px-2 md:px-4">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.4 }}
+                      className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                    >
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:opacity-60 group-hover:grayscale transition-all duration-300 group-hover:scale-105"
+                        style={{
+                          objectFit: 'contain',
+                          objectPosition: 'center'
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -159,8 +147,16 @@ export const LogosSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translateX(-50%);
           }
+        }
+        
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
         }
       `}</style>
     </section>
