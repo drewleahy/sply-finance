@@ -101,8 +101,10 @@ export const LogosSection = () => {
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
-                    className={`max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105 ${
-                      partner.name === 'Anduril' ? 'scale-[2]' : ''
+                    className={`max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${
+                      partner.name === 'Anduril' 
+                        ? 'scale-[2] group-hover:scale-[2.1]' 
+                        : 'group-hover:scale-105'
                     }`}
                   />
                 </motion.div>
@@ -122,8 +124,10 @@ export const LogosSection = () => {
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
-                    className={`max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105 ${
-                      partner.name === 'Siemens' ? 'scale-[2]' : ''
+                    className={`max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${
+                      partner.name === 'Siemens' 
+                        ? 'scale-[2] group-hover:scale-[2.1]' 
+                        : 'group-hover:scale-105'
                     }`}
                   />
                 </motion.div>
