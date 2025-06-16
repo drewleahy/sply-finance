@@ -1,11 +1,5 @@
-
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
 const infrastructurePartners = [
   {
@@ -58,14 +52,6 @@ const enterpriseCustomers = [
   {
     name: "Capgemini",
     logo: "/lovable-uploads/29bb4bf7-9656-46d2-9df0-481d9002dda1.png"
-  },
-  {
-    name: "Anduril",
-    logo: "/lovable-uploads/e6668a0b-2964-48b2-8902-f50235030f08.png"
-  },
-  {
-    name: "Siemens",
-    logo: "/lovable-uploads/270d42b7-9747-4d5a-9af9-ef33534fc7fb.png"
   }
 ];
 
@@ -89,76 +75,26 @@ export const LogosSection = () => {
             >
               Enterprise Customers
             </motion.h3>
-            
-            {/* Continuous Scroll Container */}
-            <div className="relative overflow-hidden">
-              <div className="flex animate-scroll">
-                {/* First set */}
-                {enterpriseCustomers.map((partner, index) => (
-                  <div key={`set1-${partner.name}-${index}`} className="flex-shrink-0 w-1/3 md:w-1/4 lg:w-1/5 px-2 md:px-4">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.4 }}
-                      className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
-                    >
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:opacity-60 group-hover:grayscale transition-all duration-300 group-hover:scale-105"
-                        style={{
-                          objectFit: 'contain',
-                          objectPosition: 'center'
-                        }}
-                      />
-                    </motion.div>
-                  </div>
-                ))}
-                {/* Second set for seamless loop */}
-                {enterpriseCustomers.map((partner, index) => (
-                  <div key={`set2-${partner.name}-${index}`} className="flex-shrink-0 w-1/3 md:w-1/4 lg:w-1/5 px-2 md:px-4">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.4 }}
-                      className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
-                    >
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:opacity-60 group-hover:grayscale transition-all duration-300 group-hover:scale-105"
-                        style={{
-                          objectFit: 'contain',
-                          objectPosition: 'center'
-                        }}
-                      />
-                    </motion.div>
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
+              {enterpriseCustomers.map((partner, index) => (
+                <motion.div
+                  key={partner.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                  className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                >
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      
-      <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-scroll {
-          animation: scroll 20s linear infinite;
-        }
-        
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
