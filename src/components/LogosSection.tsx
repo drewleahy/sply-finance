@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
 
@@ -24,7 +25,7 @@ const infrastructurePartners = [
   }
 ];
 
-const enterpriseCustomers = [
+const enterpriseCustomersRow1 = [
   {
     name: "Tesla",
     logo: "/lovable-uploads/4de9f5a3-bb81-4e94-bee1-98b9400a4b42.png"
@@ -42,6 +43,13 @@ const enterpriseCustomers = [
     logo: "/lovable-uploads/0bd0ab8a-57fe-445c-a6db-5fafa2c25d6d.png"
   },
   {
+    name: "Anduril",
+    logo: "/lovable-uploads/89af4218-5a60-4f18-898d-663011e98e12.png"
+  }
+];
+
+const enterpriseCustomersRow2 = [
+  {
     name: "Lockheed Martin",
     logo: "/lovable-uploads/eeba9a4a-a9ac-4dc4-b37a-03ba00de8995.png"
   },
@@ -52,6 +60,10 @@ const enterpriseCustomers = [
   {
     name: "Capgemini",
     logo: "/lovable-uploads/29bb4bf7-9656-46d2-9df0-481d9002dda1.png"
+  },
+  {
+    name: "Siemens",
+    logo: "/lovable-uploads/7a4f32e2-8ba1-495f-af98-be15a80e3cda.png"
   }
 ];
 
@@ -75,13 +87,34 @@ export const LogosSection = () => {
             >
               Enterprise Customers
             </motion.h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
-              {enterpriseCustomers.map((partner, index) => (
+            
+            {/* First Row */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-6">
+              {enterpriseCustomersRow1.map((partner, index) => (
                 <motion.div
                   key={partner.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05, duration: 0.4 }}
+                  className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                >
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Second Row */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {enterpriseCustomersRow2.map((partner, index) => (
+                <motion.div
+                  key={partner.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: (index + enterpriseCustomersRow1.length) * 0.05, duration: 0.4 }}
                   className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
                 >
                   <img 
