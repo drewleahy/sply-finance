@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
 import Autoplay from "embla-carousel-autoplay";
@@ -90,12 +91,12 @@ export const LogosSection = () => {
               Enterprise Customers
             </motion.h3>
             
-            {/* Carousel for Enterprise Customers with Auto-scroll */}
+            {/* Carousel for Enterprise Customers with Continuous Auto-scroll */}
             <div className="relative">
               <Carousel
                 plugins={[
                   Autoplay({
-                    delay: 3000,
+                    delay: 0,
                     stopOnInteraction: false,
                     stopOnMouseEnter: true,
                   }),
@@ -103,16 +104,17 @@ export const LogosSection = () => {
                 opts={{
                   align: "start",
                   loop: true,
+                  dragFree: true,
                 }}
                 className="w-full max-w-5xl mx-auto"
               >
-                <CarouselContent className="-ml-2 md:-ml-4">
-                  {enterpriseCustomers.map((partner, index) => (
-                    <CarouselItem key={partner.name} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
+                <CarouselContent className="-ml-2 md:-ml-4 flex animate-scroll">
+                  {[...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => (
+                    <CarouselItem key={`${partner.name}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05, duration: 0.4 }}
+                        transition={{ delay: (index % enterpriseCustomers.length) * 0.05, duration: 0.4 }}
                         className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
                       >
                         <img 
@@ -133,6 +135,25 @@ export const LogosSection = () => {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };
