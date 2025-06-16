@@ -100,8 +100,8 @@ export const LogosSection = () => {
                 }}
                 className="w-full max-w-5xl mx-auto"
               >
-                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_30s_linear_infinite] hover:[animation-play-state:paused]">
-                  {[...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => (
+                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_15s_linear_infinite] hover:[animation-play-state:paused]">
+                  {[...enterpriseCustomers, ...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => (
                     <CarouselItem key={`${partner.name}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -134,7 +134,7 @@ export const LogosSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-33.333%);
           }
         }
       `}</style>
