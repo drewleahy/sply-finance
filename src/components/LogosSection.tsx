@@ -116,7 +116,7 @@ export const LogosSection = () => {
                           <img 
                             src={partner.logo} 
                             alt={partner.name}
-                            className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                            className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto opacity-100 group-hover:filter group-hover:grayscale transition-all duration-300 group-hover:scale-105"
                             style={{
                               objectFit: 'contain',
                               objectPosition: 'center'
