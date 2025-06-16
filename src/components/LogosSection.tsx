@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
 import Autoplay from "embla-carousel-autoplay";
@@ -6,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const infrastructurePartners = [
@@ -94,12 +91,12 @@ export const LogosSection = () => {
             </motion.h3>
             
             {/* Carousel for Enterprise Customers with Auto-scroll */}
-            <div className="relative px-12">
+            <div className="relative">
               <Carousel
                 plugins={[
                   Autoplay({
-                    delay: 2000,
-                    stopOnInteraction: true,
+                    delay: 3000,
+                    stopOnInteraction: false,
                     stopOnMouseEnter: true,
                   }),
                 ]}
@@ -131,8 +128,6 @@ export const LogosSection = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="hidden md:flex" />
-                <CarouselNext className="hidden md:flex" />
               </Carousel>
             </div>
           </div>
