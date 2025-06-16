@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
-import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -92,15 +91,8 @@ export const LogosSection = () => {
             </motion.h3>
             
             {/* Carousel for Enterprise Customers with Continuous Auto-scroll */}
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <Carousel
-                plugins={[
-                  Autoplay({
-                    delay: 0,
-                    stopOnInteraction: false,
-                    stopOnMouseEnter: true,
-                  }),
-                ]}
                 opts={{
                   align: "start",
                   loop: true,
