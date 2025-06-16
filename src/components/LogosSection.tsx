@@ -70,6 +70,8 @@ const enterpriseCustomers = [
 ];
 
 export const LogosSection = () => {
+  console.log("Enterprise customers with new logos:", enterpriseCustomers);
+  
   return (
     <section className="py-4" style={{ backgroundColor: '#fafafa' }}>
       <div className="container mx-auto px-4 max-w-6xl">
@@ -100,27 +102,32 @@ export const LogosSection = () => {
                 }}
                 className="w-full max-w-5xl mx-auto"
               >
-                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_8s_linear_infinite] hover:[animation-play-state:paused]">
-                  {[...enterpriseCustomers, ...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => (
-                    <CarouselItem key={`${partner.name}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: (index % enterpriseCustomers.length) * 0.05, duration: 0.4 }}
-                        className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
-                      >
-                        <img 
-                          src={partner.logo} 
-                          alt={partner.name}
-                          className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
-                          style={{
-                            objectFit: 'contain',
-                            objectPosition: 'center'
-                          }}
-                        />
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
+                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_12s_linear_infinite] hover:[animation-play-state:paused]">
+                  {[...enterpriseCustomers, ...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => {
+                    console.log(`Rendering partner ${index}:`, partner.name, partner.logo);
+                    return (
+                      <CarouselItem key={`${partner.name}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: (index % enterpriseCustomers.length) * 0.05, duration: 0.4 }}
+                          className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                        >
+                          <img 
+                            src={partner.logo} 
+                            alt={partner.name}
+                            className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                            style={{
+                              objectFit: 'contain',
+                              objectPosition: 'center'
+                            }}
+                            onLoad={() => console.log(`Image loaded: ${partner.name}`)}
+                            onError={() => console.log(`Image failed to load: ${partner.name} - ${partner.logo}`)}
+                          />
+                        </motion.div>
+                      </CarouselItem>
+                    );
+                  })}
                 </CarouselContent>
               </Carousel>
             </div>
