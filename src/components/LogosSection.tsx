@@ -70,7 +70,7 @@ const enterpriseCustomers = [
 ];
 
 export const LogosSection = () => {
-  console.log("Enterprise customers with new logos:", enterpriseCustomers);
+  console.log("Enterprise customers with updated scroll speed:", enterpriseCustomers);
   
   return (
     <section className="py-4" style={{ backgroundColor: '#fafafa' }}>
@@ -92,7 +92,7 @@ export const LogosSection = () => {
               Enterprise Customers
             </motion.h3>
             
-            {/* Carousel for Enterprise Customers with Continuous Auto-scroll */}
+            {/* Faster Continuous Scroll Carousel for Enterprise Customers */}
             <div className="relative overflow-hidden">
               <Carousel
                 opts={{
@@ -102,7 +102,7 @@ export const LogosSection = () => {
                 }}
                 className="w-full max-w-5xl mx-auto"
               >
-                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_12s_linear_infinite] hover:[animation-play-state:paused]">
+                <CarouselContent className="-ml-2 md:-ml-4 flex animate-[scroll_8s_linear_infinite] hover:[animation-play-state:paused]">
                   {[...enterpriseCustomers, ...enterpriseCustomers, ...enterpriseCustomers].map((partner, index) => {
                     console.log(`Rendering partner ${index}:`, partner.name, partner.logo);
                     return (
