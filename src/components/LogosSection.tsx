@@ -1,5 +1,13 @@
+
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const infrastructurePartners = [
   {
@@ -52,6 +60,14 @@ const enterpriseCustomers = [
   {
     name: "Capgemini",
     logo: "/lovable-uploads/29bb4bf7-9656-46d2-9df0-481d9002dda1.png"
+  },
+  {
+    name: "Anduril",
+    logo: "/lovable-uploads/bba486d7-447c-4126-b5d8-759f92235c6a.png"
+  },
+  {
+    name: "Siemens",
+    logo: "/lovable-uploads/ae8a28f0-3668-4f5b-a8cb-d30b1f1b3766.png"
   }
 ];
 
@@ -75,22 +91,37 @@ export const LogosSection = () => {
             >
               Enterprise Customers
             </motion.h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
-              {enterpriseCustomers.map((partner, index) => (
-                <motion.div
-                  key={partner.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
-                  className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
-                >
-                  <img 
-                    src={partner.logo} 
-                    alt={partner.name}
-                    className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
-                  />
-                </motion.div>
-              ))}
+            
+            {/* Carousel for Enterprise Customers */}
+            <div className="relative px-12">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full max-w-5xl mx-auto"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {enterpriseCustomers.map((partner, index) => (
+                    <CarouselItem key={partner.name} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.4 }}
+                        className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                      >
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                        />
+                      </motion.div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex" />
+                <CarouselNext className="hidden md:flex" />
+              </Carousel>
             </div>
           </div>
         </div>
