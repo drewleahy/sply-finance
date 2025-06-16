@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { PartnerLogos } from "./partner/PartnerLogos";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -92,9 +93,16 @@ export const LogosSection = () => {
               Enterprise Customers
             </motion.h3>
             
-            {/* Carousel for Enterprise Customers */}
+            {/* Carousel for Enterprise Customers with Auto-scroll */}
             <div className="relative px-12">
               <Carousel
+                plugins={[
+                  Autoplay({
+                    delay: 2000,
+                    stopOnInteraction: true,
+                    stopOnMouseEnter: true,
+                  }),
+                ]}
                 opts={{
                   align: "start",
                   loop: true,
@@ -113,7 +121,11 @@ export const LogosSection = () => {
                         <img 
                           src={partner.logo} 
                           alt={partner.name}
-                          className="max-w-full max-h-16 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                          className="w-full h-full max-w-16 max-h-16 md:max-w-20 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                          style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                          }}
                         />
                       </motion.div>
                     </CarouselItem>
