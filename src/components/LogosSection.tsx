@@ -61,11 +61,11 @@ const enterpriseCustomers = [
   },
   {
     name: "Anduril",
-    logo: "/lovable-uploads/bba486d7-447c-4126-b5d8-759f92235c6a.png"
+    logo: "/lovable-uploads/e6668a0b-2964-48b2-8902-f50235030f08.png"
   },
   {
     name: "Siemens",
-    logo: "/lovable-uploads/ae8a28f0-3668-4f5b-a8cb-d30b1f1b3766.png"
+    logo: "/lovable-uploads/270d42b7-9747-4d5a-9af9-ef33534fc7fb.png"
   }
 ];
 
@@ -107,12 +107,12 @@ export const LogosSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: (index % enterpriseCustomers.length) * 0.05, duration: 0.4 }}
-                        className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
+                        className="group flex items-center justify-center p-4 md:p-6 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-24 md:h-28 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
                       >
                         <img 
                           src={partner.logo} 
                           alt={partner.name}
-                          className="w-full h-full max-w-16 max-h-16 md:max-w-20 md:max-h-20 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                          className="w-full h-full max-w-20 max-h-20 md:max-w-24 md:max-h-24 object-contain mx-auto filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
                           style={{
                             objectFit: 'contain',
                             objectPosition: 'center'
