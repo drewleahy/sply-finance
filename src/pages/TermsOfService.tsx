@@ -163,9 +163,6 @@ const TermsOfService = () => {
               <p>
                 SPLYFI is subject to various federal and state regulations, including but not limited to the Investment Advisers Act of 1940, the Securities Act of 1933, and the Securities Exchange Act of 1934. Our investment activities are conducted in accordance with applicable securities laws and regulations.
               </p>
-              <p className="mt-3">
-                Certain information regarding our regulatory status, disciplinary history, and business practices is available through the Investment Adviser Public Disclosure (IAPD) database maintained by the SEC.
-              </p>
             </section>
 
             <section>
