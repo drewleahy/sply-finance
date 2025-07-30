@@ -22,12 +22,12 @@ export const InvestorCTA = () => {
           className="max-w-3xl mx-auto text-center"
         >
           {/* Header */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-sply-navy mb-6">
+          <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-sply-navy mb-6">
             Ready to Invest?
           </h2>
           
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-slate-600 mb-10 font-noto-serif-ethiopic leading-relaxed">
+          <p className="text-base md:text-lg text-slate-600 mb-10 font-noto-serif-ethiopic leading-relaxed">
             Access predictable yields from U.S. defense receivables.
           </p>
           
