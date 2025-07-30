@@ -13,8 +13,8 @@ export const Hero = () => {
         }}
       />
       
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Overlay for better text readability - increased opacity */}
+      <div className="absolute inset-0 bg-black/70" />
       
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 text-center relative z-10">
