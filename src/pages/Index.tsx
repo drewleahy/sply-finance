@@ -13,9 +13,9 @@ import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col font-noto-serif-ethiopic" style={{backgroundColor: '#fafafa'}}>
+    <div className="min-h-screen flex flex-col font-noto-serif-ethiopic relative">
       {/* Header */}
-      <header className="container mx-auto px-4 py-2 flex justify-start items-center">
+      <header className="absolute top-0 left-0 right-0 z-10 container mx-auto px-4 py-2 flex justify-start items-center">
         <h1 
           className="text-lg sm:text-xl md:text-2xl text-white"
           style={{ fontFamily: 'ADAM, sans-serif' }}
