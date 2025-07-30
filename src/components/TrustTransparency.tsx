@@ -49,9 +49,9 @@ export const TrustTransparency = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mb-16"
           >
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-6 max-w-4xl mx-auto px-4">
@@ -68,25 +68,15 @@ export const TrustTransparency = () => {
             {trustFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  delay: feature.delay, 
-                  duration: 0.7, 
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                className="group"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
-                <Card className="bg-white border-2 border-gray-200 h-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 group-hover:-translate-y-2 group-hover:border-sply-navy/20">
+                <Card className="bg-white border-2 border-gray-200 h-full shadow-md">
                   <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                    <motion.div 
-                      initial={{ scale: 0, rotate: -180 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: feature.delay + 0.3, duration: 0.6, type: "spring" }}
-                      className="w-16 h-16 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
-                    >
+                    <div className="w-16 h-16 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <feature.icon className="w-8 h-8 text-white" />
-                    </motion.div>
+                    </div>
                     <h4 className="font-bold text-lg mb-3 font-montserrat leading-tight text-gray-800">
                       {feature.title}
                     </h4>

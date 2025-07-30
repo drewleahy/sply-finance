@@ -48,9 +48,9 @@ export const HowItWorks = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-4 sm:mb-6 max-w-4xl mx-auto px-4">
@@ -75,26 +75,20 @@ export const HowItWorks = () => {
               {steps.map((step, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: step.delay, 
-                    duration: 0.7, 
-                    ease: [0.25, 0.46, 0.45, 0.94]
+                    duration: 0.3, 
+                    ease: "easeOut"
                   }}
-                  className="flex flex-col items-center group"
+                  className="flex flex-col items-center"
                 >
-                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] max-w-xs mx-auto shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-gray-400/50 backdrop-blur-sm">
+                  <Card className="bg-gradient-to-br from-white to-gray-100 border-2 border-gray-200 w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] max-w-xs mx-auto shadow-lg">
                     <CardContent className="p-4 sm:p-6 text-center h-full flex flex-col justify-between">
                       <div>
-                        <motion.div 
-                          initial={{ scale: 0, rotate: -180 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
-                          transition={{ delay: step.delay + 0.4, duration: 0.6, type: "spring" }}
-                          className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-gray-600/70"
-                        >
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg">
                           <step.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
-                        </motion.div>
+                        </div>
                         <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2 font-montserrat leading-tight tracking-tight text-gray-800">
                           {step.title}
                         </h4>
@@ -108,19 +102,14 @@ export const HowItWorks = () => {
                     </CardContent>
                   </Card>
                   
-                  {/* Enhanced Mobile Connection Indicator */}
+                  {/* Mobile Connection Indicator */}
                   {index < steps.length - 1 && (
                     <div className="sm:hidden lg:hidden mt-4 mb-2">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0, rotate: -90 }}
-                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ delay: step.delay + 0.6, duration: 0.4, type: "spring" }}
-                        className="w-5 h-5 text-gray-500"
-                      >
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full drop-shadow-sm">
+                      <div className="w-5 h-5 text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
                           <path d="M12 2L12 22M12 22L18 16M12 22L6 16"/>
                         </svg>
-                      </motion.div>
+                      </div>
                     </div>
                   )}
                 </motion.div>
@@ -128,11 +117,11 @@ export const HowItWorks = () => {
             </div>
           </div>
 
-          {/* Enhanced Bottom Summary */}
+          {/* Bottom Summary */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mt-12 sm:mt-16 lg:mt-20"
           >
             <div className="max-w-3xl mx-auto">

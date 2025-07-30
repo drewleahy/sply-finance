@@ -99,4 +99,38 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Performance optimizations for animations */
+  * {
+    box-sizing: border-box;
+  }
+
+  [data-framer-motion] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* Reduce motion for users with motion sensitivity */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    [data-framer-motion] {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Smooth scrolling performance */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* GPU acceleration for common transforms */
+  .motion-safe\:transform {
+    transform: translateZ(0);
+  }
 }

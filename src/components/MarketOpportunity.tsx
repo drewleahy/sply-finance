@@ -43,9 +43,9 @@ export const MarketOpportunity = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mb-12"
           >
             <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-gray-800 mb-4 max-w-4xl mx-auto px-4">
@@ -64,26 +64,16 @@ export const MarketOpportunity = () => {
               {marketDrivers.map((driver, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    delay: driver.delay, 
-                    duration: 0.7, 
-                    ease: [0.25, 0.46, 0.45, 0.94]
-                  }}
-                  className="group"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  <Card className="bg-gray-50 border-l-4 border-l-sply-navy hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                  <Card className="bg-gray-50 border-l-4 border-l-sply-navy">
                     <CardContent className="p-5">
                       <div className="flex items-start space-x-4">
-                        <motion.div 
-                          initial={{ scale: 0, rotate: -180 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
-                          transition={{ delay: driver.delay + 0.3, duration: 0.6, type: "spring" }}
-                          className="w-10 h-10 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
-                        >
+                        <div className="w-10 h-10 bg-gradient-to-br from-sply-navy to-sply-gold rounded-full flex items-center justify-center shadow-lg">
                           <driver.icon className="w-5 h-5 text-white" />
-                        </motion.div>
+                        </div>
                         <div className="flex-1">
                           <h4 className="font-bold text-base mb-2 font-montserrat text-gray-800">
                             {driver.title}
@@ -101,9 +91,9 @@ export const MarketOpportunity = () => {
 
             {/* Right Side - Chart Section */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="lg:pl-6"
             >
               <Card className="bg-gradient-to-br from-sply-navy to-gray-800 text-white shadow-2xl">

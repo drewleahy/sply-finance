@@ -1,5 +1,6 @@
 
 import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const TeamAlpha = () => {
   const alphaPoints = [
@@ -18,10 +19,16 @@ export const TeamAlpha = () => {
         </h2>
         <div className="max-w-4xl mx-auto space-y-6">
           {alphaPoints.map((point, index) => (
-            <div key={index} className="flex items-start gap-4 animate-fadeIn" style={{ animationDelay: `${index * 100}ms` }}>
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex items-start gap-4"
+            >
               <Check className="w-6 h-6 text-sply-gold flex-shrink-0 mt-1" />
               <p className="text-lg text-sply-navy font-noto-serif-ethiopic">{point}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

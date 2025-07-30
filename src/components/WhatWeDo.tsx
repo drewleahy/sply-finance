@@ -12,9 +12,9 @@ export const WhatWeDo = () => {
         <div className="max-w-3xl mx-auto">
           {/* Header Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mb-6 sm:mb-8"
           >
             <h2 className="text-lg sm:text-xl md:text-2xl font-montserrat font-bold text-gray-800 mb-2 sm:mb-3 max-w-3xl mx-auto px-2 lg:px-4">
@@ -30,12 +30,12 @@ export const WhatWeDo = () => {
           <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
             {/* The Opportunity */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="relative"
             >
-              <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/10 to-transparent transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:from-sply-gold/15 cursor-pointer min-h-[120px] sm:min-h-[140px]">
+              <Card className="border-l-4 border-l-sply-gold bg-gradient-to-r from-sply-gold/10 to-transparent min-h-[120px] sm:min-h-[140px]">
                 <CardContent className="p-3 sm:p-4 lg:p-6 h-full flex items-center">
                   <div className="flex items-start space-x-2 sm:space-x-3 w-full">
                     <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-sply-gold text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm">
@@ -58,12 +58,12 @@ export const WhatWeDo = () => {
 
             {/* The Challenge */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="relative"
             >
-              <Card className="border-l-4 border-l-gray-400 bg-gray-50/80 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-100/90 cursor-pointer min-h-[120px] sm:min-h-[140px]">
+              <Card className="border-l-4 border-l-gray-400 bg-gray-50/80 min-h-[120px] sm:min-h-[140px]">
                 <CardContent className="p-3 sm:p-4 lg:p-6 h-full flex items-center">
                   <div className="flex items-start space-x-2 sm:space-x-3 w-full">
                     <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm">
@@ -85,11 +85,11 @@ export const WhatWeDo = () => {
 
             {/* Our Solution */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Card className="border-l-4 border-l-sply-navy bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-gray-50/50 cursor-pointer min-h-[120px] sm:min-h-[140px]">
+              <Card className="border-l-4 border-l-sply-navy bg-white min-h-[120px] sm:min-h-[140px]">
                 <CardContent className="p-3 sm:p-4 lg:p-6 h-full flex items-center">
                   <div className="flex items-start space-x-2 sm:space-x-3 w-full">
                     <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-sply-navy text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm">
@@ -109,9 +109,9 @@ export const WhatWeDo = () => {
 
           {/* Performance Highlight Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="relative"
           >
             {/* Connecting line */}
