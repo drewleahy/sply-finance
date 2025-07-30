@@ -15,9 +15,9 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col font-noto-serif-ethiopic" style={{backgroundColor: '#fafafa'}}>
       {/* Header */}
-      <header className="container mx-auto px-4 py-2 flex justify-center items-center">
+      <header className="container mx-auto px-4 py-2 flex justify-start items-center">
         <h1 
-          className="text-lg sm:text-xl md:text-2xl text-gray-800"
+          className="text-lg sm:text-xl md:text-2xl text-white"
           style={{ fontFamily: 'ADAM, sans-serif' }}
         >
           <span className="font-medium">SPLY</span>
