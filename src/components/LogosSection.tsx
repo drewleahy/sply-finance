@@ -79,23 +79,15 @@ export const LogosSection = () => {
           />
 
           <div className="border-t border-gray-200/60 pt-12">
-            <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-sm md:text-base font-montserrat font-semibold text-sply-navy/80 text-center mb-8 uppercase tracking-wider"
-            >
+            <h3 className="text-sm md:text-base font-montserrat font-semibold text-sply-navy/80 text-center mb-8 uppercase tracking-wider">
               Enterprise Customers
-            </motion.h3>
+            </h3>
             
             {/* First Row */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-6">
               {enterpriseCustomersRow1.map((partner, index) => (
-                <motion.div
+                <div
                   key={partner.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
                   className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
                 >
                   <img 
@@ -107,18 +99,15 @@ export const LogosSection = () => {
                         : 'group-hover:scale-105'
                     }`}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Second Row */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {enterpriseCustomersRow2.map((partner, index) => (
-                <motion.div
+                <div
                   key={partner.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: (index + enterpriseCustomersRow1.length) * 0.05, duration: 0.4 }}
                   className="group flex items-center justify-center p-4 md:p-5 bg-white/70 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-20 md:h-24 border border-gray-100/80 hover:border-gray-200/80 backdrop-blur-sm"
                 >
                   <img 
@@ -130,7 +119,7 @@ export const LogosSection = () => {
                         : 'group-hover:scale-105'
                     }`}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
