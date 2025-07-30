@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col font-noto-serif-ethiopic" style={{backgroundColor: '#fafafa'}}>
       {/* Header */}
-      <header className="container mx-auto px-4 py-2 flex justify-between items-center bg-white border-b">
+      <header className="container mx-auto px-4 py-2 flex justify-center items-center">
         <h1 
           className="text-lg sm:text-xl md:text-2xl text-gray-800"
           style={{ fontFamily: 'ADAM, sans-serif' }}
@@ -23,9 +23,6 @@ const Index = () => {
           <span className="font-medium">SPLY</span>
           <span className="font-bold">FI</span>
         </h1>
-        <Link to="/auth" className="text-gray-800 hover:text-gray-600 font-semibold font-montserrat text-sm sm:text-base">
-          LP LOGIN
-        </Link>
       </header>
 
       <main className="flex-grow" style={{backgroundColor: '#fafafa'}}>
