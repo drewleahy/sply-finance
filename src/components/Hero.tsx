@@ -41,10 +41,16 @@ export const Hero = () => {
           className="flex justify-center px-4"
         >
           <Button 
+            asChild
             className="bg-sply-navy hover:bg-sply-navy/90 text-white font-noto-serif-ethiopic px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg w-full sm:w-auto max-w-xs"
-            onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qvWT7F9YIfkD3Fu-I7toHq3IF0i77D6ChSoFK6OVE1CjTzoLh-gLCL4Jk2yuDELE0nwz2hOSm', '_blank')}
           >
-            Connect with Our Team
+            <a 
+              href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qvWT7F9YIfkD3Fu-I7toHq3IF0i77D6ChSoFK6OVE1CjTzoLh-gLCL4Jk2yuDELE0nwz2hOSm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Connect with Our Team
+            </a>
           </Button>
         </motion.div>
       </div>
