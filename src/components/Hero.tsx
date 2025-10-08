@@ -46,8 +46,6 @@ export const Hero = () => {
           >
             <a 
               href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qvWT7F9YIfkD3Fu-I7toHq3IF0i77D6ChSoFK6OVE1CjTzoLh-gLCL4Jk2yuDELE0nwz2hOSm"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Connect with Our Team
             </a>
