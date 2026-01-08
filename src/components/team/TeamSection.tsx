@@ -12,14 +12,12 @@ interface TeamSectionProps {
 }
 
 export const TeamSection = ({ partners }: TeamSectionProps) => {
-  // Ensure Drew, Tyler, James, Matt, Michael, and Haley are primary team members
+  // Ensure Tyler, James, Matt, and Haley are primary team members
   const primaryMembers = partners.filter(partner => 
-    partner.name === "Drew Leahy" || 
     partner.name === "Tyler Williams" || 
     partner.name === "James Wiseman" ||
     partner.name === "Jamie Wiseman" ||  // Include both name variations for James/Jamie
     partner.name === "Matthew Saffaii" ||
-    partner.name === "Michael Slawson" ||
     partner.name === "Haley Swank"
   );
   
