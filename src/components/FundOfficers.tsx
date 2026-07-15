@@ -4,7 +4,7 @@ import { Briefcase, Scale } from "lucide-react";
 
 const officers = [
   { name: "Tyler Williams", title: "Managing Principal" },
-  { name: "Tim Wenz", title: "President" },
+  { name: "Tom Wenz", title: "President" },
   { name: "James Wiseman", title: "Secretary" },
 ];
 
